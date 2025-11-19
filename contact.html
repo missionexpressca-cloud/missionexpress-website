@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact | Mission Go Logistics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <div class="logo-wrap">
+      <a href="index.html">
+        <img src="img/logo.png" alt="Mission Go logo" class="logo" />
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="services.html" data-i18n="nav_services">Services</a>
+      <a href="network.html" data-i18n="nav_network">Network</a>
+      <a href="contact.html" data-i18n="nav_contact" class="active">Contact</a>
+    </nav>
+    <button id="lang-toggle" class="lang-toggle">中文</button>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="section-inner">
+        <h1 data-i18n="contact_title">Contact us</h1>
+        <p class="section-intro" data-i18n="contact_intro">
+          Whether you are a carrier, e‑commerce platform, or local business, we are happy to discuss
+          how Mission Go can support your delivery needs.
+        </p>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="section-inner contact-grid">
+        <div>
+          <h2 data-i18n="contact_business_title">Business & partnership</h2>
+          <p>
+            <strong>Email:</strong> <a href="mailto:info@missionexpress.ca">info@missionexpress.ca</a>
+          </p>
+          <p>
+            <strong data-i18n="contact_company_name_label">Company:</strong>
+            Mission Express Logistics Inc.
+          </p>
+          <p>
+            <strong data-i18n="contact_location_label">Location:</strong>
+            Moose Jaw, Saskatchewan, Canada
+          </p>
+          <p data-i18n="contact_note">
+            Please include a short description of your business, approximate monthly parcel volume,
+            and the cities or postal codes you would like to cover.
+          </p>
+        </div>
+        <div class="contact-form">
+          <h2 data-i18n="contact_form_title">Quick message (sample)</h2>
+          <p data-i18n="contact_form_note">
+            Your development team can wire this form to your preferred email service or CRM.
+          </p>
+          <form>
+            <label>
+              <span data-i18n="contact_form_name">Name</span>
+              <input type="text" placeholder="Your name" />
+            </label>
+            <label>
+              <span data-i18n="contact_form_email">Email</span>
+              <input type="email" placeholder="you@example.com" />
+            </label>
+            <label>
+              <span data-i18n="contact_form_message">Message</span>
+              <textarea rows="4" placeholder="How can we help?"></textarea>
+            </label>
+            <button type="submit" class="btn primary" disabled data-i18n="contact_form_button">
+              Form demo only
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+</body>
+</html>
