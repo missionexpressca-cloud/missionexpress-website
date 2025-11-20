@@ -20,7 +20,7 @@
       <a href="network.html" data-i18n="nav_network">Network</a>
       <a href="contact.html" data-i18n="nav_contact" class="active">Contact</a>
     </nav>
-    <button id="lang-toggle" class="lang-toggle">中文</button>
+    <button type="submit" class="btn primary">Send message</button>
   </header>
 
   <main>
@@ -59,26 +59,23 @@
           <p data-i18n="contact_form_note">
             Your development team can wire this form to your preferred email service or CRM.
           </p>
-          <form action="https://formspree.io/f/xovrydap" method="POST">
-  <label>
-    <span data-i18n="contact_form_name">Name</span>
-    <input type="text" name="name" placeholder="Your name" required />
-  </label>
-
-  <label>
-    <span data-i18n="contact_form_email">Email</span>
-    <input type="email" name="email" placeholder="you@example.com" required />
-  </label>
-
-  <label>
-    <span data-i18n="contact_form_message">Message</span>
-    <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
-  </label>
-
-  <button type="submit" class="btn primary" data-i18n="contact_form_button">
-    Send message
-  </button>
-</form>
+          <form>
+            <label>
+              <span data-i18n="contact_form_name">Name</span>
+              <input type="text" placeholder="Your name" />
+            </label>
+            <label>
+              <span data-i18n="contact_form_email">Email</span>
+              <input type="email" placeholder="you@example.com" />
+            </label>
+            <label>
+              <span data-i18n="contact_form_message">Message</span>
+              <textarea rows="4" placeholder="How can we help?"></textarea>
+            </label>
+            <button type="submit" class="btn primary" disabled data-i18n="contact_form_button">
+              Form demo only
+            </button>
+          </form>
         </div>
       </div>
     </section>
