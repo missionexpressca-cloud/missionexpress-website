@@ -120,13 +120,13 @@ const dict = {
     contact_location_label: "Location:",
     contact_note:
       "Please include a short description of your business, approximate monthly parcel volume, and the cities or postal codes you would like to cover.",
-    contact_form_title: "Quick message (sample)",
+    contact_form_title: "Send us a message",
     contact_form_note:
-      "Your development team can wire this form to your preferred email service or CRM.",
+      "We will get back to you shortly.",
     contact_form_name: "Name",
     contact_form_email: "Email",
     contact_form_message: "Message",
-    contact_form_button: "Form demo only"
+    contact_form_button: "Send message"
   },
   zh: {
     nav_home: "首页",
@@ -245,13 +245,13 @@ const dict = {
     contact_location_label: "所在城市：",
     contact_note:
       "发邮件时，建议简单说明业务类型、月度（或每日）包裹量，以及希望覆盖的城市或邮编范围。",
-    contact_form_title: "在线留言（示例）",
+    contact_form_title: "给我们留言",
     contact_form_note:
-      "此表单为示例，后续可由开发团队接入邮箱或 CRM 系统。",
+      "我们会尽快回复您。",
     contact_form_name: "姓名",
     contact_form_email: "邮箱",
     contact_form_message: "留言内容",
-    contact_form_button: "仅示例，暂不提交"
+    contact_form_button: "发送"
   }
 };
 
