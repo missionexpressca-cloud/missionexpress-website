@@ -417,7 +417,7 @@ textarea:focus {
   flex: 0 0 auto;     /* 关键：不让它拉伸占满宽度 */
 
   position: relative;
-  top: -20px;
+  top: -40px;
 }
 
 
