@@ -402,10 +402,22 @@ textarea:focus {
 .section.accent{ position: relative; }
 
 .section.accent .cta-qr-pair{
-  position: absolute;
-  right: 20px;
-  top: 35%;
-  transform: translateY(-50%);
+  position: static;      /* 关键：不要 absolute */
+  transform: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;             /* 两个二维码之间的间距 */
+}
+.section.accent .cta-right{
+  display: flex;
+  align-items: center;
+  gap: 14px;        /* 按钮组 和 二维码组 的间距（更小就改 10px） */
+  margin-left: auto;
+  position: relative;
+  top: -20px;       /* 需要更高：-30px；更低：-10px */
+}
+
+.section.accent .cta-actions{
   display: flex;
   align-items: center;
   gap: 12px;
