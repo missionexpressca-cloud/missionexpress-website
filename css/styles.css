@@ -408,19 +408,18 @@ textarea:focus {
   align-items: center;
   gap: 10px;             /* 两个二维码之间的间距 */
 }
+.section.accent{ position: relative; }  /* 你这行如果已经有就保留 */
+
 .section.accent .cta-right{
+  position: absolute;
+  right: 20px;          /* 越小越靠右：10px / 0px */
+  top: 35%;             /* 越小越靠上：30% / 25% */
+  transform: translateY(-50%);
+
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 10px;          /* 按钮和二维码之间的空隙，想更小改 6px */
-
-  flex: 0 0 auto;     /* 关键：不让它拉伸占满宽度 */
-
-  position: relative;
-  top: -40px;
+  gap: 12px;            /* 按钮组 和 二维码组 的间距（想更小改 8px） */
 }
-
-
 .section.accent .cta-actions{
   display: flex;
   align-items: center;
@@ -439,5 +438,10 @@ textarea:focus {
 
 /* Mobile: hide QR to avoid overlap */
 @media (max-width: 900px){
+  .section.accent .cta-right{
+    position: static;
+    transform: none;
+    margin-top: 12px;
+  }
   .section.accent .cta-qr-pair{ display: none; }
 }
