@@ -594,5 +594,16 @@ textarea:focus {
 .prealert-link a:visited{
   color: #111 !important;
 }
+.prealert-tag{
+  display:inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  margin-bottom: 8px;
+}
 
 }
