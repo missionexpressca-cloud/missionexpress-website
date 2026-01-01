@@ -424,7 +424,7 @@ textarea:focus {
   gap: 10px;          /* 按钮组 和 二维码组 的间距（空隙太大就调小：8px） */
 
   position: relative;
-  top: -10px;         /* 整体上移一点（想更上就 -12/-14；想下来就 -6/-8） */
+  top: -12px;         /* 整体上移一点（想更上就 -12/-14；想下来就 -6/-8） */
 }
 
 .section.accent .cta-actions{
