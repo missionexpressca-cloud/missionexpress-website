@@ -398,49 +398,30 @@ textarea:focus {
     grid-template-columns: minmax(0, 1fr);
   }
 }
-/* Home CTA phone */
-.cta-phone{
-  margin-top: 10px;
-  line-height: 1.6;
-}
-.cta-phone a{
-  font-weight: 600;
-  text-decoration: none;
-}
-.cta-phone a:hover{
-  text-decoration: underline;
-}
+/* === FIX: CTA QR codes size + position (right blank area) === */
+.section.accent{ position: relative; }
 
-/* Home CTA: right side (buttons + QR codes) */
-.cta-right{
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-left: auto;
-}
-
-.cta-qr-pair{
+.section.accent .cta-qr-pair{
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.cta-qr-pair img{
-  width: 110px;
-  height: 110px;
+.section.accent .cta-qr-pair .qr-card img{
+  width: 120px !important;
+  height: 120px !important;
   object-fit: contain;
   border-radius: 12px;
   padding: 6px;
   background: rgba(255,255,255,0.92);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
+/* Mobile: hide QR to avoid overlap */
 @media (max-width: 900px){
-  .cta-right{
-    flex-wrap: wrap;
-    margin-left: 0;
-  }
-  .cta-qr-pair img{
-    width: 90px;
-    height: 90px;
-  }
+  .section.accent .cta-qr-pair{ display: none; }
 }
