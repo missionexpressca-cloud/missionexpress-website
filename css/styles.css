@@ -403,8 +403,8 @@ textarea:focus {
 
 .section.accent .cta-qr-pair{
   position: absolute;
-  right: 50px;
-  top: 50%;
+  right: 20px;
+  top: 35%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
