@@ -461,9 +461,6 @@ textarea:focus {
   }
   .section.accent .cta-qr-pair{ display: none; }
 }
-
-}
-
 .section.accent .cta-actions{
   display: flex;
   align-items: center;
