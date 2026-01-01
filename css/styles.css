@@ -411,11 +411,15 @@ textarea:focus {
 .section.accent .cta-right{
   display: flex;
   align-items: center;
-  gap: 14px;        /* 按钮组 和 二维码组 的间距（更小就改 10px） */
-  margin-left: auto;
+  justify-content: flex-end;
+  gap: 10px;          /* 按钮和二维码之间的空隙，想更小改 6px */
+
+  flex: 0 0 auto;     /* 关键：不让它拉伸占满宽度 */
+
   position: relative;
-  top: -20px;       /* 需要更高：-30px；更低：-10px */
+  top: -20px;
 }
+
 
 .section.accent .cta-actions{
   display: flex;
