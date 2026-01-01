@@ -398,60 +398,56 @@ textarea:focus {
     grid-template-columns: minmax(0, 1fr);
   }
 }
-/* =========================================================
-   AFTER LINE 400 — CTA (buttons + QR) layout fixes
-   把这段作为 styles.css 的 401 行开始一直到文件末尾
-   ========================================================= */
+/* === CTA (accent section) layout — replace EVERYTHING after line 400 === */
 
-/* 让 CTA 区域可用于 absolute 定位 */
+/* Keep accent section as positioning container */
 .section.accent{
   position: relative;
+  overflow: hidden;
 }
 
-/* 右侧整体（上：按钮，下：二维码） */
+/* Right block: email + button on top, QRs below, moved LEFT (blue area) */
 .section.accent .cta-right{
   position: absolute;
 
-  /* ✅ 调这里：数值越大 = 整体越往左（中间空隙更小） */
-  right: clamp(24px, 18vw, 420px);
+  /* ✅ 关键：往左移，就把这三个数都调大；往右移就调小 */
+  right: clamp(260px, 22vw, 520px);
 
-  /* ✅ 调这里：数值越小 = 整体越往上 */
   top: 50%;
   transform: translateY(-50%);
 
   display: flex;
-  flex-direction: column;     /* 上下布局：按钮在上，二维码在下 */
-  align-items: flex-end;      /* 右对齐 */
+  flex-direction: column;
+  align-items: flex-end;
   gap: 10px;
 
-  z-index: 2;
+  z-index: 5;
   white-space: nowrap;
 }
 
-/* 上面两个按钮（email + contact） */
+/* top row: email + contact button */
 .section.accent .cta-actions{
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 12px;
-  flex-wrap: nowrap;
 }
 
-/* 下面两个二维码 */
+/* bottom row: two QR cards */
 .section.accent .cta-qr-pair{
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 8px;
 }
 
 .section.accent .cta-qr-pair .qr-card{
   display: inline-flex;
+  line-height: 0;
 }
 
+/* QR image size */
 .section.accent .cta-qr-pair .qr-card img{
-  width: 90px;
-  height: 90px;
+  width: 90px !important;
+  height: 90px !important;
   object-fit: contain;
 
   border-radius: 12px;
@@ -460,7 +456,14 @@ textarea:focus {
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* 手机/窄屏：取消 absolute，让它正常排版到内容下面，不会挡住 */
+/* Medium screens: avoid going too far inside */
+@media (max-width: 1400px){
+  .section.accent .cta-right{
+    right: clamp(160px, 12vw, 320px);
+  }
+}
+
+/* Mobile: stack below text (safe). If you still want to hide QRs, keep display:none. */
 @media (max-width: 900px){
   .section.accent .cta-right{
     position: static;
@@ -470,13 +473,4 @@ textarea:focus {
     white-space: normal;
   }
 
-  .section.accent .cta-actions,
-  .section.accent .cta-qr-pair{
-    justify-content: flex-start;
-  }
-
-  .section.accent .cta-qr-pair .qr-card img{
-    width: 84px;
-    height: 84px;
-  }
 }
