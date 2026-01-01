@@ -558,5 +558,24 @@ textarea:focus {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(0,0,0,.25);
 }
+/* Contact page - Parcel Pre-Alert text */
+.contact-prealert {
+  margin-top: 20px;
+}
+
+.prealert-hint {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #eee;
+}
+
+.prealert-hint .en-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #aaa;
+}
 
 }
