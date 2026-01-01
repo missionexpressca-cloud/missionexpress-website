@@ -472,5 +472,69 @@ textarea:focus {
     align-items: flex-start;
     white-space: normal;
   }
+.nav-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: #0c0f1a;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: right 0.3s ease;
+  z-index: 9999;
+}
+
+.mobile-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.mobile-nav.open {
+  right: 0;
+}
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+  z-index: 9998;
+}
+
+.nav-backdrop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+  .nav-toggle {
+    display: block;
+  }
+}
 
 }
