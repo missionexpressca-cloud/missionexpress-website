@@ -398,108 +398,85 @@ textarea:focus {
     grid-template-columns: minmax(0, 1fr);
   }
 }
-/* ===== CTA (Home) layout: keep right side on the right, no wrap, smaller gaps ===== */
-.section.accent .section-inner.flex-row{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+/* =========================================================
+   AFTER LINE 400 — CTA (buttons + QR) layout fixes
+   把这段作为 styles.css 的 401 行开始一直到文件末尾
+   ========================================================= */
+
+/* 让 CTA 区域可用于 absolute 定位 */
+.section.accent{
+  position: relative;
 }
 
-.section.accent .section-inner.flex-row > div:first-child{
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-/* Right block = buttons + QR, always stick to the right on desktop */
-.section.accent{ position: relative; }
-
+/* 右侧整体（上：按钮，下：二维码） */
 .section.accent .cta-right{
   position: absolute;
-  right: clamp(20px, 10vw, 220px);          /* 越小越靠右：20 -> 10 -> 0 */
-  top: 45%;             /* 越小越靠上：45% -> 42% -> 40% */
+
+  /* ✅ 调这里：数值越大 = 整体越往左（中间空隙更小） */
+  right: clamp(24px, 18vw, 420px);
+
+  /* ✅ 调这里：数值越小 = 整体越往上 */
+  top: 50%;
   transform: translateY(-50%);
 
   display: flex;
-  flex-direction: column;   /* 关键：上下布局 */
-  align-items: flex-end;     /* 右对齐 */
-  gap: 10px;                 /* “按钮行”和“二维码行”的上下间距 */
+  flex-direction: column;     /* 上下布局：按钮在上，二维码在下 */
+  align-items: flex-end;      /* 右对齐 */
+  gap: 10px;
+
+  z-index: 2;
   white-space: nowrap;
 }
 
+/* 上面两个按钮（email + contact） */
 .section.accent .cta-actions{
   display: flex;
   align-items: center;
-  gap: 12px;                 /* 两个按钮之间距离 */
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: nowrap;
 }
 
+/* 下面两个二维码 */
 .section.accent .cta-qr-pair{
   display: flex;
   align-items: center;
-  gap: 8px;                  /* 两个二维码之间距离（嫌大就 6px） */
+  justify-content: flex-end;
+  gap: 8px;
 }
 
-.section.accent .cta-qr-pair .qr-card{ display: inline-flex; }
+.section.accent .cta-qr-pair .qr-card{
+  display: inline-flex;
+}
 
 .section.accent .cta-qr-pair .qr-card img{
   width: 90px;
   height: 90px;
   object-fit: contain;
+
   border-radius: 12px;
   padding: 6px;
   background: rgba(255,255,255,0.92);
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* Mobile: hide QR to avoid overlap */
+/* 手机/窄屏：取消 absolute，让它正常排版到内容下面，不会挡住 */
 @media (max-width: 900px){
   .section.accent .cta-right{
     position: static;
     transform: none;
-    margin-top: 12px;
+    margin-top: 14px;
     align-items: flex-start;
+    white-space: normal;
   }
-  .section.accent .cta-qr-pair{ display: none; }
-}
-.section.accent .cta-actions{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 0 0 auto;
-}
 
-.section.accent .cta-qr-pair{
-  display: flex;
-  align-items: center;
-  gap: 8px;           /* 两个二维码之间的间距（空隙太大就调小：6px） */
-  flex: 0 0 auto;
-}
-
-.section.accent .cta-qr-pair .qr-card{
-  display: block;
-  line-height: 0;
-}
-
-.section.accent .cta-qr-pair .qr-card img{
-  width: 90px;        /* 二维码大小（太大就 80~88） */
-  height: 90px;
-  object-fit: contain;
-
-  border-radius: 12px;
-  padding: 6px;
-  background: rgba(255,255,255,0.92);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-
-/* Mobile: stack (avoid squeezing) */
-@media (max-width: 700px){
-  .section.accent .section-inner.flex-row{
-    flex-direction: column;
-    align-items: flex-start;
+  .section.accent .cta-actions,
+  .section.accent .cta-qr-pair{
+    justify-content: flex-start;
   }
-  .section.accent .cta-right{
-    margin-left: 0;
-    top: 0;
-    flex-wrap: wrap;
+
+  .section.accent .cta-qr-pair .qr-card img{
+    width: 84px;
+    height: 84px;
   }
 }
