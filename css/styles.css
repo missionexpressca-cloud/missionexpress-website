@@ -398,3 +398,49 @@ textarea:focus {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+/* Home CTA phone */
+.cta-phone{
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.cta-phone a{
+  font-weight: 600;
+  text-decoration: none;
+}
+.cta-phone a:hover{
+  text-decoration: underline;
+}
+
+/* Home CTA: right side (buttons + QR codes) */
+.cta-right{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.cta-qr-pair{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cta-qr-pair img{
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 12px;
+  padding: 6px;
+  background: rgba(255,255,255,0.92);
+}
+
+@media (max-width: 900px){
+  .cta-right{
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+  .cta-qr-pair img{
+    width: 90px;
+    height: 90px;
+  }
+}
