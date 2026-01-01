@@ -398,50 +398,74 @@ textarea:focus {
     grid-template-columns: minmax(0, 1fr);
   }
 }
-/* === FIX: CTA QR codes size + position (right blank area) === */
-.section.accent{ position: relative; }
-
-.section.accent .cta-qr-pair{
-  position: static;      /* 关键：不要 absolute */
-  transform: none;
+/* ===== CTA (Home) layout: keep right side on the right, no wrap, smaller gaps ===== */
+.section.accent .section-inner.flex-row{
   display: flex;
   align-items: center;
-  gap: 10px;             /* 两个二维码之间的间距 */
+  justify-content: space-between;
+  gap: 24px;
 }
-.section.accent{ position: relative; }  /* 你这行如果已经有就保留 */
 
+.section.accent .section-inner.flex-row > div:first-child{
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Right block = buttons + QR, always stick to the right on desktop */
 .section.accent .cta-right{
-  position: absolute;
-  right: 20px;          /* 越小越靠右：10px / 0px */
-  top: 35%;             /* 越小越靠上：30% / 25% */
-  transform: translateY(-50%);
+  flex: 0 0 auto;
+  margin-left: auto;
 
   display: flex;
   align-items: center;
-  gap: 12px;            /* 按钮组 和 二维码组 的间距（想更小改 8px） */
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+
+  gap: 10px;          /* 按钮组 和 二维码组 的间距（空隙太大就调小：8px） */
+
+  position: relative;
+  top: -10px;         /* 整体上移一点（想更上就 -12/-14；想下来就 -6/-8） */
 }
+
 .section.accent .cta-actions{
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 0 0 auto;
+}
+
+.section.accent .cta-qr-pair{
+  display: flex;
+  align-items: center;
+  gap: 8px;           /* 两个二维码之间的间距（空隙太大就调小：6px） */
+  flex: 0 0 auto;
+}
+
+.section.accent .cta-qr-pair .qr-card{
+  display: block;
+  line-height: 0;
 }
 
 .section.accent .cta-qr-pair .qr-card img{
-  width: 120px !important;
-  height: 120px !important;
+  width: 90px;        /* 二维码大小（太大就 80~88） */
+  height: 90px;
   object-fit: contain;
+
   border-radius: 12px;
   padding: 6px;
   background: rgba(255,255,255,0.92);
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* Mobile: hide QR to avoid overlap */
-@media (max-width: 900px){
-  .section.accent .cta-right{
-    position: static;
-    transform: none;
-    margin-top: 12px;
+/* Mobile: stack (avoid squeezing) */
+@media (max-width: 700px){
+  .section.accent .section-inner.flex-row{
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .section.accent .cta-qr-pair{ display: none; }
+  .section.accent .cta-right{
+    margin-left: 0;
+    top: 0;
+    flex-wrap: wrap;
+  }
 }
