@@ -411,7 +411,7 @@ textarea:focus {
   position: absolute;
 
   /* ✅ 关键：往左移，就把这三个数都调大；往右移就调小 */
-  right: clamp(300px, 26vw, 560px);
+  right: clamp(280px, 26vw, 540px);
 
   top: 50%;
   transform: translateY(-50%);
