@@ -606,9 +606,5 @@ textarea:focus {
   border: 1px solid rgba(255,255,255,.18);
   margin-bottom: 8px;
 }
-/* 只隐藏 header 下方那一条导航 */
-.page-hero::before {
-  content: none !important;
-}
 
 }
