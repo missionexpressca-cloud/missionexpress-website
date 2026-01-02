@@ -606,46 +606,29 @@ textarea:focus {
   border: 1px solid rgba(255,255,255,.18);
   margin-bottom: 8px;
 }
---- a/css/styles.css
-+++ b/css/styles.css
-@@
- .nav-backdrop.show {
-   opacity: 1;
-   pointer-events: auto;
- }
- 
-+/* ==============================
-+   Fix: Desktop should NOT show mobile menu (purple duplicate links)
-+   If you ever pasted diff headers like "--- / +++ / @@", REMOVE them.
-+   Also make sure the file does not end with a stray "@".
-+   ============================== */
-+
-+/* If any breadcrumb nav exists, hide it */
-+.breadcrumb,
-+.breadcrumbs,
-+nav[aria-label="breadcrumb"],
-+nav[aria-label="Breadcrumb"] {
-+  display: none !important;
-+}
-+
-+/* Desktop: hide mobile hamburger + mobile drawer + backdrop (keep desktop menu) */
-+@media (min-width: 769px) {
-+  .nav-toggle,
-+  #navToggle {
-+    display: none !important;
-+  }
-+
-+  .mobile-nav,
-+  #mobileNav,
-+  .nav-backdrop,
-+  #navBackdrop {
-+    display: none !important;
-+  }
-+
-+  .desktop-nav {
-+    display: flex !important;
-+  }
-+}
+/* ==============================
+   FORCE HIDE UNWANTED BREADCRUMB
+   (purple Home / About / Services links)
+   ============================== */
 
+/* Common breadcrumb patterns */
+.breadcrumb,
+.breadcrumbs,
+nav[aria-label="breadcrumb"],
+nav[aria-label="Breadcrumb"] {
+  display: none !important;
+}
+
+/* Fallback: any nav directly under header that is NOT the main nav */
+.top-nav + nav {
+  display: none !important;
+}
+
+/* Safety: remove default list styling if browser injected it */
+.breadcrumb a,
+.breadcrumbs a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
 
 }
