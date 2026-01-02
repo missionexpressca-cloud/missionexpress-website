@@ -496,7 +496,7 @@ textarea:focus {
   height: 100vh;
   background: #0c0f1a;
   padding: 80px 20px;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 18px;
   transition: right 0.3s ease;
@@ -511,6 +511,7 @@ textarea:focus {
 
 .mobile-nav.open {
   right: 0;
+  display: flex;              /* ✅ 打开菜单时才显示 */
 }
 
 .nav-backdrop {
