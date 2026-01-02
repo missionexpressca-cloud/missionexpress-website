@@ -606,9 +606,46 @@ textarea:focus {
   border: 1px solid rgba(255,255,255,.18);
   margin-bottom: 8px;
 }
-/* 只隐藏 header 下方那一条导航 */
-.page-hero::before {
-  content: none !important;
-}
+--- a/css/styles.css
++++ b/css/styles.css
+@@
+ .nav-backdrop.show {
+   opacity: 1;
+   pointer-events: auto;
+ }
+ 
++/* ==============================
++   Fix: Desktop should NOT show mobile menu (purple duplicate links)
++   If you ever pasted diff headers like "--- / +++ / @@", REMOVE them.
++   Also make sure the file does not end with a stray "@".
++   ============================== */
++
++/* If any breadcrumb nav exists, hide it */
++.breadcrumb,
++.breadcrumbs,
++nav[aria-label="breadcrumb"],
++nav[aria-label="Breadcrumb"] {
++  display: none !important;
++}
++
++/* Desktop: hide mobile hamburger + mobile drawer + backdrop (keep desktop menu) */
++@media (min-width: 769px) {
++  .nav-toggle,
++  #navToggle {
++    display: none !important;
++  }
++
++  .mobile-nav,
++  #mobileNav,
++  .nav-backdrop,
++  #navBackdrop {
++    display: none !important;
++  }
++
++  .desktop-nav {
++    display: flex !important;
++  }
++}
+
 
 }
