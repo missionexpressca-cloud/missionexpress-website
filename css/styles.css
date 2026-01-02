@@ -606,33 +606,9 @@ textarea:focus {
   border: 1px solid rgba(255,255,255,.18);
   margin-bottom: 8px;
 }
---- css/styles.css
-+++ css/styles.css
-@@
- }
-+
-+/* --- Fix: hide unwanted breadcrumb + desktop-only controls --- */
-+/* If a breadcrumb nav exists (often shows as purple links), hide it globally */
-+.breadcrumb,
-+.breadcrumbs,
-+nav[aria-label="breadcrumb"],
-+nav[aria-label="Breadcrumb"] {
-+  display: none !important;
-+}
-+
-+/* Desktop: hide mobile hamburger/menu layer (keep mobile behavior intact) */
-+@media (min-width: 769px) {
-+  .nav-toggle {
-+    display: none !important;
-+  }
-+  .mobile-nav,
-+  .nav-backdrop {
-+    display: none !important;
-+  }
-+  /* Ensure desktop menu stays visible */
-+  .desktop-nav {
-+    display: flex !important;
-+  }
-+}
+/* 只隐藏 header 下方那一条导航 */
+.page-hero::before {
+  content: none !important;
+}
 
 }
