@@ -606,29 +606,5 @@ textarea:focus {
   border: 1px solid rgba(255,255,255,.18);
   margin-bottom: 8px;
 }
-/* ==============================
-   FORCE HIDE UNWANTED BREADCRUMB
-   (purple Home / About / Services links)
-   ============================== */
-
-/* Common breadcrumb patterns */
-.breadcrumb,
-.breadcrumbs,
-nav[aria-label="breadcrumb"],
-nav[aria-label="Breadcrumb"] {
-  display: none !important;
-}
-
-/* Fallback: any nav directly under header that is NOT the main nav */
-.top-nav + nav {
-  display: none !important;
-}
-
-/* Safety: remove default list styling if browser injected it */
-.breadcrumb a,
-.breadcrumbs a {
-  color: inherit !important;
-  text-decoration: none !important;
-}
 
 }
