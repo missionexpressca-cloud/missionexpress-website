@@ -643,3 +643,7 @@ nav[aria-label="Breadcrumb"]{
   .nav-backdrop{ display: none !important; }
   .desktop-nav{ display: flex !important; }
 }
+/* i18n: show/hide blocks based on page language */
+.lang-block { display: none; }
+html[lang="en"] .lang-en { display: inline; }
+html[lang="zh"] .lang-zh { display: inline; }
