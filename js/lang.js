@@ -307,6 +307,8 @@ cc_ship_7_text: "普货 1–15kg ¥28/kg；15kg 起 ¥22/kg。"
 };
 
 function applyLang(lang) {
+document.documentElement.setAttribute("lang", lang);
+  
   const strings = dict[lang];
   if (!strings) return;
   document
