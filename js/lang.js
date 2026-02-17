@@ -6,6 +6,7 @@ const dict = {
     nav_about: "About",
     nav_services: "Services",
     nav_network: "Network",
+    nav_store: "Online Store",
     nav_contact: "Contact",
 
     hero_kicker: "Last-mile & regional logistics in Saskatchewan",
@@ -159,6 +160,7 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
     nav_about: "关于我们",
     nav_services: "服务项目",
     nav_network: "服务网络",
+    nav_store: "网上商城",
     nav_contact: "联系合作",
 
     hero_kicker: "萨斯喀彻温省本地与区域配送",
