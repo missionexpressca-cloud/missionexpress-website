@@ -108,7 +108,7 @@ const dict = {
     network_cities_2:
       "Regina – regional line-haul from Moose Jaw and last-mile delivery by defined zones.",
     network_cities_3:
-      "Saskatoon–Regina corridor — scheduled regional line-haul between Saskatoon and Regina, with zone-based pickup & last-mile delivery across intermediate communities.",
+      "Saskatoon – Regina corridor — scheduled regional line-haul between Saskatoon and Regina, with zone-based pickup & last-mile delivery across intermediate communities.",
     network_map_note:
       "Map placeholder: indicate Moose Jaw and Regina, plus planned coverage areas. Your technical team can later replace this with an interactive Google Map using the API keys we created.",
     network_expand_title: "Expansion & custom routes",
