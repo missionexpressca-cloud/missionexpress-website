@@ -12,7 +12,7 @@ const dict = {
     hero_kicker: "Last-mile & regional logistics in Saskatchewan",
     hero_title: "We bring the world to your doorstep",
     hero_sub:
-      "Mission Go connects e-commerce, freight partners, and local communities with reliable last-mile delivery across Moose Jaw, Regina, and beyond.",
+      "Mission Go connects e‑commerce, freight partners, and local communities with reliable last‑mile delivery across Regina, Saskatoon, Prince Albert, Moose Jaw and beyond.",
     btn_get_quote: "Get a quote",
     btn_view_services: "View services",
     btn_contact_us: "Contact us",
@@ -168,7 +168,7 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
     hero_kicker: "萨斯喀彻温省本地与区域配送",
     hero_title: "把世界送到你的家门口",
     hero_sub:
-      "Mission Go 连接跨境电商、货运代理与本地社区，在穆斯乔、里贾纳等地提供稳定可靠的本地与末端派送服务。",
+      "Mission Go 连接跨境电商、货运代理与本地社区，在里贾纳、萨斯卡通、阿尔伯塔王子城、穆斯乔等地提供稳定可靠的本地与末端派送服务。",
     btn_get_quote: "获取报价",
     btn_view_services: "查看服务",
     btn_contact_us: "联系我们",
