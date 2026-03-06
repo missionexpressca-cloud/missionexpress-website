@@ -91,7 +91,7 @@ const dict = {
     services_card2_b3: "Signage and basic customer support in English & Chinese",
     services_card3_title: "Line-haul & local distribution",
     services_card3_body:
-      "Regional transfers between Regina, Moose Jaw, and surrounding communities, plus scheduled B2B routes for local businesses.",
+      "Our core service area covers Saskatchewan, including Saskatoon, Regina, Prince Albert, Moose Jaw, and surrounding communities, with scheduled B2B routes for local businesses.",
     services_card3_b1: "Fixed routes with agreed departure / arrival windows",
     services_card3_b2: "Option to combine with last-mile delivery in each city",
     services_card3_b3: "Flexible vehicle sizes depending on volume",
@@ -245,7 +245,7 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
     services_card2_b3: "可提供中英双语的基础咨询服务",
     services_card3_title: "区域运输与本地分拨",
     services_card3_body:
-      "穆斯乔、里贾纳及周边地区之间的线路运输，以及为本地商家设计的固定配送线路。",
+      "我们的核心服务范围覆盖萨斯喀彻温省，包括萨斯卡通、里贾纳、艾伯特王子城、穆斯乔及周边社区，并为本地企业提供定期的 B2B 配送线路。",
     services_card3_b1: "固定线路与约定班次时间",
     services_card3_b2: "可与两地末端派送衔接",
     services_card3_b3: "可根据货量选择合适车型",
