@@ -104,11 +104,11 @@ const dict = {
       "Mission Go focuses on Saskatchewan, starting with Moose Jaw and Regina, with the ability to design new routes as demand grows.",
     network_cities_title: "Current focus cities",
     network_cities_1:
-      "Moose Jaw – local delivery and pickup-point operations, including neighborhood parcel counters.",
+      "Saskatoon – Regina corridor — scheduled regional line-haul between Saskatoon and Regina, with zone-based pickup & last-mile delivery across intermediate communities.",
     network_cities_2:
       "Regina – regional line-haul from Moose Jaw and last-mile delivery by defined zones.",
     network_cities_3:
-      "Saskatoon – Regina corridor — scheduled regional line-haul between Saskatoon and Regina, with zone-based pickup & last-mile delivery across intermediate communities.",
+      "Moose Jaw – local delivery and pickup-point operations, including neighborhood parcel counters.",
     network_map_note:
       "Map placeholder: indicate Moose Jaw and Regina, plus planned coverage areas. Your technical team can later replace this with an interactive Google Map using the API keys we created.",
     network_expand_title: "Expansion & custom routes",
@@ -258,11 +258,11 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
       "Mission Go 目前重点覆盖萨斯喀彻温省的穆斯乔与里贾纳，并可根据需求扩展线路与区域。",
     network_cities_title: "当前重点城市",
     network_cities_1:
-      "穆斯乔：本地派送与社区自提点运营，包括门店代收。",
+      "萨斯卡通：萨斯卡通和里贾纳之间的定期区域干线运输，沿途社区提供基于区域的取货和最后一公里配送服务",
     network_cities_2:
       "里贾纳：穆斯乔与里贾纳之间的区域运输，以及分区派送服务。",
     network_cities_3:
-      "萨斯卡通：萨斯卡通和里贾纳之间的定期区域干线运输，沿途社区提供基于区域的取货和最后一公里配送服务",
+      "穆斯乔：本地派送与社区自提点运营，包括门店代收。",
     network_map_note:
       "此处为示意地图区域。后续可由技术团队接入 Google Maps，在官网上展示真实路线与自提点位置。",
     network_expand_title: "线路扩展与定制",
