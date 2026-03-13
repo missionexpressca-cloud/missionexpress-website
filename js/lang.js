@@ -101,7 +101,7 @@ const dict = {
 
     network_title: "Service network",
     network_intro:
-      "Mission Go focuses on Saskatchewan, starting with Moose Jaw and Regina, with the ability to design new routes as demand grows.",
+      "Mission Go provides delivery coverage across Saskatchewan, including Saskatoon, Regina, Moose Jaw, and nearby communities, with routes and service areas that can be expanded as demand grows.",
     network_cities_title: "Current focus cities",
     network_cities_1:
       "Saskatoon – Regina corridor — scheduled regional line-haul between Saskatoon and Regina, with zone-based pickup & last-mile delivery across intermediate communities.",
@@ -255,7 +255,7 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
 
     network_title: "服务网络",
     network_intro:
-      "Mission Go 目前重点覆盖萨斯喀彻温省的穆斯乔与里贾纳，并可根据需求扩展线路与区域。",
+      "Mission Go 提供覆盖萨斯喀彻温省的配送服务，包括萨斯卡通、里贾纳、莫斯乔及附近社区，并可随着需求增长扩展运输线路和服务区域。",
     network_cities_title: "当前重点城市",
     network_cities_1:
       "萨斯卡通：萨斯卡通和里贾纳之间的定期区域干线运输，沿途社区提供基于区域的取货和最后一公里配送服务",
