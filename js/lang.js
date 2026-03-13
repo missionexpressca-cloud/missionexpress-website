@@ -131,7 +131,7 @@ const dict = {
     contact_form_email: "Email",
     contact_form_message: "Message",
     contact_form_button: "Send message",
-    contact_prealert_tag: "[🇨🇳🇨🇦 China–Canada Consolidation]",
+    contact_prealert_tag: "[🇨🇳🇨🇦 China→Canada Consolidation]",
 contact_prealert_title: "",
 contact_prealert_btn: "Parcel Pre-Alert",
 contact_store_tag: "[Courier Platform]",
