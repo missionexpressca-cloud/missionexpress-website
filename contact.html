@@ -24,12 +24,18 @@
 .payment-qr-row {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
+}
+
+.payment-qr-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .payment-qr-tag {
   display: inline-block;
-  margin: 0;
+  margin: 0 0 6px;
   padding: 4px 10px;
   font-size: 12px;
   line-height: 1.2;
@@ -40,11 +46,19 @@
   white-space: nowrap;
 }
 
+.payment-qr-caption {
+  display: block;
+  margin: 0;
+  font-size: 11px;
+  opacity: 0.78;
+  white-space: nowrap;
+  text-align: left;
+}
+
 .payment-qr-box {
   width: 96px;
   text-align: center;
 }
-
 .payment-qr-image {
   display: block;
   width: 96px;
@@ -198,18 +212,20 @@
         </div>
 <div class="payment-qr-floating">
   <div class="payment-qr-row">
-    <div class="payment-qr-tag">
-      <span class="lang-block lang-en">Pay by QR code</span>
-      <span class="lang-block lang-zh">扫码付款</span>
-    </div>
-
-    <div class="payment-qr-box">
-      <img src="img/payment-qr.png" alt="Payment QR Code" class="payment-qr-image" />
+    <div class="payment-qr-text">
+      <div class="payment-qr-tag">
+        <span class="lang-block lang-en">Pay by QR code</span>
+        <span class="lang-block lang-zh">扫码付款</span>
+      </div>
 
       <span class="payment-qr-caption">
         <span class="lang-block lang-en">WeChat Pay / Alipay</span>
         <span class="lang-block lang-zh">微信支付 / 支付宝</span>
       </span>
+    </div>
+
+    <div class="payment-qr-box">
+      <img src="img/payment-qr.png" alt="Payment QR Code" class="payment-qr-image" />
     </div>
   </div>
 </div>
