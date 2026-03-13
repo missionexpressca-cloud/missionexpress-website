@@ -5,63 +5,6 @@
   <title>Contact | Mission Go Logistics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/styles.css" />
-  <style>
-  .contact-grid {
-    position: relative;
-  }
-
-  .platform-title-hide {
-    display: none;
-  }
-
-  .payment-qr-floating {
-    position: absolute;
-    left: 365px;
-    top: 250px;
-    width: 140px;
-    text-align: center;
-    z-index: 2;
-  }
-
-  .payment-qr-floating h3 {
-    margin: 0 0 6px;
-    font-size: 14px;
-    line-height: 1.25;
-  }
-
-  .payment-qr-floating p {
-    margin: 0 0 8px;
-    font-size: 11px;
-    line-height: 1.35;
-    opacity: 0.92;
-  }
-
-  .payment-qr-image {
-    display: block;
-    width: 110px;
-    height: 110px;
-    object-fit: cover;
-    margin: 0 auto;
-    border-radius: 12px;
-    background: #fff;
-    padding: 6px;
-  }
-
-  .payment-qr-caption {
-    display: block;
-    margin-top: 6px;
-    font-size: 11px;
-    opacity: 0.78;
-  }
-
-  @media (max-width: 900px) {
-    .payment-qr-floating {
-      position: static;
-      width: 140px;
-      margin-top: 12px;
-    }
-  }
-</style>
 </head>
 <body>
   <header class="top-nav">
@@ -166,9 +109,10 @@
           <div class="prealert-link contact-prealert">
             <span class="prealert-tag" data-i18n="contact_store_tag">[Courier Platform]</span><br>
 
-<span class="en-sub platform-title-hide">
-  <span data-i18n="contact_store_title">Platform Portal</span>
-</span>
+            <span class="en-sub">
+              <span data-i18n="contact_store_title">Platform Portal</span>
+            </span>
+
             <a
               href="https://me.missionexpress.ca/ssadmin.php"
               target="_blank"
@@ -179,21 +123,7 @@
             </a>
           </div>
         </div>
-<div class="payment-qr-floating">
-  <h3>
-    <span class="lang-block lang-en">Pay by QR code</span>
-    <span class="lang-block lang-zh">扫码付款</span>
-  </h3>
-  <p>
-    <span class="lang-block lang-en">Scan the QR code to pay.</span>
-    <span class="lang-block lang-zh">请扫码付款。</span>
-  </p>
-  <img src="img/payment-qr.png" alt="Payment QR Code" class="payment-qr-image" />
-  <span class="payment-qr-caption">
-    <span class="lang-block lang-en">WeChat Pay / Alipay</span>
-    <span class="lang-block lang-zh">微信支付 / 支付宝</span>
-  </span>
-</div>
+
         <div class="contact-form">
           <h2 data-i18n="contact_form_title">Send us a message</h2>
           <p data-i18n="contact_form_note">We will get back to you shortly.</p>
