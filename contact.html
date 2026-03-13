@@ -30,7 +30,44 @@
 .payment-qr-text {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: .payment-qr-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.payment-qr-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.payment-qr-tag {
+  display: inline-block;
+  margin: 0 0 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.payment-qr-caption {
+  display: block;
+  margin: 0;
+  font-size: 11px;
+  opacity: 0.78;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.payment-qr-box {
+  width: 96px;
+  text-align: center;
+};
 }
 
 .payment-qr-tag {
