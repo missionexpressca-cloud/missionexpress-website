@@ -285,7 +285,7 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
     contact_form_email: "邮箱",
     contact_form_message: "留言内容",
     contact_form_button: "发送",
-    contact_prealert_tag: "【中加集运】",
+    contact_prealert_tag: "【🇨🇳🇨🇦中加集运】",
 contact_prealert_title: "",
 contact_prealert_btn: "包裹预报",
 contact_store_tag: "【物流平台】",
