@@ -114,7 +114,6 @@
   opacity: 0.78;
   white-space: nowrap;
 }
-
 @media (max-width: 900px) {
   .payment-qr-floating {
     position: static;
@@ -126,7 +125,15 @@
   }
 
   .payment-qr-tag {
-    margin-bottom: 10px;
+    display: inline-block;
+    width: auto;
+    max-width: max-content;
+    margin: 0 0 10px;
+    white-space: nowrap;
+  }
+
+  .payment-qr-caption {
+    white-space: nowrap;
   }
 }
 </style>
