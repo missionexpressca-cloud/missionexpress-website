@@ -7,11 +7,21 @@
   <link rel="stylesheet" href="css/styles.css" />
 
   <!-- 语言块切换样式 -->
-  <style>
-    .lang-block { display: none; }
-    html[lang="en"] .lang-en { display: block; }
-    html[lang="zh"] .lang-zh { display: block; }
-  </style>
+<style>
+  .lang-block { display: none; }
+  html[lang="en"] .lang-en { display: block; }
+  html[lang="zh"] .lang-zh { display: block; }
+
+  /* liability 页面里，把免责列表整体向右缩进一点 */
+  .policy-indent {
+    padding-left: 1.6rem;
+    margin-left: 0.4rem;
+  }
+
+  .policy-indent li {
+    margin-bottom: 0.2rem;
+  }
+</style>
 </head>
 
 <body>
@@ -98,7 +108,7 @@
         <p>This applies only to direct physical loss or visible external damage caused by our proven negligence.</p>
 
         <h2>3. Exclusions</h2>
-        <ul>
+        <ul class="policy-indent">
           <li>Concealed damage without outer packaging damage</li>
           <li>Improper packaging</li>
           <li>Fragile items without adequate protection</li>
@@ -151,7 +161,7 @@
         </p>
 
         <h2>3. 不承担责任情形</h2>
-        <ul>
+        <ul class="policy-indent">
           <li>无外包装损坏的内件损坏</li>
           <li>包装不当</li>
           <li>易碎品未做防护</li>
