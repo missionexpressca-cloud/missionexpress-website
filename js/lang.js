@@ -6,6 +6,7 @@ const dict = {
     nav_about: "About",
     nav_services: "Services",
     nav_network: "Network",
+    nav_download: "Download",
     nav_store: "Online Store",
     nav_contact: "Contact",
 
@@ -115,6 +116,22 @@ const dict = {
     network_expand_body:
       "We can design new routes and service areas based on your parcel volume, postal codes, and time window requirements. Talk to us early so we can build a scalable plan.",
 
+    download_tag: "DOWNLOAD",
+    download_title: "Download",
+    download_desc: "Get Mission Go for Android and iPhone.",
+
+    download_ios_title: "For iPhone",
+    download_ios_desc: "Get the iPhone version from the App Store or TestFlight.",
+    download_ios_store: "App Store",
+    download_ios_testflight: "TestFlight",
+
+    download_android_title: "For Android",
+    download_android_desc: "Download the Android version or install it from Google Play.",
+    download_android_apk: "Download APK",
+    download_android_play: "Google Play",
+
+    download_show_all: "Show all apps"
+    
     contact_title: "Contact us",
     contact_intro:
       "Whether you are a carrier, e-commerce platform, or local business, we are happy to discuss how Mission Go can support your delivery needs.",
@@ -162,6 +179,7 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
     nav_about: "关于我们",
     nav_services: "服务项目",
     nav_network: "服务网络",
+    nav_download: "下载",  
     nav_store: "网上商城",
     nav_contact: "联系合作",
 
@@ -269,6 +287,22 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
     network_expand_body:
       "可根据您的包裹量、目标邮编和时效要求设计新线路，欢迎提前沟通，共同规划可扩展的网络。",
 
+    download_tag: "下载",
+    download_title: "下载",
+    download_desc: "获取 Mission Go 的 Android 和 iPhone 版本。",
+
+    download_ios_title: "iPhone 版",
+    download_ios_desc: "可通过 App Store 或 TestFlight 获取 iPhone 版本。",
+    download_ios_store: "App Store",
+    download_ios_testflight: "TestFlight",
+
+    download_android_title: "Android 版",
+    download_android_desc: "可直接下载 Android 安装包，或通过 Google Play 安装。",
+    download_android_apk: "下载 APK",
+    download_android_play: "Google Play",
+
+    download_show_all: "显示全部应用"
+        
     contact_title: "联系合作",
     contact_intro:
       "无论您是承运商、跨境电商平台还是本地商家，都欢迎与我们沟通合作方式。",
