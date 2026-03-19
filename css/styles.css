@@ -625,8 +625,7 @@ nav[aria-label="Breadcrumb"] {
 }
 
 /* ===========================
-   Download page - version 2
-   More consistent with About / Services
+   Download page - fully aligned with About / Services
    =========================== */
 
 .download-page {
@@ -634,21 +633,10 @@ nav[aria-label="Breadcrumb"] {
   min-height: 100vh;
 }
 
-.download-hero {
-  padding: 4rem 1.5rem 1rem;
-  background:
-    radial-gradient(circle at 0 0, rgba(255, 79, 163, 0.35), transparent 55%),
-    radial-gradient(circle at 100% 0, rgba(255, 179, 71, 0.35), transparent 55%),
-    #050814;
-}
+/* 顶部直接复用 .page-hero 的视觉，
+   所以这里不再单独做 download-hero */
 
-.download-hero .container,
-.download-section .container {
-  max-width: 940px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
+/* 下载内容区 */
 .download-section {
   padding: 2rem 1.5rem 4.5rem;
   background:
@@ -656,39 +644,17 @@ nav[aria-label="Breadcrumb"] {
     #050814;
 }
 
-.section-tag {
-  display: inline-block;
-  margin-bottom: 14px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(255, 90, 145, 0.12);
-  color: #ff7aa8;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-}
-
-.download-hero h1 {
-  margin: 0 0 12px;
-  font-size: 46px;
-  line-height: 1.15;
-  color: #ffffff;
-}
-
-.download-hero p {
-  margin: 0;
-  max-width: 640px;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 17px;
-  line-height: 1.8;
+.download-section .container {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .download-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .download-card {
@@ -757,57 +723,21 @@ nav[aria-label="Breadcrumb"] {
 }
 
 /* ===========================
-   Responsive
+   Download page responsive
    =========================== */
 @media (max-width: 991px) {
   .download-grid {
     grid-template-columns: 1fr;
   }
-
-  .download-hero h1 {
-    font-size: 38px;
-  }
-}
-
-@media (max-width: 780px) {
-  .nav-links {
-    display: none;
-  }
-
-  .hero {
-    padding-top: 4.5rem;
-  }
-
-  .two-cols,
-  .contact-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
-  .desktop-nav {
-    display: none;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-
-  .download-hero {
-    padding: 3.2rem 1rem 0.8rem;
-  }
-
-  .download-hero .container,
-  .download-section .container {
-    padding: 0 1rem;
-  }
-
   .download-section {
     padding: 1.4rem 1rem 3.5rem;
   }
 
-  .download-hero h1 {
-    font-size: 30px;
+  .download-section .container {
+    padding: 0 1rem;
   }
 
   .download-card {
