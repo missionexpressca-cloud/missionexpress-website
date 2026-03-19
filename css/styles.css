@@ -322,7 +322,7 @@ body {
 
 /* Page hero */
 .page-hero {
-  padding: 4rem 1.5rem 1rem;
+  padding: 3.2rem 1.5rem 0.6rem;
   background:
     radial-gradient(circle at 0 0, rgba(255, 79, 163, 0.35), transparent 55%),
     radial-gradient(circle at 100% 0, rgba(255, 179, 71, 0.35), transparent 55%),
@@ -630,7 +630,7 @@ nav[aria-label="Breadcrumb"] {
 
 .download-page {
   background: #050814;
-  min-height: 100vh;
+  min-height: auto;
 }
 
 /* 顶部直接复用 .page-hero 的视觉，
@@ -638,7 +638,7 @@ nav[aria-label="Breadcrumb"] {
 
 /* 下载内容区 */
 .download-section {
-  padding: 2rem 1.5rem 4.5rem;
+  padding: 1.5rem 1.5rem 2.2rem;
   background:
     radial-gradient(circle at 50% 0%, rgba(36, 58, 138, 0.18), transparent 40%),
     #050814;
