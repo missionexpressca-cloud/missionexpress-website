@@ -10,7 +10,7 @@
 <body>
   <header class="top-nav">
     <div class="logo-wrap">
-      <a href="index.html" class="brand-mark">
+      <a href="index.html" class="brand-mark" aria-label="Mission Go home">
         <img src="img/logo.png" alt="Mission Go logo" class="logo" />
       </a>
     </div>
@@ -26,8 +26,8 @@
     </nav>
 
     <div class="header-actions">
-      <button id="lang-toggle" class="lang-toggle">中文</button>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+      <button id="lang-toggle" class="lang-toggle" type="button">中文</button>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu">☰</button>
     </div>
   </header>
 
@@ -67,7 +67,7 @@
               <a
                 href="https://apps.apple.com/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="btn btn-primary"
                 data-i18n="download_ios_store"
               >
@@ -76,7 +76,7 @@
               <a
                 href="https://testflight.apple.com/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="btn btn-outline"
                 data-i18n="download_ios_testflight"
               >
@@ -104,7 +104,7 @@
               <a
                 href="https://play.google.com/store/apps/details?id=com.missiongo.app"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="btn btn-outline"
                 data-i18n="download_android_play"
               >
@@ -114,12 +114,12 @@
           </article>
         </div>
 
-        <div class="download-more" id="downloadMore">
+        <div class="user-guide-wrap" id="userGuideWrap">
           <a
             href="https://docs.google.com/document/d/1JzsEHt-miQZqYw2p57EVADCHkIm0U2HOAZBjvDfZpJM/edit?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-outline"
+            class="btn btn-outline guide-btn"
             data-i18n="download_user_guide"
           >
             User Guide
@@ -132,7 +132,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
-      <p>
+      <p class="footer-policy">
         <a href="liability.html">
           <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
           <span class="lang-block lang-zh">责任与保险条款</span>
