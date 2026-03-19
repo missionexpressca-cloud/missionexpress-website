@@ -117,7 +117,7 @@ const dict = {
       "We can design new routes and service areas based on your parcel volume, postal codes, and time window requirements. Talk to us early so we can build a scalable plan.",
 
     download_title: "Download",
-    download_desc: "Get Mission Go for Android and iPhone.",
+    download_desc: "The driver app supports pickup, delivery, navigation, photo proof, and signature capture for daily courier tasks.",
 
     download_ios_title: "For iPhone",
     download_ios_desc: "Get the iPhone version from the App Store or TestFlight.",
@@ -296,7 +296,7 @@ const dict = {
       "可根据您的包裹量、目标邮编和时效要求设计新线路，欢迎提前沟通，共同规划可扩展的网络。",
 
     download_title: "下载",
-    download_desc: "获取 Mission Go 的 Android 和 iPhone 版本。",
+    download_desc: "司机端 APP，支持派送、揽收、导航、拍照留证与签收等日常配送工作。",
 
     download_ios_title: "iPhone 版",
     download_ios_desc: "可通过 App Store 或 TestFlight 获取 iPhone 版本。",
