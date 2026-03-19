@@ -4,30 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Download | Mission Go</title>
+  <meta name="description" content="Download Mission Go for iPhone and Android." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
+  <!-- 顶部导航 -->
+  <header class="top-nav">
+    <div class="logo-wrap">
       <a href="index.html" class="brand-mark">
         <img src="img/logo.png" alt="Mission Go logo" class="logo" />
       </a>
+    </div>
 
-      <!-- 桌面导航 -->
-      <nav class="nav-links desktop-nav">
-        <a href="index.html" data-i18n="nav_home">Home</a>
-        <a href="about.html" data-i18n="nav_about">About</a>
-        <a href="services.html" data-i18n="nav_services">Services</a>
-        <a href="network.html" data-i18n="nav_network">Network</a>
-        <a href="download.html" data-i18n="nav_download" class="active">Download</a>
-        <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
-        <a href="contact.html" data-i18n="nav_contact">Contact</a>
-      </nav>
+    <!-- 桌面导航 -->
+    <nav class="nav-links desktop-nav">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="services.html" data-i18n="nav_services">Services</a>
+      <a href="network.html" data-i18n="nav_network">Network</a>
+      <a href="download.html" data-i18n="nav_download" class="active">Download</a>
+      <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
 
-      <div class="header-actions">
-        <button id="lang-toggle" class="lang-toggle">中文</button>
-        <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
-      </div>
+    <!-- 右侧按钮 -->
+    <div class="header-actions">
+      <button id="lang-toggle" class="lang-toggle">中文</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
     </div>
   </header>
 
@@ -45,6 +48,7 @@
   <div class="nav-backdrop" id="navBackdrop"></div>
 
   <main class="download-page">
+    <!-- 页面头部 -->
     <section class="download-hero">
       <div class="container">
         <span class="section-tag" data-i18n="download_tag">DOWNLOAD</span>
@@ -53,6 +57,7 @@
       </div>
     </section>
 
+    <!-- 下载区 -->
     <section class="download-section">
       <div class="container">
         <div class="download-grid" id="downloadGrid">
@@ -116,14 +121,28 @@
           </article>
         </div>
 
-        <div class="download-more" id="downloadMore" style="display:none;">
-          <button type="button" class="btn btn-outline" id="showAllApps" data-i18n="download_show_all">
+        <div class="download-more" id="downloadMore" style="display: none;">
+          <button
+            type="button"
+            class="btn btn-outline"
+            id="showAllApps"
+            data-i18n="download_show_all"
+          >
             Show all apps
           </button>
         </div>
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© 2026 Mission Go. All rights reserved.</p>
+      <p class="footer-note">
+        Saskatchewan last-mile, parcel point, and regional logistics services.
+      </p>
+    </div>
+  </footer>
 
   <script src="js/lang.js"></script>
   <script src="js/nav.js"></script>
