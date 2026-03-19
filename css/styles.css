@@ -7,6 +7,12 @@
   padding: 0;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: #050814;
@@ -70,17 +76,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding: 0.6rem 1.5rem;
 }
 
 .logo-wrap {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 .logo {
   height: 40px;
   width: auto;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
 }
 
 .nav-links {
@@ -120,6 +133,7 @@ body {
   padding: 0.3rem 0.9rem;
   font-size: 0.85rem;
   cursor: pointer;
+  flex: 0 0 auto;
 }
 
 /* Hero */
@@ -322,7 +336,7 @@ body {
 
 /* Page hero */
 .page-hero {
-  padding: 3.2rem 1.5rem 0.6rem;
+  padding: 4rem 1.5rem 1rem;
   background:
     radial-gradient(circle at 0 0, rgba(255, 79, 163, 0.35), transparent 55%),
     radial-gradient(circle at 100% 0, rgba(255, 179, 71, 0.35), transparent 55%),
@@ -348,6 +362,16 @@ body {
   margin-top: 0.75rem;
   padding-left: 1.2rem;
   color: #d1d4ff;
+}
+
+/* 给 liability 列表缩进时可直接用 */
+.policy-indent {
+  padding-left: 1.6rem;
+  margin-left: 0.4rem;
+}
+
+.policy-indent li {
+  margin-bottom: 0.2rem;
 }
 
 /* Map placeholder */
@@ -384,6 +408,7 @@ body {
 
 input,
 textarea {
+  width: 100%;
   background: #050814;
   border-radius: 0.65rem;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -485,17 +510,23 @@ textarea:focus {
 
 .nav-toggle {
   display: none;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
   font-size: 26px;
   background: none;
   border: 0;
   color: #fff;
   cursor: pointer;
+  flex: 0 0 auto;
 }
 
 .header-actions {
   display: flex;
   gap: 12px;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 .mobile-nav {
@@ -630,15 +661,11 @@ nav[aria-label="Breadcrumb"] {
 
 .download-page {
   background: #050814;
-  min-height: auto;
+  min-height: 100vh;
 }
 
-/* 顶部直接复用 .page-hero 的视觉，
-   所以这里不再单独做 download-hero */
-
-/* 下载内容区 */
 .download-section {
-  padding: 1.5rem 1.5rem 2.2rem;
+  padding: 2rem 1.5rem 4.5rem;
   background:
     radial-gradient(circle at 50% 0%, rgba(36, 58, 138, 0.18), transparent 40%),
     #050814;
@@ -723,21 +750,113 @@ nav[aria-label="Breadcrumb"] {
 }
 
 /* ===========================
-   Download page responsive
+   Global responsive fix
    =========================== */
+
 @media (max-width: 991px) {
   .download-grid {
     grid-template-columns: 1fr;
   }
+
+  .cards-grid,
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 768px) {
-  .download-section {
-    padding: 1.4rem 1rem 3.5rem;
+  .section {
+    padding: 3rem 1rem;
   }
 
+  .section-inner,
+  .container,
   .download-section .container {
-    padding: 0 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .top-nav {
+    padding: 0.75rem 1rem;
+  }
+
+  .logo {
+    height: 34px;
+  }
+
+  .desktop-nav,
+  .nav-links {
+    display: none !important;
+  }
+
+  .nav-toggle {
+    display: inline-flex !important;
+  }
+
+  .mobile-nav {
+    max-width: 320px;
+  }
+
+  .page-hero {
+    padding: 3rem 1rem 1rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 4rem 1rem 3rem;
+    align-items: flex-start;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero-sub {
+    font-size: 0.98rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .metric {
+    width: 100%;
+  }
+
+  .two-cols,
+  .contact-grid,
+  .download-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cards-grid,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .flex-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section.accent .cta-actions,
+  .section.accent .cta-qr-pair {
+    flex-wrap: wrap;
+  }
+
+  .download-section {
+    padding: 1.4rem 1rem 3.5rem;
   }
 
   .download-card {
@@ -756,6 +875,10 @@ nav[aria-label="Breadcrumb"] {
     width: 100%;
     text-align: center;
     justify-content: center;
+  }
+
+  .footer {
+    padding: 1.25rem 1rem 1.75rem;
   }
 }
 
