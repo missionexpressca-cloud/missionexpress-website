@@ -49,14 +49,14 @@
 
   <main class="download-page">
     <!-- 页面头部 -->
-<section class="page-hero">
-  <div class="section-inner">
-    <h1 data-i18n="download_title">Download</h1>
-    <p class="section-intro" data-i18n="download_desc">
-      The driver app supports pickup, delivery, navigation, photo proof, and signature capture for daily courier tasks.
-    </p>
-  </div>
-</section>
+    <section class="page-hero">
+      <div class="section-inner">
+        <h1 data-i18n="download_title">Download</h1>
+        <p class="section-intro" data-i18n="download_desc">
+          The driver app supports pickup, delivery, navigation, photo proof, and signature capture for daily courier tasks.
+        </p>
+      </div>
+    </section>
 
     <!-- 下载区 -->
     <section class="download-section">
@@ -122,15 +122,17 @@
           </article>
         </div>
 
-        <div class="download-more" id="downloadMore" style="display: none;">
-          <button
-            type="button"
+        <!-- 使用说明链接 -->
+        <div class="download-more" id="downloadMore">
+          <a
+            href="YOUR_USER_GUIDE_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
             class="btn btn-outline"
-            id="showAllApps"
-            data-i18n="download_show_all"
+            data-i18n="download_user_guide"
           >
-            Show all apps
-          </button>
+            User Guide
+          </a>
         </div>
       </div>
     </section>
@@ -140,11 +142,11 @@
     <div class="footer-inner">
       <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
       <p>
-  <a href="liability.html">
-    <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
-    <span class="lang-block lang-zh">责任与保险条款</span>
-  </a>
-</p>
+        <a href="liability.html">
+          <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
+          <span class="lang-block lang-zh">责任与保险条款</span>
+        </a>
+      </p>
     </div>
   </footer>
 
