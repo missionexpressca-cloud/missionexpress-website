@@ -13,7 +13,7 @@ const dict = {
     hero_kicker: "Last-mile & regional logistics in Saskatchewan",
     hero_title: "We bring the world to your doorstep",
     hero_sub:
-      "Mission Go connects e‑commerce, freight partners, and local communities with reliable last‑mile delivery across Regina, Saskatoon, Prince Albert, Moose Jaw and beyond.",
+      "Mission Go connects e-commerce, freight partners, and local communities with reliable last-mile delivery across Regina, Saskatoon, Prince Albert, Moose Jaw and beyond.",
     btn_get_quote: "Get a quote",
     btn_view_services: "View services",
     btn_contact_us: "Contact us",
@@ -131,7 +131,7 @@ const dict = {
     download_android_play: "Google Play",
 
     download_show_all: "Show all apps",
-    
+
     contact_title: "Contact us",
     contact_intro:
       "Whether you are a carrier, e-commerce platform, or local business, we are happy to discuss how Mission Go can support your delivery needs.",
@@ -142,44 +142,53 @@ const dict = {
     contact_note:
       "Please include a short description of your business, approximate monthly parcel volume, and the cities or postal codes you would like to cover.",
     contact_form_title: "Send us a message",
-    contact_form_note:
-      "We will get back to you shortly.",
+    contact_form_note: "We will get back to you shortly.",
     contact_form_name: "Name",
     contact_form_email: "Email",
     contact_form_message: "Message",
     contact_form_button: "Send message",
-    contact_prealert_tag: "[🇨🇳🇨🇦 China→Canada Consolidation]",
-contact_prealert_title: "",
-contact_prealert_btn: "Parcel Pre-Alert",
-contact_store_tag: "[Courier Platform]",
-contact_store_title: "Platform Portal",
-contact_store_btn: "Enter Platform",
-    cc_ship_title: "China–Canada Consolidation Shipping",
-cc_ship_intro: "Ship your China online purchases to our China consolidation warehouse. We photo/weigh on arrival, optional repacking, then send via LCL sea freight to Canada. After customs clearance, we deliver from Moose Jaw.",
-cc_ship_subtitle: "Service details",
-cc_ship_1_label: "1. How to place an order:",
-cc_ship_1_line1: "Ship your China online orders directly to our China consolidation warehouse.",
-cc_ship_1_line2: "Consignee: Chris · +86 15015428263 · 510445",
-cc_ship_2_label: "2. Process:",
-cc_ship_2_flow: "Customer order → Send tracking number to us → Arrive at China warehouse → Photo & weigh → Repack/merge (optional) → Confirm charges → Pack & dispatch → LCL sea freight → Canada customs/inspection → Arrive station → Moose Jaw delivery → Completed",
-cc_ship_3_label: "3. Pricing rule:",
-cc_ship_3_text: "Charged by actual weight or volumetric weight, whichever is higher (warehouse measurement prevails).",
-cc_ship_4_label: "4. Transit time:",
-cc_ship_4_text: "LCL sea freight is affected by sailing schedule, customs, and weather. No guaranteed arrival date.",
-cc_ship_5_label: "5. Duties & inspection:",
-cc_ship_5_text: "DDP (tax included). Customs is uncontrollable; if seized by customs, we compensate up to ¥19/kg. For valuables, buy insurance or use express courier.",
-cc_ship_6_label: "6. Prohibited items:",
-cc_ship_6_text: "See “Prohibited list” below. Losses caused by prohibited items or misdeclaration are borne by the customer.",
-cc_ship_7_label: "7. General cargo rate:",
-cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
 
+    contact_prealert_tag: "[🇨🇳🇨🇦 China–Canada Consolidation]",
+    contact_prealert_title: "",
+    contact_prealert_btn: "Parcel Pre-Alert",
+
+    contact_store_tag: "[Courier Platform]",
+    contact_store_title: "Platform Portal",
+    contact_store_btn: "Enter Platform",
+
+    cc_ship_title: "China–Canada Consolidation Shipping",
+    cc_ship_intro:
+      "Ship your China online purchases to our China consolidation warehouse. We photo/weigh on arrival, optional repacking, then send via LCL sea freight to Canada. After customs clearance, we deliver from Moose Jaw.",
+    cc_ship_subtitle: "Service details",
+    cc_ship_1_label: "1. How to place an order:",
+    cc_ship_1_line1:
+      "Ship your China online orders directly to our China consolidation warehouse.",
+    cc_ship_1_line2: "Consignee: Chris · +86 15015428263 · 510445",
+    cc_ship_2_label: "2. Process:",
+    cc_ship_2_flow:
+      "Customer order → Send tracking number to us → Arrive at China warehouse → Photo & weigh → Repack/merge (optional) → Confirm charges → Pack & dispatch → LCL sea freight → Canada customs/inspection → Arrive station → Moose Jaw delivery → Completed",
+    cc_ship_3_label: "3. Pricing rule:",
+    cc_ship_3_text:
+      "Charged by actual weight or volumetric weight, whichever is higher (warehouse measurement prevails).",
+    cc_ship_4_label: "4. Transit time:",
+    cc_ship_4_text:
+      "LCL sea freight is affected by sailing schedule, customs, and weather. No guaranteed arrival date.",
+    cc_ship_5_label: "5. Duties & inspection:",
+    cc_ship_5_text:
+      "DDP (tax included). Customs is uncontrollable; if seized by customs, we compensate up to ¥19/kg. For valuables, buy insurance or use express courier.",
+    cc_ship_6_label: "6. Prohibited items:",
+    cc_ship_6_text:
+      "See “Prohibited list” below. Losses caused by prohibited items or misdeclaration are borne by the customer.",
+    cc_ship_7_label: "7. General cargo rate:",
+    cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
   },
+
   zh: {
     nav_home: "首页",
     nav_about: "关于我们",
     nav_services: "服务项目",
     nav_network: "服务网络",
-    nav_download: "下载",  
+    nav_download: "下载",
     nav_store: "网上商城",
     nav_contact: "联系合作",
 
@@ -301,8 +310,8 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
     download_android_apk: "下载 APK",
     download_android_play: "Google Play",
 
-    download_show_all: "显示全部应用"
-        
+    download_show_all: "显示全部应用",
+
     contact_title: "联系合作",
     contact_intro:
       "无论您是承运商、跨境电商平台还是本地商家，都欢迎与我们沟通合作方式。",
@@ -313,58 +322,64 @@ cc_ship_7_text: "1–15kg ¥28/kg; 15kg+ ¥22/kg."
     contact_note:
       "发邮件时，建议简单说明业务类型、月度（或每日）包裹量，以及希望覆盖的城市或邮编范围。",
     contact_form_title: "给我们留言",
-    contact_form_note:
-      "我们会尽快回复您。",
+    contact_form_note: "我们会尽快回复您。",
     contact_form_name: "姓名",
     contact_form_email: "邮箱",
     contact_form_message: "留言内容",
     contact_form_button: "发送",
-    contact_prealert_tag: "【🇨🇳🇨🇦中加集运】",
-contact_prealert_title: "",
-contact_prealert_btn: "包裹预报",
-contact_store_tag: "【物流平台】",
-contact_store_title: "平台入口",
-contact_store_btn: "进入平台",
-    cc_ship_title: "中加集运",
-cc_ship_intro: "国内网购直接寄到我们中国集运仓，到仓后入库拍照/称重，可拆包合箱（可选），再海运拼箱到加拿大，清关后由 Moose Jaw 本地派送。",
-cc_ship_subtitle: "服务说明",
-cc_ship_1_label: "1. 下单方式：",
-cc_ship_1_line1: "国内网购直接寄到我们中国集运仓。",
-cc_ship_1_line2: "收件信息：Chris  15015428263  510445",
-cc_ship_2_label: "2. 流程：",
-cc_ship_2_flow: "客户网购下单 → 客户报运单号给我 → 到达中国集运仓 → 入库拍照/称重 → 拆包合箱（可选） → 计费确认 → 出库装箱 → 海运拼箱 → 加拿大清关/查验 → 到站 → Moose Jaw 派送 → 完成",
-cc_ship_3_label: "3. 计费规则：",
-cc_ship_3_text: "按重量或体积择大计费（仓库实测为准）。",
-cc_ship_4_label: "4. 时效：",
-cc_ship_4_text: "海运属于拼箱运输，受船期/清关/天气影响，不承诺固定到达日。",
-cc_ship_5_label: "5. 税费/查验：",
-cc_ship_5_text: "双清包税，但由于海关属于不可控因素，如遇被海关查扣情况，我司愿意按 ¥19/kg 补偿。贵重物建议购买保险或走商业快递。",
-cc_ship_6_label: "6. 禁运物品：",
-cc_ship_6_text: "见下方“禁运清单”，违禁/瞒报造成的损失由客户承担。",
-cc_ship_7_label: "7. 普货价格：",
-cc_ship_7_text: "普货 1–15kg ¥28/kg；15kg 起 ¥22/kg。"
 
+    contact_prealert_tag: "【🇨🇳🇨🇦中加集运】",
+    contact_prealert_title: "",
+    contact_prealert_btn: "包裹预报",
+
+    contact_store_tag: "【物流平台】",
+    contact_store_title: "平台入口",
+    contact_store_btn: "进入平台",
+
+    cc_ship_title: "中加集运",
+    cc_ship_intro:
+      "国内网购直接寄到我们中国集运仓，到仓后入库拍照/称重，可拆包合箱（可选），再海运拼箱到加拿大，清关后由 Moose Jaw 本地派送。",
+    cc_ship_subtitle: "服务说明",
+    cc_ship_1_label: "1. 下单方式：",
+    cc_ship_1_line1: "国内网购直接寄到我们中国集运仓。",
+    cc_ship_1_line2: "收件信息：Chris  15015428263  510445",
+    cc_ship_2_label: "2. 流程：",
+    cc_ship_2_flow:
+      "客户网购下单 → 客户报运单号给我 → 到达中国集运仓 → 入库拍照/称重 → 拆包合箱（可选） → 计费确认 → 出库装箱 → 海运拼箱 → 加拿大清关/查验 → 到站 → Moose Jaw 派送 → 完成",
+    cc_ship_3_label: "3. 计费规则：",
+    cc_ship_3_text: "按重量或体积择大计费（仓库实测为准）。",
+    cc_ship_4_label: "4. 时效：",
+    cc_ship_4_text:
+      "海运属于拼箱运输，受船期/清关/天气影响，不承诺固定到达日。",
+    cc_ship_5_label: "5. 税费/查验：",
+    cc_ship_5_text:
+      "双清包税，但由于海关属于不可控因素，如遇被海关查扣情况，我司愿意按 ¥19/kg 补偿。贵重物建议购买保险或走商业快递。",
+    cc_ship_6_label: "6. 禁运物品：",
+    cc_ship_6_text:
+      "见下方“禁运清单”，违禁/瞒报造成的损失由客户承担。",
+    cc_ship_7_label: "7. 普货价格：",
+    cc_ship_7_text: "普货 1–15kg ¥28/kg；15kg 起 ¥22/kg。"
   }
 };
 
 function applyLang(lang) {
-document.documentElement.setAttribute("lang", lang);
-  
+  document.documentElement.setAttribute("lang", lang);
+
   const strings = dict[lang];
   if (!strings) return;
-  document
-    .querySelectorAll("[data-i18n]")
-    .forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (strings[key]) {
-        el.textContent = strings[key];
-      }
-    });
+
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (strings[key] !== undefined) {
+      el.textContent = strings[key];
+    }
+  });
 
   const toggle = document.getElementById("lang-toggle");
   if (toggle) {
     toggle.textContent = lang === "en" ? "中文" : "EN";
   }
+
   localStorage.setItem("missiongo_lang", lang);
 }
 
