@@ -117,7 +117,8 @@ const dict = {
       "We can design new routes and service areas based on your parcel volume, postal codes, and time window requirements. Talk to us early so we can build a scalable plan.",
 
     download_title: "Download",
-    download_desc: "The driver app supports pickup, delivery, navigation, photo proof, and signature capture for daily courier tasks.",
+    download_desc:
+      "The driver app supports pickup, delivery, navigation, photo proof, and signature capture for daily courier tasks.",
 
     download_ios_title: "For iPhone",
     download_ios_desc: "Get the iPhone version from the App Store or TestFlight.",
@@ -130,6 +131,7 @@ const dict = {
     download_android_play: "Google Play",
 
     download_show_all: "Show all apps",
+    download_user_guide: "User Guide",
 
     contact_title: "Contact us",
     contact_intro:
@@ -309,6 +311,7 @@ const dict = {
     download_android_play: "Google Play",
 
     download_show_all: "显示全部应用",
+    download_user_guide: "使用说明",
 
     contact_title: "联系合作",
     contact_intro:
