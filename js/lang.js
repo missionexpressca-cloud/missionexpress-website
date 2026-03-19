@@ -130,7 +130,7 @@ const dict = {
     download_android_apk: "Download APK",
     download_android_play: "Google Play",
 
-    download_show_all: "Show all apps"
+    download_show_all: "Show all apps",
     
     contact_title: "Contact us",
     contact_intro:
