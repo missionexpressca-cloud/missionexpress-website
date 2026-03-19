@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Download | Mission Go</title>
   <meta name="description" content="Download Mission Go for iPhone and Android." />
+  <script>
+    (function () {
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var isAndroid = /Android/i.test(ua);
+      var isIOS =
+        /iPhone|iPad|iPod/i.test(ua) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+      var root = document.documentElement;
+
+      if (isIOS) {
+        root.classList.add("device-ios");
+      } else if (isAndroid) {
+        root.classList.add("device-android");
+      } else {
+        root.classList.add("device-other");
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -21,7 +40,7 @@
       <a href="services.html" data-i18n="nav_services">Services</a>
       <a href="network.html" data-i18n="nav_network">Network</a>
       <a href="download.html" data-i18n="nav_download" class="active">Download</a>
-      <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+      <a href="https://mission-express.square.site/" target="_blank" rel="noopener noreferrer" data-i18n="nav_store">Online Store</a>
       <a href="contact.html" data-i18n="nav_contact">Contact</a>
     </nav>
 
@@ -37,7 +56,7 @@
     <a href="services.html" data-i18n="nav_services">Services</a>
     <a href="network.html" data-i18n="nav_network">Network</a>
     <a href="download.html" data-i18n="nav_download" class="active">Download</a>
-    <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+    <a href="https://mission-express.square.site/" target="_blank" rel="noopener noreferrer" data-i18n="nav_store">Online Store</a>
     <a href="contact.html" data-i18n="nav_contact">Contact</a>
   </nav>
 
@@ -116,7 +135,7 @@
 
         <div class="user-guide-wrap" id="userGuideWrap">
           <a
-            href="https://docs.google.com/document/d/1JzsEHt-miQZqYw2p57EVADCHkIm0U2HOAZBjvDfZpJM/edit?usp=sharing"
+            href="YOUR_USER_GUIDE_LINK"
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-outline guide-btn"
