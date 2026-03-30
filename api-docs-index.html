@@ -1,41 +1,345 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mission Express API Docs</title>
+  <link rel="stylesheet" href="css/styles.css" />
   <style>
-    body {
-      margin:0; min-height:100vh; display:grid; place-items:center;
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:radial-gradient(circle at top, rgba(77,163,255,.18), transparent 30%), #0b1220; color:#e8eefc;
+    .page-hero.docs-hero {
+      padding: 3.4rem 1.5rem 1.1rem;
+      background:
+        radial-gradient(circle at 0 0, rgba(255, 79, 163, 0.35), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(255, 179, 71, 0.35), transparent 55%),
+        #050814;
     }
-    .card {
-      width:min(760px, calc(100vw - 32px)); border:1px solid #253557; border-radius:24px;
-      background:#111a2b; padding:32px; box-shadow:0 24px 60px rgba(0,0,0,.25);
+    .docs-kicker {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: #ffb347;
+      margin-bottom: 0.75rem;
     }
-    h1 { margin:0 0 12px; font-size:38px; }
-    p { color:#a9b7d0; line-height:1.7; }
-    .grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; margin-top:22px; }
-    a.btn {
-      display:block; padding:18px 20px; border-radius:18px; border:1px solid #253557; background:#162238;
-      color:#e8eefc; text-decoration:none; font-weight:700;
+    .docs-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.7rem;
     }
-    a.btn:hover { border-color:#4da3ff; }
-    .small { margin-top:18px; font-size:14px; color:#a9b7d0; }
-    code { background:#0b1220; padding:2px 6px; border-radius:8px; }
-    @media (max-width: 720px) { .grid { grid-template-columns:1fr; } h1 { font-size:30px; } }
+    .docs-sub {
+      max-width: 760px;
+      color: #d2d5ff;
+      margin-bottom: 1rem;
+    }
+    .docs-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .docs-toc {
+      position: sticky;
+      top: 78px;
+      background: #121527;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      padding: 1.2rem;
+    }
+    .docs-toc h3 { margin-bottom: 0.8rem; }
+    .docs-toc a {
+      display: block;
+      color: #d1d4ff;
+      text-decoration: none;
+      padding: 0.45rem 0.55rem;
+      border-radius: 0.65rem;
+    }
+    .docs-toc a:hover { background: rgba(255,255,255,0.06); }
+    .docs-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .docs-narrow { max-width: 1180px; }
+    .docs-section { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+    .docs-card {
+      background: #121527;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .docs-card h2 { margin-bottom: 0.8rem; }
+    .docs-card h3 { margin: 1.4rem 0 0.75rem; }
+    .docs-card p, .docs-card li { color: #d1d4ff; }
+    .docs-kv-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .docs-kv {
+      border-radius: 0.9rem;
+      background: rgba(9, 12, 27, 0.96);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem;
+    }
+    .docs-k { font-size: 0.8rem; color: #9ea2cf; text-transform: uppercase; letter-spacing: .08em; }
+    .docs-v { margin-top: 0.45rem; font-weight: 700; word-break: break-all; }
+    .docs-callout {
+      margin-top: 1rem;
+      border-left: 4px solid #ffb347;
+      padding: 0.9rem 1rem;
+      border-radius: 0.8rem;
+      background: rgba(255, 179, 71, 0.08);
+      color: #f7f7ff;
+    }
+    .docs-table-wrap {
+      overflow: auto;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 0.8rem;
+    }
+    .docs-table-wrap table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    .docs-table-wrap th, .docs-table-wrap td {
+      padding: 0.8rem 0.9rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      vertical-align: top;
+    }
+    .docs-table-wrap th { background: rgba(255,255,255,0.04); }
+    .docs-table-wrap tr:last-child td { border-bottom: none; }
+    .docs-card pre {
+      overflow: auto;
+      background: #050814;
+      color: #f7f7ff;
+      border-radius: 0.9rem;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 0.8rem;
+    }
+    .docs-card code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .endpoint-head { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.7rem; }
+    .method-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(100, 214, 116, 0.12);
+      color: #7ff08f;
+      border: 1px solid rgba(100, 214, 116, 0.25);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .path-chip {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+    .docs-note { margin-top: 0.8rem; font-size: 0.9rem; color: #9ea2cf; }
+    .docs-lang-links { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.8rem; }
+    .docs-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+    .docs-summary-card {
+      padding: 1.2rem;
+      border-radius: 1rem;
+      background: #121527;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .docs-summary-card p { color: #d1d4ff; margin-top: 0.5rem; }
+    .docs-links { display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem; }
+    .footer .footer-inner a { color: inherit; }
+    @media (max-width: 900px) {
+      .docs-layout { grid-template-columns: 1fr; }
+      .docs-toc { position: static; top: auto; }
+      .docs-kv-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Mission Express API Docs</h1>
-    <p>This static HTML package includes a cleaned Chinese version and a translated English version of the uploaded API documentation.</p>
-    <div class="grid">
-      <a class="btn" href="api-docs-cn.html">中文文档<br><span style="font-weight:400;color:#a9b7d0;">Chinese web version</span></a>
-      <a class="btn" href="api-docs-en.html">English Documentation<br><span style="font-weight:400;color:#a9b7d0;">Translated English web version</span></a>
+
+  <header class="top-nav">
+    <div class="logo-wrap">
+      <a href="index.html">
+        <img src="img/logo.png" alt="Mission Go logo" class="logo" />
+      </a>
     </div>
-    <p class="small">Suggested public links after upload: <code>/api-docs-cn.html</code> and <code>/api-docs-en.html</code></p>
-  </div>
+
+    <nav class="nav-links desktop-nav">
+      <a href="index.html"><span class="lang-block lang-en">Home</span><span class="lang-block lang-zh">首页</span></a>
+      <a href="about.html"><span class="lang-block lang-en">About</span><span class="lang-block lang-zh">关于我们</span></a>
+      <a href="services.html"><span class="lang-block lang-en">Services</span><span class="lang-block lang-zh">服务</span></a>
+      <a href="network.html"><span class="lang-block lang-en">Network</span><span class="lang-block lang-zh">网络</span></a>
+      <a href="download.html"><span class="lang-block lang-en">Download</span><span class="lang-block lang-zh">下载</span></a>
+      <a href="api-docs-index.html" class="active"><span class="lang-block lang-en">API Docs</span><span class="lang-block lang-zh">API 文档</span></a>
+      <a href="https://mission-express.square.site/" target="_blank" rel="noopener"><span class="lang-block lang-en">Online Store</span><span class="lang-block lang-zh">在线商店</span></a>
+      <a href="contact.html"><span class="lang-block lang-en">Contact</span><span class="lang-block lang-zh">联系</span></a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="lang-toggle" class="lang-toggle">中文</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html"><span class="lang-block lang-en">Home</span><span class="lang-block lang-zh">首页</span></a>
+    <a href="about.html"><span class="lang-block lang-en">About</span><span class="lang-block lang-zh">关于我们</span></a>
+    <a href="services.html"><span class="lang-block lang-en">Services</span><span class="lang-block lang-zh">服务</span></a>
+    <a href="network.html"><span class="lang-block lang-en">Network</span><span class="lang-block lang-zh">网络</span></a>
+    <a href="download.html"><span class="lang-block lang-en">Download</span><span class="lang-block lang-zh">下载</span></a>
+    <a href="api-docs-index.html"><span class="lang-block lang-en">API Docs</span><span class="lang-block lang-zh">API 文档</span></a>
+    <a href="https://mission-express.square.site/" target="_blank" rel="noopener"><span class="lang-block lang-en">Online Store</span><span class="lang-block lang-zh">在线商店</span></a>
+    <a href="contact.html"><span class="lang-block lang-en">Contact</span><span class="lang-block lang-zh">联系</span></a>
+  </nav>
+
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <main>
+    <section class="page-hero docs-hero">
+      <div class="container">
+        <p class="docs-kicker">API documentation</p>
+        <h1 class="docs-title">
+          <span class="lang-block lang-en">Mission Express API Documentation</span>
+          <span class="lang-block lang-zh">Mission Express API 接口文档</span>
+        </h1>
+        <p class="docs-sub">
+          <span class="lang-block lang-en">A web-ready version of the uploaded API specification, with a cleaned Chinese page and a translated English page.</span>
+          <span class="lang-block lang-zh">根据已上传 API 原始文档整理出的网页版本，包含中文版和英文版。</span>
+        </p>
+        <div class="docs-toolbar">
+          <a href="api-docs-cn.html" class="btn primary">中文文档</a>
+          <a href="api-docs-en.html" class="btn ghost">English Documentation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="section-inner">
+        <h2>
+          <span class="lang-block lang-en">Choose a documentation view</span>
+          <span class="lang-block lang-zh">选择文档版本</span>
+        </h2>
+        <p class="section-intro">
+          <span class="lang-block lang-en">Both pages preserve the original endpoint names and parameters from the uploaded source file.</span>
+          <span class="lang-block lang-zh">两个版本都保留了原始上传文档中的接口名称和参数名称。</span>
+        </p>
+        <div class="docs-summary-grid">
+          <article class="docs-summary-card">
+            <div class="card-icon">中文</div>
+            <h3>api-docs-cn.html</h3>
+            <p>适合中文阅读和直接对外展示。</p>
+            <div class="docs-links"><a href="api-docs-cn.html" class="btn primary">打开中文版</a></div>
+          </article>
+          <article class="docs-summary-card">
+            <div class="card-icon">EN</div>
+            <h3>api-docs-en.html</h3>
+            <p>English translation for partners, clients, and technical integrations.</p>
+            <div class="docs-links"><a href="api-docs-en.html" class="btn primary">Open English Version</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="section-inner">
+        <h2>
+          <span class="lang-block lang-en">Included in this package</span>
+          <span class="lang-block lang-zh">当前页面包含</span>
+        </h2>
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-icon">🔐</div>
+            <h3>
+              <span class="lang-block lang-en">Signature rules</span>
+              <span class="lang-block lang-zh">签名规则</span>
+            </h3>
+            <p>
+              <span class="lang-block lang-en">Common request fields, SHA256 signing logic, and PHP example.</span>
+              <span class="lang-block lang-zh">包含通用请求字段、SHA256 签名逻辑和 PHP 示例。</span>
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">📄</div>
+            <h3>
+              <span class="lang-block lang-en">Core endpoints</span>
+              <span class="lang-block lang-zh">核心接口</span>
+            </h3>
+            <p>
+              <span class="lang-block lang-en">PDF viewer, create order, cancel order, get PDF token, and order detail.</span>
+              <span class="lang-block lang-zh">包括 PDF 展示、创建订单、取消订单、获取打印 Token、订单详情。</span>
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🌐</div>
+            <h3>
+              <span class="lang-block lang-en">Website-ready layout</span>
+              <span class="lang-block lang-zh">网站统一风格</span>
+            </h3>
+            <p>
+              <span class="lang-block lang-en">Updated to match the Mission Express website navigation and footer style.</span>
+              <span class="lang-block lang-zh">已经改成与 Mission Express 主站一致的页头和页脚风格。</span>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
+      <p>
+        <a href="liability.html">
+          <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
+          <span class="lang-block lang-zh">责任与保险条款</span>
+        </a>
+      </p>
+      <p>
+        <a href="api-docs-index.html">
+          <span class="lang-block lang-en">API Documentation</span>
+          <span class="lang-block lang-zh">API 接口文档</span>
+        </a>
+      </p>
+      
+      <p class="footer-note">
+        <span class="lang-block lang-en">Mission Go is the last-mile brand of Mission Express Logistics Inc., based in Moose Jaw, Saskatchewan, Canada.</span>
+        <span class="lang-block lang-zh">Mission Go 是 Mission Express Logistics Inc. 旗下的最后一公里品牌，公司位于加拿大萨斯喀彻温省 Moose Jaw。</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.lang = 'en';
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navBackdrop = document.getElementById('navBackdrop');
+    if (navToggle && mobileNav && navBackdrop) {
+      navToggle.addEventListener('click', function() {
+        mobileNav.classList.toggle('open');
+        navBackdrop.classList.toggle('show');
+      });
+      navBackdrop.addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        navBackdrop.classList.remove('show');
+      });
+    }
+
+    const langBtn = document.getElementById('lang-toggle');
+    if (langBtn) {
+      langBtn.textContent = '中文';
+      langBtn.addEventListener('click', function() {
+        window.location.href = 'api-docs-cn.html';
+      });
+    }
+  </script>
 </body>
 </html>

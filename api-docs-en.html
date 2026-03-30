@@ -1,269 +1,553 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mission Express API Documentation (English)</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mission Express API Documentation</title>
+  <link rel="stylesheet" href="css/styles.css" />
   <style>
-    :root {
-      --bg:#0b1220; --panel:#111a2b; --panel2:#162238; --text:#e8eefc; --muted:#a9b7d0;
-      --line:#253557; --accent:#4da3ff; --accent2:#79c0ff; --chip:#1e2f4f;
-      --ok:#7ad97a; --warning:#ffd479;
+    .page-hero.docs-hero {
+      padding: 3.4rem 1.5rem 1.1rem;
+      background:
+        radial-gradient(circle at 0 0, rgba(255, 79, 163, 0.35), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(255, 179, 71, 0.35), transparent 55%),
+        #050814;
     }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body {
-      margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:linear-gradient(180deg, #08111f 0%, #0b1220 100%); color:var(--text);
+    .docs-kicker {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: #ffb347;
+      margin-bottom: 0.75rem;
     }
-    a { color:var(--accent2); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    .wrap { max-width:1200px; margin:0 auto; padding:24px; }
-    .hero {
-      border:1px solid var(--line); border-radius:24px; padding:28px; background:
-      radial-gradient(circle at top right, rgba(77,163,255,.18), transparent 28%),
-      linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
-      var(--panel);
-      box-shadow:0 20px 60px rgba(0,0,0,.28);
+    .docs-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.7rem;
     }
-    .topline { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; flex-wrap:wrap; }
-    h1 { margin:0 0 10px; font-size:40px; line-height:1.1; }
-    .subtitle { margin:0; color:var(--muted); font-size:17px; max-width:820px; }
-    .badges { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
-    .badge {
-      display:inline-flex; align-items:center; gap:8px; padding:9px 12px; border-radius:999px;
-      background:var(--chip); border:1px solid var(--line); color:var(--text); font-size:14px;
+    .docs-sub {
+      max-width: 760px;
+      color: #d2d5ff;
+      margin-bottom: 1rem;
     }
-    .lang-switch { display:flex; gap:8px; flex-wrap:wrap; }
-    .lang-btn {
-      display:inline-flex; align-items:center; justify-content:center; min-width:92px; padding:10px 14px;
-      border-radius:999px; border:1px solid var(--line); background:var(--panel2); color:var(--text);
-      text-decoration:none; font-weight:600;
+    .docs-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
     }
-    .lang-btn.active { background:var(--accent); color:#06111f; border-color:transparent; }
-    .layout {
-      display:grid; grid-template-columns:280px minmax(0, 1fr); gap:24px; margin-top:24px;
+    .docs-toc {
+      position: sticky;
+      top: 78px;
+      background: #121527;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      padding: 1.2rem;
     }
-    .toc {
-      position:sticky; top:20px; align-self:start; border:1px solid var(--line); border-radius:20px; background:var(--panel);
-      padding:18px;
+    .docs-toc h3 { margin-bottom: 0.8rem; }
+    .docs-toc a {
+      display: block;
+      color: #d1d4ff;
+      text-decoration: none;
+      padding: 0.45rem 0.55rem;
+      border-radius: 0.65rem;
     }
-    .toc h2 { margin:0 0 12px; font-size:18px; }
-    .toc a {
-      display:block; padding:10px 12px; border-radius:12px; color:var(--muted); text-decoration:none; margin-bottom:6px;
+    .docs-toc a:hover { background: rgba(255,255,255,0.06); }
+    .docs-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: start;
     }
-    .toc a:hover { background:rgba(255,255,255,.03); color:var(--text); }
-    .main { display:flex; flex-direction:column; gap:20px; }
-    .section {
-      border:1px solid var(--line); border-radius:20px; background:var(--panel); padding:22px;
+    .docs-narrow { max-width: 1180px; }
+    .docs-section { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+    .docs-card {
+      background: #121527;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    .section h2 { margin:0 0 14px; font-size:28px; }
-    .section h3 { margin:24px 0 12px; font-size:22px; }
-    .section p, .section li { color:var(--muted); line-height:1.7; }
-    .section ul { padding-left:20px; }
-    .callout {
-      border-left:4px solid var(--accent); background:rgba(77,163,255,.08); border-radius:14px;
-      padding:14px 16px; margin:14px 0;
+    .docs-card h2 { margin-bottom: 0.8rem; }
+    .docs-card h3 { margin: 1.4rem 0 0.75rem; }
+    .docs-card p, .docs-card li { color: #d1d4ff; }
+    .docs-kv-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 1rem;
+      margin-top: 1rem;
     }
-    .kv-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; }
-    .kv {
-      border:1px solid var(--line); background:var(--panel2); border-radius:16px; padding:14px 16px;
+    .docs-kv {
+      border-radius: 0.9rem;
+      background: rgba(9, 12, 27, 0.96);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem;
     }
-    .kv .k { color:var(--muted); font-size:13px; text-transform:uppercase; letter-spacing:.08em; }
-    .kv .v { margin-top:8px; font-weight:700; font-size:16px; word-break:break-all; }
-    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:16px; }
-    table { width:100%; border-collapse:collapse; min-width:720px; }
-    th, td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
-    th { background:rgba(255,255,255,.04); font-size:14px; }
-    td { color:var(--muted); font-size:14px; }
-    tr:last-child td { border-bottom:none; }
-    pre {
-      margin:0; padding:18px; border:1px solid var(--line); border-radius:16px; overflow:auto;
-      background:#091120; color:#dce7ff; line-height:1.55;
+    .docs-k { font-size: 0.8rem; color: #9ea2cf; text-transform: uppercase; letter-spacing: .08em; }
+    .docs-v { margin-top: 0.45rem; font-weight: 700; word-break: break-all; }
+    .docs-callout {
+      margin-top: 1rem;
+      border-left: 4px solid #ffb347;
+      padding: 0.9rem 1rem;
+      border-radius: 0.8rem;
+      background: rgba(255, 179, 71, 0.08);
+      color: #f7f7ff;
     }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .endpoint-card {
-      border:1px solid var(--line); border-radius:18px; background:var(--panel2); padding:18px; margin-top:18px;
+    .docs-table-wrap {
+      overflow: auto;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 0.8rem;
     }
-    .endpoint-head {
-      display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:14px;
+    .docs-table-wrap table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    .docs-table-wrap th, .docs-table-wrap td {
+      padding: 0.8rem 0.9rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      vertical-align: top;
     }
-    .method { font-weight:800; font-size:13px; letter-spacing:.08em; padding:7px 10px; border-radius:999px; background:rgba(122,217,122,.14); color:var(--ok); border:1px solid rgba(122,217,122,.18); }
-    .path { font-size:22px; font-weight:700; word-break:break-all; }
-    .note {
-      font-size:13px; color:var(--muted); margin-top:10px;
+    .docs-table-wrap th { background: rgba(255,255,255,0.04); }
+    .docs-table-wrap tr:last-child td { border-bottom: none; }
+    .docs-card pre {
+      overflow: auto;
+      background: #050814;
+      color: #f7f7ff;
+      border-radius: 0.9rem;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 0.8rem;
     }
-    .footer {
-      color:var(--muted); font-size:14px; text-align:center; padding:8px 0 28px;
+    .docs-card code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .endpoint-head { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.7rem; }
+    .method-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(100, 214, 116, 0.12);
+      color: #7ff08f;
+      border: 1px solid rgba(100, 214, 116, 0.25);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
     }
-    @media (max-width: 960px) {
-      .layout { grid-template-columns:1fr; }
-      .toc { position:relative; top:auto; }
-      .kv-grid { grid-template-columns:1fr; }
-      h1 { font-size:32px; }
+    .path-chip {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+    .docs-note { margin-top: 0.8rem; font-size: 0.9rem; color: #9ea2cf; }
+    .docs-lang-links { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.8rem; }
+    .docs-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+    .docs-summary-card {
+      padding: 1.2rem;
+      border-radius: 1rem;
+      background: #121527;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .docs-summary-card p { color: #d1d4ff; margin-top: 0.5rem; }
+    .docs-links { display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem; }
+    .footer .footer-inner a { color: inherit; }
+    @media (max-width: 900px) {
+      .docs-layout { grid-template-columns: 1fr; }
+      .docs-toc { position: static; top: auto; }
+      .docs-kv-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="hero">
-      <div class="topline">
-        <div>
-          <h1>Mission Express API Documentation</h1>
-          <p class="subtitle">English web version of the uploaded API source document, prepared for direct website publishing.</p>
-          <div class="badges">
-            <span class="badge">Base URL: <code>https://me.missionexpress.ca/api/post/out</code></span>
-            <span class="badge">Encoding: UTF-8 JSON</span>
-            <span class="badge">Content-Type: <code>application/x-www-form-urlencoded</code></span>
-          </div>
-        </div>
-        <div class="lang-switch"><a class="lang-btn" href="api-docs-cn.html">中文</a><a class="lang-btn active" href="api-docs-en.html">English</a><a class="lang-btn" href="api-docs-index.html">Home</a></div>
-      </div>
-    </header>
 
-    <div class="layout">
-      <aside class="toc">
-        <h2>Contents</h2>
-        <a href="#overview">Overview</a><a href="#auth">Authentication & Signature</a><a href="#response">Standard Response</a><a href="#pdf-viewer">PDF Viewer</a><a href="#create-order">Create Order</a><a href="#cancel-order">Cancel Order</a><a href="#get-pdf-token">Get PDF Token</a><a href="#order-detail">Order Detail</a>
-      </aside>
-      <main class="main">
-        
-<section id="overview" class="section">
-  <h2>Overview</h2>
-  <p>This document converts the source API file into a cleaner web page for publishing. All interfaces use HTTP <strong>POST</strong> unless noted otherwise. Request and response payloads use UTF-8 encoded JSON, except for the PDF display endpoint.</p>
-  <div class="kv-grid">
-    <div class="kv"><div class="k">Production Base URL</div><div class="v"><code>https://me.missionexpress.ca/api/post/out</code></div></div>
-    <div class="kv"><div class="k">Request Header</div><div class="v"><code>Content-Type: application/x-www-form-urlencoded</code></div></div>
-  </div>
-  <div class="callout">
-    Parameter names and endpoint names are kept exactly as they appear in the source file. English labels and descriptions have been polished for web presentation.
-  </div>
-</section>
-
-<section id="auth" class="section">
-  <h2>Authentication & Signature</h2>
-  <p>The platform provides <code>app_key</code> and <code>app_secret</code>. The business request object must be converted to a JSON string and passed through the <code>data</code> field.</p>
-  <p>Signature rule:</p>
-  <pre><code>sign = SHA256(request_json + "app_secret=" + app_secret)</code></pre>
-  <p>PHP example:</p>
-  <pre><code>private function createSign(string $request_str, string $key) {
-    return hash(&quot;sha256&quot;, $request_str . &quot;app_secret=&quot; . $key);
-}</code></pre>
-  <h3>Common Request Fields</h3>
-  <div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr><tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr><tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr></tbody></table></div>
-</section>
-
-<section id="response" class="section">
-  <h2>Standard Response</h2>
-  <p>A successful request returns <code>code = 1</code>. Any other value indicates an error.</p>
-  <pre><code>{
-  &quot;code&quot;: 1,
-  &quot;msg&quot;: &quot;ok&quot;,
-  &quot;time&quot;: &quot;1690796144&quot;,
-  &quot;data&quot;: {
-    &quot;orderNo&quot;: &quot;491d930ef328d4ec142233c82cc28816&quot;,
-    &quot;time&quot;: 1690796144
-  }
-}</code></pre>
-  <h3>Error Codes</h3>
-  <div class="table-wrap"><table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td>1001</td><td>Missing required parameter: sign</td></tr><tr><td>1003</td><td>Failed to parse request data</td></tr><tr><td>1004</td><td>Missing required parameter: app_key</td></tr><tr><td>1005</td><td>app_key does not exist</td></tr><tr><td>1006</td><td>Signature verification failed</td></tr><tr><td>0</td><td>General error</td></tr></tbody></table></div>
-</section>
-<section id="pdf-viewer" class="section"><h2>PDF Viewer</h2><p>Displays the PDF label / document. This is the only GET endpoint in the provided source file.</p><div class="endpoint-card"><div class="endpoint-head"><div class="method">GET</div><div class="path"><code>/pdf</code></div></div><h3>Common Request Fields</h3><div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>token</td><td>Yes</td><td>string</td><td>Token returned by the Get PDF URL / token endpoint</td></tr><tr><td>order_no</td><td>Yes</td><td>string</td><td>Logistics order number; separate multiple values with commas</td></tr></tbody></table></div><div class="callout">The source document states that more error codes follow the common error-code rules shown above.</div></div></section><section id="create-order" class="section"><h2>Create Order</h2><p>Creates a new order.</p><div class="endpoint-card"><div class="endpoint-head"><div class="method">POST</div><div class="path"><code>/create</code></div></div><h3>Common Request Fields</h3><div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr><tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr><tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr></tbody></table></div><h3>Business Parameters</h3><div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>shop_order_no</td><td>Yes</td><td>string</td><td>Merchant order number</td></tr><tr><td>goods_desc</td><td>No</td><td>string</td><td>Package/item description</td></tr><tr><td>from_username</td><td>Yes</td><td>string</td><td>Sender name</td></tr><tr><td>from_mobile</td><td>Yes</td><td>string</td><td>Sender phone number</td></tr><tr><td>from_province</td><td>No</td><td>string</td><td>Sender province</td></tr><tr><td>from_city</td><td>No</td><td>string</td><td>Sender city</td></tr><tr><td>from_address</td><td>No</td><td>string</td><td>Sender address</td></tr><tr><td>from_address1</td><td>No</td><td>string</td><td>Sender street / unit / door number</td></tr><tr><td>from_zip_code</td><td>Yes</td><td>string</td><td>Sender postal code</td></tr><tr><td>to_username</td><td>Yes</td><td>string</td><td>Recipient name</td></tr><tr><td>to_mobile</td><td>Yes</td><td>string</td><td>Recipient phone number</td></tr><tr><td>to_province</td><td>Yes</td><td>string</td><td>Recipient province</td></tr><tr><td>to_city</td><td>Yes</td><td>string</td><td>Recipient city</td></tr><tr><td>to_address</td><td>Yes</td><td>string</td><td>Recipient address</td></tr><tr><td>to_address1</td><td>Yes</td><td>string</td><td>Recipient street / unit / door number</td></tr><tr><td>to_zip_code</td><td>Yes</td><td>string</td><td>Recipient postal code</td></tr><tr><td>remark</td><td>No</td><td>string</td><td>Remarks</td></tr><tr><td>is_direct</td><td>Yes</td><td>string</td><td>Direct delivery flag: 0 = No, 1 = Yes</td></tr></tbody></table></div><h3>Sample Response</h3><pre><code>{
-  &quot;code&quot;: 1,
-  &quot;msg&quot;: &quot;ok&quot;,
-  &quot;time&quot;: &quot;1773801661&quot;,
-  &quot;data&quot;: {
-    &quot;shop_id&quot;: 1,
-    &quot;shop_order_no&quot;: &quot;69ba0e778bf94&quot;,
-    &quot;order_no&quot;: &quot;1075638798736&quot;,
-    &quot;from_username&quot;: &quot;aa&quot;,
-    &quot;from_mobile&quot;: &quot;1234567891&quot;,
-    &quot;from_province&quot;: &quot;aa&quot;,
-    &quot;from_city&quot;: &quot;bb&quot;,
-    &quot;from_address&quot;: &quot;sdfsd&quot;,
-    &quot;from_address1&quot;: &quot;sdfsd&quot;,
-    &quot;from_zip_code&quot;: &quot;12345&quot;,
-    &quot;to_username&quot;: &quot;aaab&quot;,
-    &quot;to_mobile&quot;: &quot;1236547896&quot;,
-    &quot;to_province&quot;: &quot;sdf&quot;,
-    &quot;to_city&quot;: &quot;sdf&quot;,
-    &quot;to_address&quot;: &quot;ggg&quot;,
-    &quot;to_address1&quot;: &quot;ss&quot;,
-    &quot;to_zip_code&quot;: &quot;1263&quot;,
-    &quot;goods_desc&quot;: &quot;包裹物品&quot;,
-    &quot;remark&quot;: &quot;订单备注&quot;,
-    &quot;is_direct&quot;: 1,
-    &quot;createtime&quot;: 1773801661,
-    &quot;updatetime&quot;: 1773801661,
-    &quot;id&quot;: &quot;8&quot;
-  }
-}</code></pre></div></section><section id="cancel-order" class="section"><h2>Cancel Order</h2><p>Cancels an existing order.</p><div class="endpoint-card"><div class="endpoint-head"><div class="method">POST</div><div class="path"><code>/cancel</code></div></div><h3>Common Request Fields</h3><div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr><tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr><tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr></tbody></table></div><h3>Business Parameters</h3><div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>order_no</td><td>Yes</td><td>string</td><td>Logistics order number</td></tr></tbody></table></div><h3>Sample Response</h3><pre><code>{
-  &quot;code&quot;: 0,
-  &quot;message&quot;: &quot;取消成功&quot;,
-  &quot;data&quot;: &quot;&quot;
-}</code></pre></div></section><section id="get-pdf-token" class="section"><h2>Get Order PDF Token / URL</h2><p>Returns the URL token used to open the PDF viewer endpoint.</p><div class="endpoint-card"><div class="endpoint-head"><div class="method">POST</div><div class="path"><code>/getPdf</code></div></div><h3>Common Request Fields</h3><div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr><tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr><tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr></tbody></table></div><h3>Business Parameters</h3><div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>non_str</td><td>Yes</td><td>string</td><td>Random string, 6–12 characters</td></tr></tbody></table></div><h3>Sample Response</h3><pre><code>{
-  &quot;code&quot;: 1,
-  &quot;msg&quot;: &quot;ok&quot;,
-  &quot;time&quot;: &quot;1773804544&quot;,
-  &quot;data&quot;: {
-    &quot;url&quot;: &quot;http://test.jianadame.com/index.php/api/post/out/pdf?token=...&quot;
-  }
-}</code></pre></div></section><section id="order-detail" class="section"><h2>Order Detail</h2><p>Returns detailed order information.</p><div class="endpoint-card"><div class="endpoint-head"><div class="method">POST</div><div class="path"><code>/detail</code></div></div><h3>Common Request Fields</h3><div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr><tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr><tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr></tbody></table></div><h3>Business Parameters</h3><div class="table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>order_no</td><td>Yes</td><td>string</td><td>Courier / logistics order number</td></tr></tbody></table></div><h3>Sample Response</h3><pre><code>{
-  &quot;code&quot;: 1,
-  &quot;msg&quot;: &quot;ok&quot;,
-  &quot;time&quot;: &quot;1773803058&quot;,
-  &quot;data&quot;: {
-    &quot;id&quot;: 8,
-    &quot;type&quot;: 1,
-    &quot;order_no&quot;: &quot;1075638798736&quot;,
-    &quot;shop_id&quot;: 1,
-    &quot;shop_order_no&quot;: &quot;69ba0e778bf94&quot;,
-    &quot;weight&quot;: &quot;0.00&quot;,
-    &quot;charge_weight&quot;: &quot;0.00&quot;,
-    &quot;length&quot;: 0,
-    &quot;width&quot;: 0,
-    &quot;height&quot;: 0,
-    &quot;goods_desc&quot;: &quot;包裹物品&quot;,
-    &quot;status&quot;: 0,
-    &quot;dis_status&quot;: 0,
-    &quot;images&quot;: null,
-    &quot;remark&quot;: &quot;订单备注&quot;,
-    &quot;post_price&quot;: &quot;0.00&quot;,
-    &quot;order_price&quot;: &quot;0.00&quot;,
-    &quot;insure_amount&quot;: &quot;0.00&quot;,
-    &quot;insure_price&quot;: &quot;0.00&quot;,
-    &quot;pickup_time&quot;: 0,
-    &quot;pay_type&quot;: &quot;&quot;,
-    &quot;pay_status&quot;: 0,
-    &quot;pay_time&quot;: 0,
-    &quot;from_username&quot;: &quot;aa&quot;,
-    &quot;from_mobile&quot;: &quot;1234567891&quot;,
-    &quot;from_province&quot;: &quot;aa&quot;,
-    &quot;from_city&quot;: &quot;bb&quot;,
-    &quot;from_address&quot;: &quot;sdfsd&quot;,
-    &quot;from_address1&quot;: &quot;sdfsd&quot;,
-    &quot;from_zip_code&quot;: &quot;12345&quot;,
-    &quot;to_username&quot;: &quot;aaab&quot;,
-    &quot;to_mobile&quot;: &quot;1236547896&quot;,
-    &quot;to_province&quot;: &quot;sdf&quot;,
-    &quot;to_city&quot;: &quot;sdf&quot;,
-    &quot;to_address&quot;: &quot;ggg&quot;,
-    &quot;to_address1&quot;: &quot;ss&quot;,
-    &quot;to_zip_code&quot;: &quot;1263&quot;,
-    &quot;delivery_num&quot;: 0,
-    &quot;delivery_status&quot;: 0,
-    &quot;createtime&quot;: 1773801661,
-    &quot;updatetime&quot;: 1773801661,
-    &quot;rider_amount&quot;: &quot;0.00&quot;,
-    &quot;rider_id&quot;: 0,
-    &quot;delete_time&quot;: null,
-    &quot;is_direct&quot;: 1
-  }
-}</code></pre></div></section>
-      </main>
+  <header class="top-nav">
+    <div class="logo-wrap">
+      <a href="index.html">
+        <img src="img/logo.png" alt="Mission Go logo" class="logo" />
+      </a>
     </div>
 
-    <div class="footer">Static HTML package prepared for website deployment.</div>
+    <nav class="nav-links desktop-nav">
+      <a href="index.html"><span class="lang-block lang-en">Home</span><span class="lang-block lang-zh">首页</span></a>
+      <a href="about.html"><span class="lang-block lang-en">About</span><span class="lang-block lang-zh">关于我们</span></a>
+      <a href="services.html"><span class="lang-block lang-en">Services</span><span class="lang-block lang-zh">服务</span></a>
+      <a href="network.html"><span class="lang-block lang-en">Network</span><span class="lang-block lang-zh">网络</span></a>
+      <a href="download.html"><span class="lang-block lang-en">Download</span><span class="lang-block lang-zh">下载</span></a>
+      <a href="api-docs-index.html" class="active"><span class="lang-block lang-en">API Docs</span><span class="lang-block lang-zh">API 文档</span></a>
+      <a href="https://mission-express.square.site/" target="_blank" rel="noopener"><span class="lang-block lang-en">Online Store</span><span class="lang-block lang-zh">在线商店</span></a>
+      <a href="contact.html"><span class="lang-block lang-en">Contact</span><span class="lang-block lang-zh">联系</span></a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="lang-toggle" class="lang-toggle">中文</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html"><span class="lang-block lang-en">Home</span><span class="lang-block lang-zh">首页</span></a>
+    <a href="about.html"><span class="lang-block lang-en">About</span><span class="lang-block lang-zh">关于我们</span></a>
+    <a href="services.html"><span class="lang-block lang-en">Services</span><span class="lang-block lang-zh">服务</span></a>
+    <a href="network.html"><span class="lang-block lang-en">Network</span><span class="lang-block lang-zh">网络</span></a>
+    <a href="download.html"><span class="lang-block lang-en">Download</span><span class="lang-block lang-zh">下载</span></a>
+    <a href="api-docs-index.html"><span class="lang-block lang-en">API Docs</span><span class="lang-block lang-zh">API 文档</span></a>
+    <a href="https://mission-express.square.site/" target="_blank" rel="noopener"><span class="lang-block lang-en">Online Store</span><span class="lang-block lang-zh">在线商店</span></a>
+    <a href="contact.html"><span class="lang-block lang-en">Contact</span><span class="lang-block lang-zh">联系</span></a>
+  </nav>
+
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <main>
+    <section class="page-hero docs-hero">
+      <div class="container">
+        <p class="docs-kicker">Mission Express API Documentation</p>
+        <h1 class="docs-title">Mission Express API Documentation</h1>
+        <p class="docs-sub">A web-ready version of the uploaded source API document, restyled to match the Mission Express website header and footer.</p>
+        <div class="docs-toolbar">
+          <a href="api-docs-cn.html" class="btn primary">中文版</a>
+          <a href="api-docs-index.html" class="btn ghost"><span class="lang-block lang-en">Back to API Index</span><span class="lang-block lang-zh">返回 API 首页</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark docs-section">
+      <div class="section-inner docs-layout">
+        <aside class="docs-toc">
+          <h3><span class="lang-block lang-en">Contents</span><span class="lang-block lang-zh">目录</span></h3>
+          <a href="#overview">Overview</a><a href="#auth">Authentication & Signature</a><a href="#response">Response Format</a><a href="#pdf-viewer">PDF Viewer</a><a href="#create-order">Create Order</a><a href="#cancel-order">Cancel Order</a><a href="#get-pdf-token">Get PDF Token / URL</a><a href="#order-detail">Order Detail</a>
+        </aside>
+        <div>
+          
+<section id="overview" class="section light docs-section">
+  <div class="section-inner docs-narrow">
+    <div class="docs-card">
+      <h2>Overview</h2>
+      <p>This page reorganizes the uploaded source document into a public-facing web version. Except for the PDF viewer endpoint, all endpoints use HTTP <strong>POST</strong>, and both requests and responses use UTF-8 encoded JSON.</p>
+      <div class="docs-kv-grid">
+        <div class="docs-kv"><div class="docs-k">Production Base URL</div><div class="docs-v"><code>https://me.missionexpress.ca/api/post/out</code></div></div>
+        <div class="docs-kv"><div class="docs-k">Request Header</div><div class="docs-v"><code>Content-Type: application/x-www-form-urlencoded</code></div></div>
+      </div>
+      <div class="docs-callout">Endpoint names and parameter names are preserved from the uploaded source document; this version primarily improves layout and readability.</div>
+    </div>
   </div>
+</section>
+
+<section id="auth" class="section docs-section">
+  <div class="section-inner docs-narrow">
+    <div class="docs-card">
+      <h2>Authentication & Signature</h2>
+      <p><code>app_key</code> and <code>app_secret</code> are issued by the platform. Business parameters must first be converted to a JSON string and then submitted in the <code>data</code> field.</p>
+      <p>Signature rule:</p>
+      <pre><code>sign = SHA256(request_json + "app_secret=" + app_secret)</code></pre>
+      <p>PHP example:</p>
+      <pre><code>private function createSign(string $request_str, string $key) {
+    return hash("sha256", $request_str . "app_secret=" . $key);
+}</code></pre>
+      <h3>Common Request Fields</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
+        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
+        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<section id="response" class="section light docs-section">
+  <div class="section-inner docs-narrow">
+    <div class="docs-card">
+      <h2>Unified Response Format</h2>
+      <p>When <code>code = 1</code>, the request is successful; any other value represents an error.</p>
+      <pre><code>{
+  "code": 1,
+  "msg": "ok",
+  "time": "1690796144",
+  "data": {
+    "orderNo": "491d930ef328d4ec142233c82cc28816",
+    "time": 1690796144
+  }
+}</code></pre>
+      <h3>Error Codes</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody>
+        <tr><td>1001</td><td>Missing required parameter: sign</td></tr>
+        <tr><td>1003</td><td>Failed to parse request data</td></tr>
+        <tr><td>1004</td><td>Missing required parameter: app_key</td></tr>
+        <tr><td>1005</td><td>app_key does not exist</td></tr>
+        <tr><td>1006</td><td>Signature verification failed</td></tr>
+        <tr><td>0</td><td>General error</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<section id="pdf-viewer" class="section docs-section">
+  <div class="section-inner docs-narrow">
+    <div class="docs-card endpoint-card">
+      <div class="endpoint-head"><span class="method-chip">GET</span><code class="path-chip">/pdf</code></div>
+      <h2>PDF Viewer</h2>
+      <p>Displays the PDF label or document. According to the uploaded source, this is the only endpoint that uses GET.</p>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>token</td><td>Yes</td><td>string</td><td>Token returned by the Get PDF URL / token endpoint</td></tr>
+        <tr><td>order_no</td><td>Yes</td><td>string</td><td>Logistics order number; separate multiple values with commas</td></tr>
+      </tbody></table></div>
+      <p class="docs-note">For additional error handling, refer to the common error-code rules above.</p>
+    </div>
+  </div>
+</section>
+
+<section id="create-order" class="section light docs-section">
+  <div class="section-inner docs-narrow">
+    <div class="docs-card endpoint-card">
+      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/create</code></div>
+      <h2>Create Order</h2>
+      <p>Creates a new order.</p>
+      <h3>Common Request Fields</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
+        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
+        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
+      </tbody></table></div>
+      <h3>Business Parameters</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>shop_order_no</td><td>Yes</td><td>string</td><td>Merchant order number</td></tr>
+        <tr><td>goods_desc</td><td>No</td><td>string</td><td>Package/item description</td></tr>
+        <tr><td>from_username</td><td>Yes</td><td>string</td><td>Sender name</td></tr>
+        <tr><td>from_mobile</td><td>Yes</td><td>string</td><td>Sender phone number</td></tr>
+        <tr><td>from_province</td><td>No</td><td>string</td><td>Sender province</td></tr>
+        <tr><td>from_city</td><td>No</td><td>string</td><td>Sender city</td></tr>
+        <tr><td>from_address</td><td>No</td><td>string</td><td>Sender address</td></tr>
+        <tr><td>from_address1</td><td>No</td><td>string</td><td>Sender street / unit / door number</td></tr>
+        <tr><td>from_zip_code</td><td>Yes</td><td>string</td><td>Sender postal code</td></tr>
+        <tr><td>to_username</td><td>Yes</td><td>string</td><td>Recipient name</td></tr>
+        <tr><td>to_mobile</td><td>Yes</td><td>string</td><td>Recipient phone number</td></tr>
+        <tr><td>to_province</td><td>Yes</td><td>string</td><td>Recipient province</td></tr>
+        <tr><td>to_city</td><td>Yes</td><td>string</td><td>Recipient city</td></tr>
+        <tr><td>to_address</td><td>Yes</td><td>string</td><td>Recipient address</td></tr>
+        <tr><td>to_address1</td><td>Yes</td><td>string</td><td>Recipient street / unit / door number</td></tr>
+        <tr><td>to_zip_code</td><td>Yes</td><td>string</td><td>Recipient postal code</td></tr>
+        <tr><td>remark</td><td>No</td><td>string</td><td>Remarks</td></tr>
+        <tr><td>is_direct</td><td>Yes</td><td>string</td><td>Direct delivery flag: 0 = No, 1 = Yes</td></tr>
+      </tbody></table></div>
+      <h3>Sample Response</h3>
+      <pre><code>{
+  "code": 1,
+  "msg": "ok",
+  "time": "1773801661",
+  "data": {
+    "shop_id": 1,
+    "shop_order_no": "69ba0e778bf94",
+    "order_no": "1075638798736",
+    "from_username": "aa",
+    "from_mobile": "1234567891",
+    "from_province": "aa",
+    "from_city": "bb",
+    "from_address": "sdfsd",
+    "from_address1": "sdfsd",
+    "from_zip_code": "12345",
+    "to_username": "aaab",
+    "to_mobile": "1236547896",
+    "to_province": "sdf",
+    "to_city": "sdf",
+    "to_address": "ggg",
+    "to_address1": "ss",
+    "to_zip_code": "1263",
+    "goods_desc": "包裹物品",
+    "remark": "订单备注",
+    "is_direct": 1,
+    "createtime": 1773801661,
+    "updatetime": 1773801661,
+    "id": "8"
+  }
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<section id="cancel-order" class="section docs-section">
+  <div class="section-inner docs-narrow">
+    <div class="docs-card endpoint-card">
+      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/cancel</code></div>
+      <h2>Cancel Order</h2>
+      <p>Cancels an existing order.</p>
+      <h3>Common Request Fields</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
+        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
+        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
+      </tbody></table></div>
+      <h3>Business Parameters</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>order_no</td><td>Yes</td><td>string</td><td>Logistics order number</td></tr>
+      </tbody></table></div>
+      <h3>Sample Response</h3>
+      <pre><code>{
+  "code": 0,
+  "message": "取消成功",
+  "data": ""
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<section id="get-pdf-token" class="section light docs-section">
+  <div class="section-inner docs-narrow">
+    <div class="docs-card endpoint-card">
+      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/getPdf</code></div>
+      <h2>Get Order PDF Token / URL</h2>
+      <p>Returns the URL token used to open the PDF viewer endpoint.</p>
+      <h3>Common Request Fields</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
+        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
+        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
+      </tbody></table></div>
+      <h3>Business Parameters</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>non_str</td><td>Yes</td><td>string</td><td>Random string, 6–12 characters</td></tr>
+      </tbody></table></div>
+      <h3>Sample Response</h3>
+      <pre><code>{
+  "code": 1,
+  "msg": "ok",
+  "time": "1773804544",
+  "data": {
+    "url": "http://test.jianadame.com/index.php/api/post/out/pdf?token=..."
+  }
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<section id="order-detail" class="section docs-section">
+  <div class="section-inner docs-narrow">
+    <div class="docs-card endpoint-card">
+      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/detail</code></div>
+      <h2>Order Detail</h2>
+      <p>Returns detailed order information.</p>
+      <h3>Common Request Fields</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
+        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
+        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
+      </tbody></table></div>
+      <h3>Business Parameters</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td>order_no</td><td>Yes</td><td>string</td><td>Courier / logistics order number</td></tr>
+      </tbody></table></div>
+      <h3>Sample Response</h3>
+      <pre><code>{
+  "code": 1,
+  "msg": "ok",
+  "time": "1773803058",
+  "data": {
+    "id": 8,
+    "type": 1,
+    "order_no": "1075638798736",
+    "shop_id": 1,
+    "shop_order_no": "69ba0e778bf94",
+    "weight": "0.00",
+    "charge_weight": "0.00",
+    "length": 0,
+    "width": 0,
+    "height": 0,
+    "goods_desc": "包裹物品",
+    "status": 0,
+    "dis_status": 0,
+    "images": null,
+    "remark": "订单备注",
+    "post_price": "0.00",
+    "order_price": "0.00",
+    "insure_amount": "0.00",
+    "insure_price": "0.00",
+    "pickup_time": 0,
+    "pay_type": "",
+    "pay_status": 0,
+    "pay_time": 0,
+    "from_username": "aa",
+    "from_mobile": "1234567891",
+    "from_province": "aa",
+    "from_city": "bb",
+    "from_address": "sdfsd",
+    "from_address1": "sdfsd",
+    "from_zip_code": "12345",
+    "to_username": "aaab",
+    "to_mobile": "1236547896",
+    "to_province": "sdf",
+    "to_city": "sdf",
+    "to_address": "ggg",
+    "to_address1": "ss",
+    "to_zip_code": "1263",
+    "delivery_num": 0,
+    "delivery_status": 0,
+    "createtime": 1773801661,
+    "updatetime": 1773801661,
+    "rider_amount": "0.00",
+    "rider_id": 0,
+    "delete_time": null,
+    "is_direct": 1
+  }
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
+      <p>
+        <a href="liability.html">
+          <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
+          <span class="lang-block lang-zh">责任与保险条款</span>
+        </a>
+      </p>
+      <p>
+        <a href="api-docs-index.html">
+          <span class="lang-block lang-en">API Documentation</span>
+          <span class="lang-block lang-zh">API 接口文档</span>
+        </a>
+      </p>
+      
+      <p class="footer-note">
+        <span class="lang-block lang-en">Mission Go is the last-mile brand of Mission Express Logistics Inc., based in Moose Jaw, Saskatchewan, Canada.</span>
+        <span class="lang-block lang-zh">Mission Go 是 Mission Express Logistics Inc. 旗下的最后一公里品牌，公司位于加拿大萨斯喀彻温省 Moose Jaw。</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.lang = 'en';
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const navBackdrop = document.getElementById('navBackdrop');
+    if (navToggle && mobileNav && navBackdrop) {
+      navToggle.addEventListener('click', function() {
+        mobileNav.classList.toggle('open');
+        navBackdrop.classList.toggle('show');
+      });
+      navBackdrop.addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        navBackdrop.classList.remove('show');
+      });
+    }
+
+    const langBtn = document.getElementById('lang-toggle');
+    if (langBtn) {
+      langBtn.textContent = '中文';
+      langBtn.addEventListener('click', function() {
+        window.location.href = 'api-docs-cn.html';
+      });
+    }
+  </script>
 </body>
 </html>
