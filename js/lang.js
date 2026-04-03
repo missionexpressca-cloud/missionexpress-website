@@ -121,9 +121,8 @@ const dict = {
       "The driver app supports pickup, delivery, navigation, photo proof, and signature capture for daily courier tasks.",
 
     download_ios_title: "For iPhone",
-    download_ios_desc: "Get the iPhone version from the App Store or TestFlight.",
+    download_ios_desc: "Get the iPhone version from the App Store.",
     download_ios_store: "App Store",
-    download_ios_testflight: "TestFlight",
 
     download_android_title: "For Android",
     download_android_desc: "Download the Android version or install it from Google Play.",
@@ -301,9 +300,8 @@ const dict = {
     download_desc: "司机端 APP，支持派送、揽收、导航、拍照留证与签收等日常配送工作。",
 
     download_ios_title: "iPhone 版",
-    download_ios_desc: "可通过 App Store 或 TestFlight 获取 iPhone 版本。",
+    download_ios_desc: "可通过 App Store 获取 iPhone 版本。",
     download_ios_store: "App Store",
-    download_ios_testflight: "TestFlight",
 
     download_android_title: "Android 版",
     download_android_desc: "可直接下载 Android 安装包，或通过 Google Play 安装。",
