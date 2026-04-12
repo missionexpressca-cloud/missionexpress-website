@@ -218,7 +218,7 @@
       <div class="section-inner docs-layout">
         <aside class="docs-toc">
           <h3><span class="lang-block lang-en">Contents</span><span class="lang-block lang-zh">目录</span></h3>
-          <a href="#overview">概览</a><a href="#auth">鉴权与签名</a><a href="#response">统一响应</a><a href="#pdf-viewer">PDF 展示</a><a href="#create-order">创建订单</a><a href="#cancel-order">取消订单</a><a href="#get-pdf-token">获取打印 Token</a><a href="#order-detail">订单详情</a>
+          <a href="#overview">概览</a><a href="#auth">鉴权与签名</a><a href="#response">统一响应</a><a href="#pdf-viewer">PDF 展示</a><a href="#create-order">创建订单</a><a href="#cancel-order">取消订单</a><a href="#get-pdf-token">获取打印 Token</a><a href="#order-detail">订单详情</a><a href="#missionrush-status">Mission Rush 状态参考</a>
         </aside>
         <div>
           
@@ -491,6 +491,29 @@
     "is_direct": 1
   }
 }</code></pre>
+    </div>
+  </div>
+</section>
+
+
+<section id="missionrush-status" class="section light docs-section">
+  <div class="section-inner docs-narrow">
+    <div class="docs-card">
+      <h2>Mission Rush 状态参考</h2>
+      <p>以下内容用于 Mission Rush App 的 Orders 页面或其他客户端状态展示。该说明基于当前 Mission Rush 直送单创建逻辑及后端状态流转整理而成。</p>
+      <div class="docs-table-wrap"><table><thead><tr><th>post_order.status</th><th>建议客户端显示</th><th>说明</th></tr></thead><tbody>
+        <tr><td>1</td><td>Waiting for pick up</td><td>Mission Rush 已支付直送单创建成功后的初始状态。</td></tr>
+        <tr><td>2</td><td>Waiting for pick up</td><td>待揽收；客户端可与状态 1 统一归类为待取件。</td></tr>
+        <tr><td>3</td><td>Delivering</td><td>已揽收 / 配送中。</td></tr>
+        <tr><td>10</td><td>Completed</td><td>订单已完成。</td></tr>
+      </tbody></table></div>
+      <h3>客户端分组建议</h3>
+      <div class="docs-table-wrap"><table><thead><tr><th>分组</th><th>建议条件</th></tr></thead><tbody>
+        <tr><td>All</td><td>所有订单</td></tr>
+        <tr><td>In progress</td><td><code>status in [1, 2, 3]</code></td></tr>
+        <tr><td>Completed</td><td><code>status = 10</code></td></tr>
+      </tbody></table></div>
+      <div class="docs-callout">补充说明：Mission Rush 已支付直送单创建成功后，服务端返回的支付成功状态为 <code>pay_status = 2</code>，同时订单初始状态为 <code>status = 1</code>。如需“已评价 / 未评价”，建议由客户端或业务侧单独维护，不直接复用 <code>post_order.status</code>。</div>
     </div>
   </div>
 </section>

@@ -290,6 +290,63 @@
         </div>
       </div>
     </section>
+
+    <section class="section light">
+      <div class="section-inner">
+        <h2>
+          <span class="lang-block lang-en">Mission Rush order status reference</span>
+          <span class="lang-block lang-zh">Mission Rush 订单状态参考</span>
+        </h2>
+        <p class="section-intro">
+          <span class="lang-block lang-en">Use this quick reference when integrating the Mission Rush app Orders page or other client-side order views.</span>
+          <span class="lang-block lang-zh">用于 Mission Rush App 的 Orders 页面或其他客户端订单状态展示时的快速参考。</span>
+        </p>
+        <div class="docs-summary-grid">
+          <article class="docs-summary-card">
+            <div class="card-icon">1 / 2</div>
+            <h3>
+              <span class="lang-block lang-en">Waiting for pickup</span>
+              <span class="lang-block lang-zh">待取件 / 待揽收</span>
+            </h3>
+            <p>
+              <span class="lang-block lang-en">Treat backend <code>status = 1</code> and <code>status = 2</code> as waiting-for-pickup states in client apps.</span>
+              <span class="lang-block lang-zh">客户端可将后台 <code>status = 1</code> 和 <code>status = 2</code> 统一视为待取件状态。</span>
+            </p>
+          </article>
+          <article class="docs-summary-card">
+            <div class="card-icon">3</div>
+            <h3>
+              <span class="lang-block lang-en">Delivering</span>
+              <span class="lang-block lang-zh">配送中</span>
+            </h3>
+            <p>
+              <span class="lang-block lang-en">Use <code>status = 3</code> for in-transit or delivering orders after pickup.</span>
+              <span class="lang-block lang-zh"><code>status = 3</code> 表示已揽收后的配送中状态。</span>
+            </p>
+          </article>
+          <article class="docs-summary-card">
+            <div class="card-icon">10</div>
+            <h3>
+              <span class="lang-block lang-en">Completed</span>
+              <span class="lang-block lang-zh">已完成</span>
+            </h3>
+            <p>
+              <span class="lang-block lang-en">Use <code>status = 10</code> for completed orders. Review status can be maintained separately on the client side if needed.</span>
+              <span class="lang-block lang-zh"><code>status = 10</code> 表示已完成；如需“已评价 / 未评价”，建议由客户端或业务侧单独维护。</span>
+            </p>
+          </article>
+        </div>
+        <div class="docs-callout">
+          <span class="lang-block lang-en">For newly created Mission Rush paid direct orders, the initial successful order status is <code>1</code>, and the payment success flag returned by the server is <code>pay_status = 2</code>.</span>
+          <span class="lang-block lang-zh">Mission Rush 已支付直送单在创建成功后，初始订单状态为 <code>1</code>，服务端返回的支付成功标记为 <code>pay_status = 2</code>。</span>
+        </div>
+        <div class="docs-links">
+          <a href="api-docs-cn.html#missionrush-status" class="btn primary">中文状态说明</a>
+          <a href="api-docs-en.html#missionrush-status" class="btn ghost">English status reference</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
