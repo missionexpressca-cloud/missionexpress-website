@@ -6,138 +6,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
-  .contact-grid {
-    position: relative;
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  .platform-title-hide {
-    display: none;
-  }
+    .contact-grid {
+      position: relative;
+    }
 
-.payment-qr-floating {
-  position: absolute;
-  left: 170px;
-  top: 318px;
-  z-index: 2;
-}
+    .platform-title-hide {
+      display: none;
+    }
 
-.payment-qr-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
+    #faq-form {
+      scroll-margin-top: 120px;
+    }
 
-.payment-qr-text {
-  display: flex;
-  flex-direction: column;
-  align-items: .payment-qr-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
+    .payment-qr-floating {
+      position: absolute;
+      left: 170px;
+      top: 318px;
+      z-index: 2;
+    }
 
-.payment-qr-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+    .payment-qr-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
 
-.payment-qr-tag {
-  display: inline-block;
-  width: auto;
-  max-width: max-content;
-  padding: 4px 10px;
-  font-size: 12px;
-  line-height: 1.2;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #fff;
-  white-space: nowrap;
-}
+    .payment-qr-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-.payment-qr-caption {
-  display: block;
-  margin: 0;
-  font-size: 11px;
-  opacity: 0.78;
-  white-space: nowrap;
-  text-align: left;
-}
+    .payment-qr-tag {
+      display: inline-block;
+      width: auto;
+      max-width: max-content;
+      padding: 4px 10px;
+      font-size: 12px;
+      line-height: 1.2;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      white-space: nowrap;
+      margin: 0 0 6px;
+    }
 
-.payment-qr-box {
-  width: 96px;
-  text-align: center;
-};
-}
+    .payment-qr-caption {
+      display: block;
+      margin: 0;
+      font-size: 11px;
+      opacity: 0.78;
+      white-space: nowrap;
+      text-align: left;
+    }
 
-.payment-qr-tag {
-  display: inline-block;
-  margin: 0 0 6px;
-  padding: 4px 10px;
-  font-size: 12px;
-  line-height: 1.2;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #fff;
-  white-space: nowrap;
-}
+    .payment-qr-box {
+      width: 96px;
+      text-align: center;
+    }
 
-.payment-qr-caption {
-  display: block;
-  margin: 0;
-  font-size: 11px;
-  opacity: 0.78;
-  white-space: nowrap;
-  text-align: left;
-}
+    .payment-qr-image {
+      display: block;
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      margin: 0 auto;
+      border-radius: 12px;
+      background: #fff;
+      padding: 6px;
+    }
 
-.payment-qr-box {
-  width: 96px;
-  text-align: center;
-}
-.payment-qr-image {
-  display: block;
-  width: 96px;
-  height: 96px;
-  object-fit: cover;
-  margin: 0 auto;
-  border-radius: 12px;
-  background: #fff;
-  padding: 6px;
-}
+    @media (max-width: 900px) {
+      .payment-qr-floating {
+        position: static;
+        margin-top: 12px;
+      }
 
-.payment-qr-caption {
-  display: block;
-  margin-top: 6px;
-  font-size: 11px;
-  opacity: 0.78;
-  white-space: nowrap;
-}
-@media (max-width: 900px) {
-  .payment-qr-floating {
-    position: static;
-    margin-top: 12px;
-  }
+      .payment-qr-row {
+        display: block;
+      }
 
-  .payment-qr-row {
-    display: block;
-  }
+      .payment-qr-tag {
+        display: inline-block;
+        width: auto;
+        max-width: max-content;
+        margin: 0 0 10px;
+        white-space: nowrap;
+      }
 
-  .payment-qr-tag {
-    display: inline-block;
-    width: auto;
-    max-width: max-content;
-    margin: 0 0 10px;
-    white-space: nowrap;
-  }
-
-  .payment-qr-caption {
-    white-space: nowrap;
-  }
-}
-</style>
+      .payment-qr-caption {
+        white-space: nowrap;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="top-nav">
@@ -147,7 +113,6 @@
       </a>
     </div>
 
-    <!-- 桌面导航 -->
     <nav class="nav-links desktop-nav">
       <a href="index.html" data-i18n="nav_home">Home</a>
       <a href="about.html" data-i18n="nav_about">About</a>
@@ -155,31 +120,29 @@
       <a href="network.html" data-i18n="nav_network">Network</a>
       <a href="download.html" data-i18n="nav_download">Download</a>
       <a href="api-docs-index.html">
-    <span class="lang-block lang-en">API Docs</span>
-    <span class="lang-block lang-zh">API 文档</span>
-  </a>
+        <span class="lang-block lang-en">API Docs</span>
+        <span class="lang-block lang-zh">API 文档</span>
+      </a>
       <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
       <a href="contact.html" data-i18n="nav_contact" class="active">Contact</a>
     </nav>
 
-    <!-- 右侧按钮 -->
     <div class="header-actions">
       <button id="lang-toggle" class="lang-toggle">中文</button>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
     </div>
   </header>
 
-  <!-- 手机菜单 -->
   <nav class="mobile-nav" id="mobileNav">
     <a href="index.html" data-i18n="nav_home">Home</a>
     <a href="about.html" data-i18n="nav_about">About</a>
     <a href="services.html" data-i18n="nav_services">Services</a>
     <a href="network.html" data-i18n="nav_network">Network</a>
     <a href="download.html" data-i18n="nav_download">Download</a>
-   <a href="api-docs-index.html">
-    <span class="lang-block lang-en">API Docs</span>
-    <span class="lang-block lang-zh">API 文档</span>
-  </a>
+    <a href="api-docs-index.html">
+      <span class="lang-block lang-en">API Docs</span>
+      <span class="lang-block lang-zh">API 文档</span>
+    </a>
     <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
     <a href="contact.html" data-i18n="nav_contact">Contact</a>
   </nav>
@@ -229,10 +192,8 @@
             and the cities or postal codes you would like to cover.
           </p>
 
-          <!-- Parcel Pre-Alert -->
           <div class="prealert-link contact-prealert">
             <span class="prealert-tag" data-i18n="contact_prealert_tag">[🇨🇳🇨🇦China→Canada Consolidation]</span><br>
-
             <a
               href="https://forms.gle/Vng6jKULNLXxtZuL6"
               target="_blank"
@@ -243,13 +204,11 @@
             </a>
           </div>
 
-          <!-- Platform Portal -->
           <div class="prealert-link contact-prealert">
             <span class="prealert-tag" data-i18n="contact_store_tag">[Courier Platform]</span><br>
-
-<span class="en-sub platform-title-hide">
-  <span data-i18n="contact_store_title">Platform Portal</span>
-</span>
+            <span class="en-sub platform-title-hide">
+              <span data-i18n="contact_store_title">Platform Portal</span>
+            </span>
             <a
               href="https://me.missionexpress.ca/ssadmin.php"
               target="_blank"
@@ -260,26 +219,28 @@
             </a>
           </div>
         </div>
-<div class="payment-qr-floating">
-  <div class="payment-qr-row">
-    <div class="payment-qr-text">
-      <div class="payment-qr-tag">
-        <span class="lang-block lang-en">[Pay by QR code]</span>
-        <span class="lang-block lang-zh">【扫码付款】</span>
-      </div>
 
-      <span class="payment-qr-caption">
-        <span class="lang-block lang-en">WeChat Pay / Alipay</span>
-        <span class="lang-block lang-zh">微信支付/支付宝</span>
-      </span>
-    </div>
+        <div class="payment-qr-floating">
+          <div class="payment-qr-row">
+            <div class="payment-qr-text">
+              <div class="payment-qr-tag">
+                <span class="lang-block lang-en">[Pay by QR code]</span>
+                <span class="lang-block lang-zh">【扫码付款】</span>
+              </div>
 
-    <div class="payment-qr-box">
-      <img src="img/payment-CAD.png" alt="Payment QR Code" class="payment-qr-image" />
-    </div>
-  </div>
-</div>
-        <div class="contact-form">
+              <span class="payment-qr-caption">
+                <span class="lang-block lang-en">WeChat Pay / Alipay</span>
+                <span class="lang-block lang-zh">微信支付/支付宝</span>
+              </span>
+            </div>
+
+            <div class="payment-qr-box">
+              <img src="img/payment-CAD.png" alt="Payment QR Code" class="payment-qr-image" />
+            </div>
+          </div>
+        </div>
+
+        <div id="faq-form" class="contact-form">
           <h2 data-i18n="contact_form_title">Send us a message</h2>
           <p data-i18n="contact_form_note">We will get back to you shortly.</p>
 
@@ -299,6 +260,8 @@
               <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
             </label>
 
+            <input type="hidden" name="entry_point" id="entry_point" value="contact-page" />
+
             <button type="submit" class="btn primary" data-i18n="contact_form_button">
               Send message
             </button>
@@ -317,12 +280,12 @@
           <span class="lang-block lang-zh">责任与保险条款</span>
         </a>
       </p>
-       <p>
-      <a href="api-docs-index.html">
-        <span class="lang-block lang-en">API Documentation</span>
-        <span class="lang-block lang-zh">API 接口文档</span>
-      </a>
-    </p>
+      <p>
+        <a href="api-docs-index.html">
+          <span class="lang-block lang-en">API Documentation</span>
+          <span class="lang-block lang-zh">API 接口文档</span>
+        </a>
+      </p>
     </div>
   </footer>
 
@@ -331,7 +294,29 @@
   <script>
     (function () {
       const form = document.getElementById('contact-form');
+      const faqBlock = document.getElementById('faq-form');
+      const entryPointInput = document.getElementById('entry_point');
+
       if (!form) return;
+
+      if (window.location.hash === '#faq-form') {
+        if (entryPointInput) {
+          entryPointInput.value = 'FAQ';
+        }
+
+        window.addEventListener('load', function () {
+          setTimeout(function () {
+            if (faqBlock) {
+              faqBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            const firstInput = form.querySelector('input[name="name"]');
+            if (firstInput) {
+              firstInput.focus();
+            }
+          }, 120);
+        });
+      }
 
       form.addEventListener('submit', async function (event) {
         event.preventDefault();
