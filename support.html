@@ -12,94 +12,166 @@
       margin: 0 auto;
       padding: 32px 20px;
       color: #222;
+      background: #f5f5f5;
     }
+
+    .container {
+      background: #ffffff;
+      padding: 36px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
     h1 {
       font-size: 32px;
       margin-bottom: 8px;
     }
+
     h2 {
       margin-top: 32px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 8px;
     }
-    .card {
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #0066cc;
+    }
+
+    .app-card {
       border: 1px solid #ddd;
       border-radius: 10px;
       padding: 18px;
       margin: 16px 0;
       background: #fafafa;
     }
-    a {
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .link-card {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fafafa;
+      text-decoration: none;
       color: #0066cc;
+      font-weight: 600;
+    }
+
+    .link-card:hover {
+      background: #f0f6ff;
+    }
+
+    .note {
+      color: #555;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
+  <div class="container">
 
-  <h1>Mission Express App Support</h1>
-  <p>
-    Welcome to the official support page for Mission Express Logistics Inc. apps.
-    This page provides support information for Mission Rush and Mission Go.
-  </p>
+    <h1>Mission Express App Support</h1>
 
-  <h2>Supported Apps</h2>
-
-  <div class="card">
-    <h3>Mission Rush</h3>
     <p>
-      Mission Rush is the customer app for requesting delivery services, creating orders,
-      managing account information, and viewing order progress.
+      Welcome to the official support page for Mission Express Logistics Inc. apps.
+      This page provides support information for Mission Rush and Mission Go.
     </p>
-  </div>
 
-  <div class="card">
-    <h3>Mission Go</h3>
+    <h2>Supported Apps</h2>
+
+    <div class="app-card">
+      <h3>Mission Rush</h3>
+      <p>
+        Mission Rush is the customer app for requesting delivery services, creating orders,
+        managing account information, and viewing order progress.
+      </p>
+    </div>
+
+    <div class="app-card">
+      <h3>Mission Go</h3>
+      <p>
+        Mission Go is the driver and operations app for handling delivery tasks,
+        parcel pickup, cargo pickup, and related logistics workflows.
+      </p>
+    </div>
+
+    <h2>Contact Information</h2>
+
+    <p><strong>Company:</strong> Mission Express Logistics Inc.</p>
+    <p><strong>Address:</strong> 443 Lillooet St W, Moose Jaw, SK, S6H 4Z4, Canada</p>
+    <p><strong>Email:</strong> <a href="mailto:info@missionexpress.ca">info@missionexpress.ca</a></p>
+    <p><strong>Phone:</strong> <a href="tel:+18254255001">(825) 425-5001</a></p>
+    <p><strong>Business Hours:</strong> Monday to Friday, 10:00 AM – 6:00 PM CST</p>
+    <p><strong>Website:</strong> <a href="https://www.missionexpress.ca/">https://www.missionexpress.ca/</a></p>
+
+    <h2>How We Can Help</h2>
+
+    <ul>
+      <li>Login and account access issues</li>
+      <li>Order creation and delivery questions</li>
+      <li>Shipment tracking issues</li>
+      <li>Payment or refund support</li>
+      <li>Driver account and delivery task support</li>
+      <li>Bug reports and technical issues</li>
+      <li>General feedback and feature requests</li>
+    </ul>
+
+    <h2>Before Contacting Support</h2>
+
     <p>
-      Mission Go is the driver and operations app for handling delivery tasks,
-      parcel pickup, cargo pickup, and related logistics workflows.
+      To help us resolve your issue faster, please include the following information
+      when contacting support:
     </p>
+
+    <ul>
+      <li>App name: Mission Rush or Mission Go</li>
+      <li>App version</li>
+      <li>Device model</li>
+      <li>iOS version</li>
+      <li>Order number or tracking number, if applicable</li>
+      <li>Screenshots of the issue, if available</li>
+    </ul>
+
+    <h2>Response Time</h2>
+
+    <p>We aim to respond within 1–2 business days.</p>
+
+    <h2>Additional Links</h2>
+
+    <div class="link-grid">
+      <a class="link-card" href="https://www.missionexpress.ca/mission-rush-privacy.html">
+        Mission Rush Privacy Policy
+      </a>
+
+      <a class="link-card" href="https://www.missionexpress.ca/privacy.html">
+        Mission Go Privacy Policy
+      </a>
+
+      <a class="link-card" href="https://www.missionexpress.ca/delete-account.html">
+        Account Deletion Request
+      </a>
+
+      <a class="link-card" href="https://www.missionexpress.ca/">
+        Main Website
+      </a>
+    </div>
+
+    <p class="note">
+      Please contact us by email if you need help with account access, order issues,
+      payment questions, refunds, delivery support, or technical problems.
+    </p>
+
   </div>
-
-  <h2>Contact Information</h2>
-  <p><strong>Company:</strong> Mission Express Logistics Inc.</p>
-  <p><strong>Address:</strong> 443 Lillooet St W, Moose Jaw, SK, S6H 4Z4, Canada</p>
-  <p><strong>Email:</strong> <a href="mailto:info@missionexpress.ca">info@missionexpress.ca</a></p>
-  <p><strong>Phone:</strong> <a href="tel:+18254255001">(825) 425-5001</a></p>
-  <p><strong>Business Hours:</strong> Monday to Friday, 10:00 AM – 6:00 PM CST</p>
-  <p><strong>Website:</strong> <a href="https://www.missionexpress.ca/">https://www.missionexpress.ca/</a></p>
-
-  <h2>How We Can Help</h2>
-  <ul>
-    <li>Login and account access issues</li>
-    <li>Order creation and delivery questions</li>
-    <li>Shipment tracking issues</li>
-    <li>Payment or refund support</li>
-    <li>Driver account and delivery task support</li>
-    <li>Bug reports and technical issues</li>
-    <li>General feedback and feature requests</li>
-  </ul>
-
-  <h2>Before Contacting Support</h2>
-  <p>
-    To help us resolve your issue faster, please include the following information
-    when contacting support:
-  </p>
-  <ul>
-    <li>App name: Mission Rush or Mission Go</li>
-    <li>App version</li>
-    <li>Device model</li>
-    <li>iOS version</li>
-    <li>Order number or tracking number, if applicable</li>
-    <li>Screenshots of the issue, if available</li>
-  </ul>
-
-  <h2>Response Time</h2>
-  <p>We aim to respond within 1–2 business days.</p>
-
-  <h2>Additional Links</h2>
-  <p><a href="https://www.missionexpress.ca/privacy.html">Privacy Policy</a></p>
-  <p><a href="https://www.missionexpress.ca/delete-account.html">Account Deletion Request</a></p>
-  <p><a href="https://www.missionexpress.ca/">Main Website</a></p>
-
 </body>
 </html>
