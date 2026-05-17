@@ -34,7 +34,8 @@
     }
 
     h3 {
-      margin-top: 22px;
+      margin-top: 0;
+      margin-bottom: 10px;
     }
 
     a {
@@ -76,6 +77,36 @@
       color: #555;
       font-size: 14px;
     }
+
+    .copy-box {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 14px 16px;
+      background: #ffffff;
+      margin-top: 12px;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .link-card {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fafafa;
+      text-decoration: none;
+      color: #0066cc;
+      font-weight: 600;
+    }
+
+    .link-card:hover {
+      background: #f0f6ff;
+    }
   </style>
 </head>
 <body>
@@ -108,25 +139,55 @@
 
     <p>
       To request deletion of your account, please contact Mission Express Logistics Inc.
-      by email using the email address below:
+      by email using the information below.
     </p>
 
-    <p>
-      <strong>Email:</strong>
-      <a href="mailto:info@missionexpress.ca?subject=Account%20Deletion%20Request">
-        info@missionexpress.ca
-      </a>
-    </p>
+    <div class="card">
+      <h3>Email Request</h3>
 
-    <p>
-      You may also click the button below to start an email request:
-    </p>
+      <p>
+        Please send your account deletion request to:
+      </p>
 
-    <p>
-      <a class="button" href="mailto:info@missionexpress.ca?subject=Account%20Deletion%20Request">
-        Request Account Deletion
-      </a>
-    </p>
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:info@missionexpress.ca">info@missionexpress.ca</a>
+      </p>
+
+      <p>
+        <strong>Email Subject:</strong> Account Deletion Request
+      </p>
+
+      <div class="copy-box">
+        <p><strong>Suggested Email Content:</strong></p>
+        <p>
+          Hello Mission Express Support,<br><br>
+          I would like to request deletion of my Mission Express app account.<br><br>
+          App name: Mission Rush / Mission Go<br>
+          Full name:<br>
+          Registered phone number:<br>
+          Registered email address:<br>
+          User ID / Driver ID / Account ID, if known:<br><br>
+          Please process my account deletion request.<br><br>
+          Thank you.
+        </p>
+      </div>
+
+      <p>
+        You may copy the email address, subject, and suggested content above into your preferred email app.
+      </p>
+
+      <p>
+        <a class="button" href="mailto:info@missionexpress.ca?subject=Account%20Deletion%20Request">
+          Open Email App
+        </a>
+      </p>
+
+      <p class="small">
+        If the button does not open, please manually send an email to info@missionexpress.ca
+        with the subject “Account Deletion Request”.
+      </p>
+    </div>
 
     <h2>Information to Include</h2>
 
@@ -222,21 +283,23 @@
 
     <h2>Related Links</h2>
 
-    <p>
-      <a href="https://www.missionexpress.ca/support.html">Mission Express App Support</a>
-    </p>
+    <div class="link-grid">
+      <a class="link-card" href="https://www.missionexpress.ca/support.html">
+        Mission Express App Support
+      </a>
 
-    <p>
-      <a href="https://www.missionexpress.ca/mission-rush-privacy.html">Mission Rush Privacy Policy</a>
-    </p>
+      <a class="link-card" href="https://www.missionexpress.ca/mission-rush-privacy.html">
+        Mission Rush Privacy Policy
+      </a>
 
-    <p>
-      <a href="https://www.missionexpress.ca/privacy.html">Mission Go Privacy Policy</a>
-    </p>
+      <a class="link-card" href="https://www.missionexpress.ca/privacy.html">
+        Mission Go Privacy Policy
+      </a>
 
-    <p>
-      <a href="https://www.missionexpress.ca/">Main Website</a>
-    </p>
+      <a class="link-card" href="https://www.missionexpress.ca/">
+        Main Website
+      </a>
+    </div>
 
     <p class="small">
       Last updated: May 2026
