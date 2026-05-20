@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mission Express API Documentation</title>
+  <title>Mission Express V2 API Documentation</title>
   <link rel="stylesheet" href="css/styles.css" />
   <style>
     .page-hero.docs-hero {
@@ -13,145 +13,41 @@
         radial-gradient(circle at 100% 0, rgba(255, 179, 71, 0.35), transparent 55%),
         #050814;
     }
-    .docs-kicker {
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      color: #ffb347;
-      margin-bottom: 0.75rem;
-    }
-    .docs-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      margin-bottom: 0.7rem;
-    }
-    .docs-sub {
-      max-width: 760px;
-      color: #d2d5ff;
-      margin-bottom: 1rem;
-    }
-    .docs-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-    .docs-toc {
-      position: sticky;
-      top: 78px;
-      background: #121527;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 1rem;
-      padding: 1.2rem;
-    }
+    .docs-kicker { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.78rem; color: #ffb347; margin-bottom: 0.75rem; }
+    .docs-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 0.7rem; }
+    .docs-sub { max-width: 860px; color: #d2d5ff; margin-bottom: 1rem; }
+    .docs-toolbar { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+    .docs-toc { position: sticky; top: 78px; background: #121527; border: 1px solid rgba(255,255,255,0.08); border-radius: 1rem; padding: 1.2rem; }
     .docs-toc h3 { margin-bottom: 0.8rem; }
-    .docs-toc a {
-      display: block;
-      color: #d1d4ff;
-      text-decoration: none;
-      padding: 0.45rem 0.55rem;
-      border-radius: 0.65rem;
-    }
+    .docs-toc a { display: block; color: #d1d4ff; text-decoration: none; padding: 0.45rem 0.55rem; border-radius: 0.65rem; }
     .docs-toc a:hover { background: rgba(255,255,255,0.06); }
-    .docs-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
-      gap: 1.5rem;
-      align-items: start;
-    }
+    .docs-layout { display: grid; grid-template-columns: minmax(0, 270px) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
     .docs-narrow { max-width: 1180px; }
     .docs-section { padding-top: 1.25rem; padding-bottom: 1.25rem; }
-    .docs-card {
-      background: #121527;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
+    .docs-card { background: #121527; border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.05rem; }
     .docs-card h2 { margin-bottom: 0.8rem; }
-    .docs-card h3 { margin: 1.4rem 0 0.75rem; }
+    .docs-card h3 { margin: 1.35rem 0 0.75rem; }
     .docs-card p, .docs-card li { color: #d1d4ff; }
-    .docs-kv-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .docs-kv {
-      border-radius: 0.9rem;
-      background: rgba(9, 12, 27, 0.96);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 1rem;
-    }
+    .docs-kv-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; margin-top: 1rem; }
+    .docs-kv { border-radius: 0.9rem; background: rgba(9, 12, 27, 0.96); border: 1px solid rgba(255,255,255,0.06); padding: 1rem; }
     .docs-k { font-size: 0.8rem; color: #9ea2cf; text-transform: uppercase; letter-spacing: .08em; }
     .docs-v { margin-top: 0.45rem; font-weight: 700; word-break: break-all; }
-    .docs-callout {
-      margin-top: 1rem;
-      border-left: 4px solid #ffb347;
-      padding: 0.9rem 1rem;
-      border-radius: 0.8rem;
-      background: rgba(255, 179, 71, 0.08);
-      color: #f7f7ff;
-    }
-    .docs-table-wrap {
-      overflow: auto;
-      border-radius: 0.9rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-top: 0.8rem;
-    }
-    .docs-table-wrap table { width: 100%; border-collapse: collapse; min-width: 640px; }
-    .docs-table-wrap th, .docs-table-wrap td {
-      padding: 0.8rem 0.9rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      vertical-align: top;
-    }
-    .docs-table-wrap th { background: rgba(255,255,255,0.04); }
+    .docs-callout { margin-top: 1rem; border-left: 4px solid #ffb347; padding: 0.9rem 1rem; border-radius: 0.8rem; background: rgba(255, 179, 71, 0.08); color: #f7f7ff; }
+    .docs-danger { border-left-color: #ff4fa3; background: rgba(255, 79, 163, 0.09); }
+    .docs-table-wrap { overflow: auto; border-radius: 0.9rem; border: 1px solid rgba(255,255,255,0.08); margin-top: 0.8rem; }
+    .docs-table-wrap table { width: 100%; border-collapse: collapse; min-width: 700px; }
+    .docs-table-wrap th, .docs-table-wrap td { padding: 0.8rem 0.9rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; color:#d1d4ff; }
+    .docs-table-wrap th { background: rgba(255,255,255,0.04); color:#fff; }
     .docs-table-wrap tr:last-child td { border-bottom: none; }
-    .docs-card pre {
-      overflow: auto;
-      background: #050814;
-      color: #f7f7ff;
-      border-radius: 0.9rem;
-      padding: 1rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-top: 0.8rem;
-    }
+    .docs-card pre { overflow: auto; background: #050814; color: #f7f7ff; border-radius: 0.9rem; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); margin-top: 0.8rem; }
     .docs-card code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
     .endpoint-head { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.7rem; }
-    .method-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.38rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(100, 214, 116, 0.12);
-      color: #7ff08f;
-      border: 1px solid rgba(100, 214, 116, 0.25);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-    .path-chip {
-      display: inline-block;
-      padding: 0.35rem 0.65rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-    }
+    .method-chip { display: inline-flex; align-items: center; justify-content: center; padding: 0.38rem 0.7rem; border-radius: 999px; background: rgba(100, 214, 116, 0.12); color: #7ff08f; border: 1px solid rgba(100, 214, 116, 0.25); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; }
+    .path-chip { display: inline-block; padding: 0.35rem 0.65rem; border-radius: 999px; background: rgba(255,255,255,0.08); color: #fff; word-break: break-all; }
+    .status-chip { display:inline-block; padding:.2rem .5rem; border-radius:999px; background:rgba(255,255,255,.08); color:#fff; font-size:.86rem; }
     .docs-note { margin-top: 0.8rem; font-size: 0.9rem; color: #9ea2cf; }
-    .docs-lang-links { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.8rem; }
-    .docs-summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1.4rem;
-    }
-    .docs-summary-card {
-      padding: 1.2rem;
-      border-radius: 1rem;
-      background: #121527;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
+    .docs-summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.4rem; }
+    .docs-summary-card { padding: 1.2rem; border-radius: 1rem; background: #121527; border: 1px solid rgba(255,255,255,0.08); }
     .docs-summary-card p { color: #d1d4ff; margin-top: 0.5rem; }
     .docs-links { display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem; }
     .footer .footer-inner a { color: inherit; }
@@ -160,17 +56,12 @@
       .docs-toc { position: static; top: auto; }
       .docs-kv-grid { grid-template-columns: 1fr; }
     }
-  </style>
+</style>
 </head>
 <body>
 
   <header class="top-nav">
-    <div class="logo-wrap">
-      <a href="index.html">
-        <img src="img/logo.png" alt="Mission Go logo" class="logo" />
-      </a>
-    </div>
-
+    <div class="logo-wrap"><a href="index.html"><img src="img/logo.png" alt="Mission Go logo" class="logo" /></a></div>
     <nav class="nav-links desktop-nav">
       <a href="index.html"><span class="lang-block lang-en">Home</span><span class="lang-block lang-zh">首页</span></a>
       <a href="about.html"><span class="lang-block lang-en">About</span><span class="lang-block lang-zh">关于我们</span></a>
@@ -181,13 +72,8 @@
       <a href="https://mission-express.square.site/" target="_blank" rel="noopener"><span class="lang-block lang-en">Online Store</span><span class="lang-block lang-zh">在线商店</span></a>
       <a href="contact.html"><span class="lang-block lang-en">Contact</span><span class="lang-block lang-zh">联系</span></a>
     </nav>
-
-    <div class="header-actions">
-      <button id="lang-toggle" class="lang-toggle">中文</button>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
-    </div>
+    <div class="header-actions"><button id="lang-toggle" class="lang-toggle">中文</button><button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button></div>
   </header>
-
   <nav class="mobile-nav" id="mobileNav">
     <a href="index.html"><span class="lang-block lang-en">Home</span><span class="lang-block lang-zh">首页</span></a>
     <a href="about.html"><span class="lang-block lang-en">About</span><span class="lang-block lang-zh">关于我们</span></a>
@@ -198,379 +84,123 @@
     <a href="https://mission-express.square.site/" target="_blank" rel="noopener"><span class="lang-block lang-en">Online Store</span><span class="lang-block lang-zh">在线商店</span></a>
     <a href="contact.html"><span class="lang-block lang-en">Contact</span><span class="lang-block lang-zh">联系</span></a>
   </nav>
-
   <div class="nav-backdrop" id="navBackdrop"></div>
+
 
   <main>
     <section class="page-hero docs-hero">
       <div class="container">
-        <p class="docs-kicker">Mission Express API Documentation</p>
-        <h1 class="docs-title">Mission Express API Documentation</h1>
-        <p class="docs-sub">A web-ready version of the uploaded source API document, restyled to match the Mission Express website header and footer.</p>
-        <div class="docs-toolbar">
-          <a href="api-docs-cn.html" class="btn primary">中文版</a>
-          <a href="api-docs-index.html" class="btn ghost"><span class="lang-block lang-en">Back to API Index</span><span class="lang-block lang-zh">返回 API 首页</span></a>
-        </div>
+        <p class="docs-kicker">Mission Express V2 API</p>
+        <h1 class="docs-title">Mission Express V2 API Documentation</h1>
+        <p class="docs-sub">V2-only production API documentation. The only production API base URL in this document is <code>https://v2-api.missionexpress.ca</code>. V1 / Legacy API references have been removed.</p>
+        <div class="docs-toolbar"><a href="api-docs-cn.html" class="btn primary">中文版</a><a href="api-docs-index.html" class="btn ghost">Back to API Index</a></div>
       </div>
     </section>
-
-    <section class="section dark docs-section">
-      <div class="section-inner docs-layout">
-        <aside class="docs-toc">
-          <h3><span class="lang-block lang-en">Contents</span><span class="lang-block lang-zh">目录</span></h3>
-          <a href="#overview">Overview</a><a href="#auth">Authentication & Signature</a><a href="#response">Response Format</a><a href="#pdf-viewer">PDF Viewer</a><a href="#create-order">Create Order</a><a href="#cancel-order">Cancel Order</a><a href="#get-pdf-token">Get PDF Token / URL</a><a href="#order-detail">Order Detail</a><a href="#missionrush-status">Mission Rush Status Reference</a>
-        </aside>
-        <div>
-          
-<section id="overview" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card">
-      <h2>Overview</h2>
-      <p>This page reorganizes the uploaded source document into a public-facing web version. Except for the PDF viewer endpoint, all endpoints use HTTP <strong>POST</strong>, and both requests and responses use UTF-8 encoded JSON.</p>
-      <div class="docs-kv-grid">
-        <div class="docs-kv"><div class="docs-k">Production Base URL</div><div class="docs-v"><code>https://me.missionexpress.ca/api/post/out</code></div></div>
-        <div class="docs-kv"><div class="docs-k">Request Header</div><div class="docs-v"><code>Content-Type: application/x-www-form-urlencoded</code></div></div>
-      </div>
-      <div class="docs-callout">Endpoint names and parameter names are preserved from the uploaded source document; this version primarily improves layout and readability.</div>
-    </div>
-  </div>
-</section>
-
-<section id="auth" class="section docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card">
-      <h2>Authentication & Signature</h2>
-      <p><code>app_key</code> and <code>app_secret</code> are issued by the platform. Business parameters must first be converted to a JSON string and then submitted in the <code>data</code> field.</p>
-      <p>Signature rule:</p>
-      <pre><code>sign = SHA256(request_json + "app_secret=" + app_secret)</code></pre>
-      <p>PHP example:</p>
-      <pre><code>private function createSign(string $request_str, string $key) {
-    return hash("sha256", $request_str . "app_secret=" . $key);
-}</code></pre>
-      <h3>Common Request Fields</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
-        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
-        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
-      </tbody></table></div>
-    </div>
-  </div>
-</section>
-
-<section id="response" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card">
-      <h2>Unified Response Format</h2>
-      <p>When <code>code = 1</code>, the request is successful; any other value represents an error.</p>
-      <pre><code>{
+    <section class="section dark docs-section"><div class="section-inner docs-layout"><aside class="docs-toc"><h3>目录 / Contents</h3><a href="#overview">Overview</a><a href="#base-url">Base URL</a><a href="#auth">Authentication</a><a href="#response">Response Format</a><a href="#module-status">Module Status</a><a href="#pricing">Pricing</a><a href="#orders">Orders</a><a href="#send-cargo">Send / Cargo</a><a href="#food-grocery">Food / Grocery</a><a href="#ship-parcel">Ship Parcel</a><a href="#hitch">Intercity Hitch</a><a href="#consolidation">Consolidation</a><a href="#wallet-payment">Wallet & Payments</a><a href="#refund">Refunds</a><a href="#mission-go">Mission Go</a><a href="#status">Status Reference</a><a href="#errors">Error Codes</a><a href="#deployment">Release Checklist</a></aside><div>
+      <section id="overview" class="docs-card">
+        <h2>Overview</h2><p>This document describes the Mission Express / Mission Rush / Mission Go V2 API surface: module switches, quoting, order creation, payments, refunds, Ship Parcel, Consolidation, Intercity Hitch, and driver workflow states.</p>
+        <div class="docs-callout docs-danger">This is a V2-only document and only shows current V2 production APIs. Legacy API documentation is not included on this page.</div>
+        <div class="docs-kv-grid"><div class="docs-kv"><div class="docs-k">Document Version</div><div class="docs-v">V2-only / 2026-05-20</div></div><div class="docs-kv"><div class="docs-k">Systems</div><div class="docs-v">Mission Rush / Mission Go / V2 Admin</div></div></div>
+      </section>
+      <section id="base-url" class="docs-card"><h2>Base URL</h2>
+        <div class="docs-kv-grid"><div class="docs-kv"><div class="docs-k">Production Base URL</div><div class="docs-v"><code>https://v2-api.missionexpress.ca</code></div></div><div class="docs-kv"><div class="docs-k">Mission Rush API Pattern</div><div class="docs-v"><code>/index.php?s=/api/post/missionrush/{action}</code></div></div><div class="docs-kv"><div class="docs-k">Hitch API Pattern</div><div class="docs-v"><code>/index.php?s=/api/post/hitch/{action}</code></div></div><div class="docs-kv"><div class="docs-k">Request Content-Type</div><div class="docs-v"><code>application/x-www-form-urlencoded</code></div></div></div>
+        <p class="docs-note">Except for file downloads, images, and external redirects, V2 App APIs are POST based.</p></section>
+      <section id="auth" class="docs-card"><h2>Authentication</h2><p>V2 app APIs identify users by <code>user_id + token</code> or drivers by <code>rider_id + token</code>. Admin-only APIs should not be published in public API documentation.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Scenario</th><th>Required fields</th><th>Notes</th></tr></thead><tbody><tr><td>Mission Rush customer</td><td><code>user_id</code>, <code>token</code></td><td>Customer orders, wallet, refund, address, and profile APIs.</td></tr><tr><td>Mission Go driver</td><td><code>rider_id</code>, <code>token</code></td><td>Driver online, accepting, pickup, delivery, and GPS workflows.</td></tr><tr><td>Public config</td><td>Depends on endpoint</td><td>Module status and selected pricing endpoints may be public; confirm before release.</td></tr></tbody></table></div>
+        <pre><code>curl -X POST "https://v2-api.missionexpress.ca/index.php?s=/api/post/missionrush/myOrders" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "user_id=14&token=USER_TOKEN&page=1&list_rows=20"</code></pre>
+      </section>
+      <section id="response" class="docs-card"><h2>Unified Response Format</h2><p><code>code = 1</code> means success. <code>code = 0</code> or any other value means failure. The user-facing error message is returned in <code>msg</code>.</p><pre><code>{
   "code": 1,
   "msg": "ok",
-  "time": "1690796144",
-  "data": {
-    "orderNo": "491d930ef328d4ec142233c82cc28816",
-    "time": 1690796144
-  }
-}</code></pre>
-      <h3>Error Codes</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody>
-        <tr><td>1001</td><td>Missing required parameter: sign</td></tr>
-        <tr><td>1003</td><td>Failed to parse request data</td></tr>
-        <tr><td>1004</td><td>Missing required parameter: app_key</td></tr>
-        <tr><td>1005</td><td>app_key does not exist</td></tr>
-        <tr><td>1006</td><td>Signature verification failed</td></tr>
-        <tr><td>0</td><td>General error</td></tr>
-      </tbody></table></div>
-    </div>
-  </div>
-</section>
-
-<section id="pdf-viewer" class="section docs-section">
-  <div class="section-inner docs-narrow">
+  "time": 1779227065,
+  "data": {}
+}</code></pre></section>
+      
     <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">GET</span><code class="path-chip">/pdf</code></div>
-      <h2>PDF Viewer</h2>
-      <p>Displays the PDF label or document. According to the uploaded source, this is the only endpoint that uses GET.</p>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>token</td><td>Yes</td><td>string</td><td>Token returned by the Get PDF URL / token endpoint</td></tr>
-        <tr><td>order_no</td><td>Yes</td><td>string</td><td>Logistics order number; separate multiple values with commas</td></tr>
-      </tbody></table></div>
-      <p class="docs-note">For additional error handling, refer to the common error-code rules above.</p>
-    </div>
-  </div>
-</section>
-
-<section id="create-order" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/create</code></div>
-      <h2>Create Order</h2>
-      <p>Creates a new order.</p>
-      <h3>Common Request Fields</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
-        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
-        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
-      </tbody></table></div>
-      <h3>Business Parameters</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>shop_order_no</td><td>Yes</td><td>string</td><td>Merchant order number</td></tr>
-        <tr><td>goods_desc</td><td>No</td><td>string</td><td>Package/item description</td></tr>
-        <tr><td>from_username</td><td>Yes</td><td>string</td><td>Sender name</td></tr>
-        <tr><td>from_mobile</td><td>Yes</td><td>string</td><td>Sender phone number</td></tr>
-        <tr><td>from_province</td><td>No</td><td>string</td><td>Sender province</td></tr>
-        <tr><td>from_city</td><td>No</td><td>string</td><td>Sender city</td></tr>
-        <tr><td>from_address</td><td>No</td><td>string</td><td>Sender address</td></tr>
-        <tr><td>from_address1</td><td>No</td><td>string</td><td>Sender street / unit / door number</td></tr>
-        <tr><td>from_zip_code</td><td>Yes</td><td>string</td><td>Sender postal code</td></tr>
-        <tr><td>to_username</td><td>Yes</td><td>string</td><td>Recipient name</td></tr>
-        <tr><td>to_mobile</td><td>Yes</td><td>string</td><td>Recipient phone number</td></tr>
-        <tr><td>to_province</td><td>Yes</td><td>string</td><td>Recipient province</td></tr>
-        <tr><td>to_city</td><td>Yes</td><td>string</td><td>Recipient city</td></tr>
-        <tr><td>to_address</td><td>Yes</td><td>string</td><td>Recipient address</td></tr>
-        <tr><td>to_address1</td><td>Yes</td><td>string</td><td>Recipient street / unit / door number</td></tr>
-        <tr><td>to_zip_code</td><td>Yes</td><td>string</td><td>Recipient postal code</td></tr>
-        <tr><td>remark</td><td>No</td><td>string</td><td>Remarks</td></tr>
-        <tr><td>is_direct</td><td>Yes</td><td>string</td><td>Direct delivery flag: 0 = No, 1 = Yes</td></tr>
-      </tbody></table></div>
-      <h3>Sample Response</h3>
-      <pre><code>{
+      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/index.php?s=/api/post/missionrush/getModuleStatus</code></div>
+      <h2>Module Status / getModuleStatus</h2>
+      <p>Used by app home screens and feature entry points to decide whether a module is enabled, under maintenance, or disabled.</p>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>module_key</td><td>string</td><td>Optional. If omitted, returns all modules.</td></tr><tr><td>status</td><td>string</td><td><code>enabled</code>, <code>maintenance</code>, or <code>disabled</code>.</td></tr><tr><td>message</td><td>string</td><td>Message displayed when a module is unavailable.</td></tr></tbody></table></div><pre><code>{
   "code": 1,
-  "msg": "ok",
-  "time": "1773801661",
   "data": {
-    "shop_id": 1,
-    "shop_order_no": "69ba0e778bf94",
-    "order_no": "1075638798736",
-    "from_username": "aa",
-    "from_mobile": "1234567891",
-    "from_province": "aa",
-    "from_city": "bb",
-    "from_address": "sdfsd",
-    "from_address1": "sdfsd",
-    "from_zip_code": "12345",
-    "to_username": "aaab",
-    "to_mobile": "1236547896",
-    "to_province": "sdf",
-    "to_city": "sdf",
-    "to_address": "ggg",
-    "to_address1": "ss",
-    "to_zip_code": "1263",
-    "goods_desc": "包裹物品",
-    "remark": "订单备注",
-    "is_direct": 1,
-    "createtime": 1773801661,
-    "updatetime": 1773801661,
-    "id": "8"
+    "modules": {
+      "send": {"status": "enabled"},
+      "food_pickup": {"status": "maintenance"},
+      "ship_parcel": {"status": "enabled"}
+    }
   }
 }</code></pre>
     </div>
-  </div>
-</section>
 
-<section id="cancel-order" class="section docs-section">
-  <div class="section-inner docs-narrow">
+      
     <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/cancel</code></div>
-      <h2>Cancel Order</h2>
-      <p>Cancels an existing order.</p>
-      <h3>Common Request Fields</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
-        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
-        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
-      </tbody></table></div>
-      <h3>Business Parameters</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>order_no</td><td>Yes</td><td>string</td><td>Logistics order number</td></tr>
-      </tbody></table></div>
-      <h3>Sample Response</h3>
-      <pre><code>{
-  "code": 0,
-  "message": "取消成功",
-  "data": ""
-}</code></pre>
+      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/index.php?s=/api/post/missionrush/getPricingConfig</code></div>
+      <h2>Pricing Config / getPricingConfig</h2>
+      <p>Returns current Mission Rush pricing configuration for policy displays and Ship Parcel pickup fee logic.</p>
+      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>group</td><td>string</td><td>Optional. Recommended value: <code>missionrush</code>.</td></tr><tr><td>missionrush_pickup_fixed_fee_amount</td><td>number</td><td>Fixed Mission pickup fee.</td></tr><tr><td>ship_parcel_pickup_fee_amount</td><td>number</td><td>Pickup fee used by Ship Parcel.</td></tr></tbody></table></div><pre><code>group=missionrush</code></pre>
     </div>
-  </div>
-</section>
 
-<section id="get-pdf-token" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/getPdf</code></div>
-      <h2>Get Order PDF Token / URL</h2>
-      <p>Returns the URL token used to open the PDF viewer endpoint.</p>
-      <h3>Common Request Fields</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
-        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
-        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
-      </tbody></table></div>
-      <h3>Business Parameters</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>non_str</td><td>Yes</td><td>string</td><td>Random string, 6–12 characters</td></tr>
-      </tbody></table></div>
-      <h3>Sample Response</h3>
-      <pre><code>{
-  "code": 1,
-  "msg": "ok",
-  "time": "1773804544",
-  "data": {
-    "url": "http://test.jianadame.com/index.php/api/post/out/pdf?token=..."
-  }
-}</code></pre>
-    </div>
-  </div>
-</section>
-
-<section id="order-detail" class="section docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/detail</code></div>
-      <h2>Order Detail</h2>
-      <p>Returns detailed order information.</p>
-      <h3>Common Request Fields</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>Yes</td><td>string</td><td>App key issued by the platform</td></tr>
-        <tr><td>sign</td><td>Yes</td><td>string</td><td>Signature value</td></tr>
-        <tr><td>data</td><td>Yes</td><td>string</td><td>JSON string of business parameters</td></tr>
-      </tbody></table></div>
-      <h3>Business Parameters</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>
-        <tr><td>order_no</td><td>Yes</td><td>string</td><td>Courier / logistics order number</td></tr>
-      </tbody></table></div>
-      <h3>Sample Response</h3>
-      <pre><code>{
-  "code": 1,
-  "msg": "ok",
-  "time": "1773803058",
-  "data": {
-    "id": 8,
-    "type": 1,
-    "order_no": "1075638798736",
-    "shop_id": 1,
-    "shop_order_no": "69ba0e778bf94",
-    "weight": "0.00",
-    "charge_weight": "0.00",
-    "length": 0,
-    "width": 0,
-    "height": 0,
-    "goods_desc": "包裹物品",
-    "status": 0,
-    "dis_status": 0,
-    "images": null,
-    "remark": "订单备注",
-    "post_price": "0.00",
-    "order_price": "0.00",
-    "insure_amount": "0.00",
-    "insure_price": "0.00",
-    "pickup_time": 0,
-    "pay_type": "",
-    "pay_status": 0,
-    "pay_time": 0,
-    "from_username": "aa",
-    "from_mobile": "1234567891",
-    "from_province": "aa",
-    "from_city": "bb",
-    "from_address": "sdfsd",
-    "from_address1": "sdfsd",
-    "from_zip_code": "12345",
-    "to_username": "aaab",
-    "to_mobile": "1236547896",
-    "to_province": "sdf",
-    "to_city": "sdf",
-    "to_address": "ggg",
-    "to_address1": "ss",
-    "to_zip_code": "1263",
-    "delivery_num": 0,
-    "delivery_status": 0,
-    "createtime": 1773801661,
-    "updatetime": 1773801661,
-    "rider_amount": "0.00",
-    "rider_id": 0,
-    "delete_time": null,
-    "is_direct": 1
-  }
-}</code></pre>
-    </div>
-  </div>
-</section>
-
-
-<section id="missionrush-status" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card">
-      <h2>Mission Rush status reference</h2>
-      <p>This reference is intended for the Mission Rush app Orders page and other client-side order views. It summarizes the current direct-order creation logic and backend status transitions.</p>
-      <div class="docs-table-wrap"><table><thead><tr><th>post_order.status</th><th>Recommended client label</th><th>Notes</th></tr></thead><tbody>
-        <tr><td>1</td><td>Waiting for pick up</td><td>Initial status after a Mission Rush paid direct order is created successfully.</td></tr>
-        <tr><td>2</td><td>Waiting for pick up</td><td>Pending pickup / pending collection. Client apps may group it with status 1.</td></tr>
-        <tr><td>3</td><td>Delivering</td><td>Picked up and currently in delivery.</td></tr>
-        <tr><td>10</td><td>Completed</td><td>Order completed.</td></tr>
-      </tbody></table></div>
-      <h3>Recommended client grouping</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>Group</th><th>Recommended rule</th></tr></thead><tbody>
-        <tr><td>All</td><td>All orders</td></tr>
-        <tr><td>In progress</td><td><code>status in [1, 2, 3]</code></td></tr>
-        <tr><td>Completed</td><td><code>status = 10</code></td></tr>
-      </tbody></table></div>
-      <div class="docs-callout">Additional note: after a Mission Rush paid direct order is created successfully, the server returns <code>pay_status = 2</code> for successful payment, while the initial order status is <code>status = 1</code>. If your product needs “reviewed / not reviewed”, keep that as a separate client or business-layer flag rather than reusing <code>post_order.status</code>.</div>
-    </div>
-  </div>
-</section>
-
-        </div>
-      </div>
-    </section>
+      <section id="orders" class="docs-card"><h2>Orders</h2><p>The orders API powers the Mission Rush Orders page and can return unified rows for Direct, Cargo, Hitch, Consolidation, and Ship Parcel orders.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td>myOrders</td><td><code>/api/post/missionrush/myOrders</code></td><td>Paginated customer order list.</td></tr><tr><td>orderSnapshots</td><td><code>/api/post/missionrush/orderSnapshots</code></td><td>Lightweight order status refresh.</td></tr><tr><td>submitOrderReview</td><td><code>/api/post/missionrush/submitOrderReview</code></td><td>Submit order review.</td></tr></tbody></table></div>
+        <pre><code>POST https://v2-api.missionexpress.ca/index.php?s=/api/post/missionrush/myOrders
+user_id=14&token=USER_TOKEN&page=1&list_rows=20&tab=in_progress</code></pre>
+      </section>
+      <section id="send-cargo" class="docs-card"><h2>Send / Cargo</h2><p>Send is local courier delivery. Cargo is large-item / freight pickup and delivery. Distance fees should be based on platform route calculation, not front-end straight-line distance.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Module</th><th>Action</th><th>Description</th></tr></thead><tbody><tr><td>Send Quote</td><td><code>getDirectOrderQuote</code></td><td>Quote before creating a Send order.</td></tr><tr><td>Send Pay</td><td><code>createPaidDirectOrder</code></td><td>Create a paid Send order using Square / Apple Pay / Google Pay / saved card.</td></tr><tr><td>Send Wallet Pay</td><td><code>createBalancePaidDirectOrder</code></td><td>Create a Send order paid by wallet balance.</td></tr><tr><td>Cargo Pay</td><td><code>createPaidCargoOrder</code></td><td>Create a paid Cargo order.</td></tr><tr><td>Cargo Wallet Pay</td><td><code>createBalancePaidCargoOrder</code></td><td>Create a Cargo order paid by wallet balance.</td></tr></tbody></table></div></section>
+      <section id="food-grocery" class="docs-card"><h2>Food Pickup / Grocery Pickup</h2><p>Food Pickup and Grocery Pickup share the Direct delivery fulfillment flow, but use different entry points, merchant lists, and order type metadata.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Description</th></tr></thead><tbody><tr><td><code>foodPickupShops</code></td><td>Returns Food Pickup merchants.</td></tr><tr><td><code>groceryPickupShops</code></td><td>Returns Grocery Pickup merchants.</td></tr><tr><td><code>createPaidDirectOrder</code></td><td>Uses order_type / payload to distinguish Send, Food, and Grocery orders.</td></tr></tbody></table></div></section>
+      <section id="ship-parcel" class="docs-card"><h2>Ship Parcel</h2><p>Ship Parcel is a formal V2 module supporting Canada Post rates, admin quote saving, payments, and Label / Tracking status fields.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td>getShipParcelRates</td><td><code>/api/post/missionrush/getShipParcelRates</code></td><td>Fetch live Canada Post rates. Purolator can be added later.</td></tr><tr><td>createShipParcelQuoteRequest</td><td><code>/api/post/missionrush/createShipParcelQuoteRequest</code></td><td>Create a Ship Parcel quote request / draft order.</td></tr><tr><td>getShipParcelQuoteStatus</td><td><code>/api/post/missionrush/getShipParcelQuoteStatus</code></td><td>Fetch quote, payment, tracking, and label status.</td></tr><tr><td>getShipParcelPaymentQuote</td><td><code>/api/post/missionrush/getShipParcelPaymentQuote</code></td><td>Return payable amount and payment line items before checkout.</td></tr><tr><td>createPaidShipParcelOrder</td><td><code>/api/post/missionrush/createPaidShipParcelOrder</code></td><td>Pay a Ship Parcel order.</td></tr></tbody></table></div>
+        <h3>Key request fields</h3><div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>from / to</td><td>object/json string</td><td>Origin and destination data.</td></tr><tr><td>packages</td><td>array/json string</td><td>Each package includes weight_kg, length_cm, width_cm, and height_cm.</td></tr><tr><td>carrier_options</td><td>object/json string</td><td>Carrier options such as signature and coverage.</td></tr><tr><td>handoff_method</td><td>string</td><td><code>dropoff</code> or <code>pickup_from_address</code>.</td></tr><tr><td>pickup_fee_payer</td><td>string</td><td><code>customer</code> or <code>platform</code>.</td></tr></tbody></table></div>
+        <h3>Label / Tracking fields</h3><div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td>tracking_no</td><td>Carrier tracking number.</td></tr><tr><td>label_url</td><td>Label PDF or image URL.</td></tr><tr><td>carrier_label_status</td><td>Examples: <code>ready</code>, <code>checking_config</code>, <code>generated</code>, <code>failed</code>, <code>pending_api_integration</code>.</td></tr><tr><td>carrier_label_error</td><td>Label generation failure message.</td></tr></tbody></table></div></section>
+      <section id="hitch" class="docs-card"><h2>Intercity Hitch</h2><p>Hitch uses the separate <code>/api/post/hitch</code> controller path for city-pair routes, driver trips, matching, quoting, and paid order creation.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td>cities</td><td><code>/api/post/hitch/cities</code></td><td>City list.</td></tr><tr><td>routes</td><td><code>/api/post/hitch/routes</code></td><td>Enabled routes and prices.</td></tr><tr><td>trips</td><td><code>/api/post/hitch/trips</code></td><td>Driver-posted trips.</td></tr><tr><td>quoteOrder</td><td><code>/api/post/hitch/quoteOrder</code></td><td>Pre-payment quote.</td></tr><tr><td>createPaidHitchOrder</td><td><code>/api/post/hitch/createPaidHitchOrder</code></td><td>Create paid Hitch order.</td></tr></tbody></table></div></section>
+      <section id="consolidation" class="docs-card"><h2>Consolidation</h2><p>Consolidation covers customer registration, warehouse addresses, package registration, package lists, consolidation orders, quotes, and payment.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Description</th></tr></thead><tbody><tr><td>createChinaConsolidationRegistration</td><td>Create / update consolidation customer profile.</td></tr><tr><td>chinaConsolidationWarehouses</td><td>Return available warehouses and receiving addresses.</td></tr><tr><td>getChinaConsolidationDashboard</td><td>Return customer dashboard summary.</td></tr><tr><td>createChinaPackage</td><td>Register package.</td></tr><tr><td>listChinaPackages</td><td>List packages.</td></tr><tr><td>createChinaConsolidationOrder</td><td>Create consolidation outbound order.</td></tr><tr><td>listChinaOrders</td><td>List consolidation orders.</td></tr><tr><td>getChinaOrderPaymentQuote</td><td>Get payment quote.</td></tr><tr><td>payChinaOrderByBalance</td><td>Pay by wallet balance.</td></tr></tbody></table></div></section>
+      <section id="wallet-payment" class="docs-card"><h2>Wallet & Payments</h2><p>V2 supports Square card, saved card, Apple Pay, Google Pay, account balance, and mixed payment. iOS should show Apple Pay only; Android should show Google Pay only.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Description</th></tr></thead><tbody><tr><td>listWalletPaymentMethods</td><td>List saved cards.</td></tr><tr><td>createWalletTopUp</td><td>Top up by Square source id.</td></tr><tr><td>createWalletTopUpWithSavedCard</td><td>Top up by saved card.</td></tr><tr><td>createPaidDirectOrder / createPaidCargoOrder / createPaidShipParcelOrder</td><td>Create externally paid orders.</td></tr><tr><td>createBalancePaidDirectOrder / createBalancePaidCargoOrder / payChinaOrderByBalance</td><td>Create balance-paid orders.</td></tr></tbody></table></div></section>
+      <section id="refund" class="docs-card"><h2>Refunds</h2><p>Call refund preview first to check eligibility, amount, and rule. Then submit the refund request.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td>refundPreview</td><td><code>/api/post/missionrush/refundPreview</code></td><td>Returns can_refund, refund_amount, rule, and message.</td></tr><tr><td>requestRefund</td><td><code>/api/post/missionrush/requestRefund</code></td><td>Submits refund request and may process Square / balance refund immediately when eligible.</td></tr></tbody></table></div>
+        <div class="docs-table-wrap"><table><thead><tr><th>Rule</th><th>Description</th></tr></thead><tbody><tr><td>already_refunded</td><td>Order was already refunded.</td></tr><tr><td>completed_no_refund</td><td>Completed orders are not refundable.</td></tr><tr><td>no_refund_after_arrival</td><td>No refund after driver arrival.</td></tr><tr><td>full_refund</td><td>Eligible for full refund.</td></tr><tr><td>base_fee_deducted</td><td>Base fee is deducted after driver acceptance.</td></tr></tbody></table></div></section>
+      <section id="mission-go" class="docs-card"><h2>Mission Go Driver App</h2><p>Driver APIs cover online state, accepting jobs, arrival confirmation, pickup photo, and delivery confirmation. Direct Pickup and Cargo should require completion of the current job before taking another; Ship Parcel Online is independent and supports continuous jobs.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Rule</th><th>Description</th></tr></thead><tbody><tr><td>Direct Pickup</td><td>Driver must complete current Direct order before accepting another.</td></tr><tr><td>Cargo</td><td>Driver must complete current Cargo order before accepting another.</td></tr><tr><td>Ship Parcel</td><td>Independent online module. Continuous accepting is allowed.</td></tr><tr><td>Confirm Pickup GPS</td><td>Use 50m GPS check; if failed, allow photo override and record it.</td></tr></tbody></table></div></section>
+      <section id="status" class="docs-card"><h2>Status Reference</h2>
+        <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Value</th><th>Description</th></tr></thead><tbody><tr><td>pay_status</td><td>0 / 1 / 2</td><td>Unpaid / pending / paid.</td></tr><tr><td>payment_status</td><td>unpaid / paid / completed</td><td>String payment status for Ship Parcel / Consolidation.</td></tr><tr><td>refund_status</td><td>0 / 1 / 2 or none/pending/refunded/failed</td><td>Different tables may use numeric or string values; clients should tolerate both.</td></tr><tr><td>post_order.status</td><td>1 / 2 / 3 / 10</td><td>Waiting pickup / waiting pickup / delivering / completed.</td></tr><tr><td>ship_parcel.status</td><td>pending_quote / quoted / paid / shipped / delivered / cancelled</td><td>Ship Parcel business status.</td></tr><tr><td>quote_status</td><td>manual_pending / quoted / expired</td><td>Quote status.</td></tr></tbody></table></div></section>
+      <section id="errors" class="docs-card"><h2>Error Codes & Messages</h2><p>V2 currently uses <code>code=0</code> plus a readable <code>msg</code> for most business errors. Client apps should display <code>msg</code> and log the raw response.</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>Message example</th><th>Description</th></tr></thead><tbody><tr><td>Invalid token</td><td>Login expired or token mismatch.</td></tr><tr><td>Order number is required</td><td>Missing order number.</td></tr><tr><td>Order not found</td><td>Order does not exist or does not belong to the current user.</td></tr><tr><td>Missing square_source_id</td><td>External payment is missing Square source id.</td></tr><tr><td>Square payment not completed</td><td>Square did not return completed status.</td></tr><tr><td>Package ... is over Canada Post single-parcel limit: 30 kg</td><td>Ship Parcel single package exceeds Canada Post limit.</td></tr></tbody></table></div></section>
+      <section id="deployment" class="docs-card"><h2>Release Checklist</h2><ul><li>Confirm every page uses <code>https://v2-api.missionexpress.ca</code> only.</li><li>Upload <code>api-docs-cn.html</code>, <code>api-docs-en.html</code>, and <code>api-docs-index.html</code> together.</li><li>Confirm the website navigation points API Docs to <code>api-docs-index.html</code>.</li><li>Before public release, grep current server code for public functions and confirm the action names match production.</li></ul></section>
+    </div></div></section>
   </main>
+
 
   <footer class="footer">
     <div class="footer-inner">
       <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
-      <p>
-        <a href="liability.html">
-          <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
-          <span class="lang-block lang-zh">责任与保险条款</span>
-        </a>
-      </p>
-      <p>
-        <a href="api-docs-index.html">
-          <span class="lang-block lang-en">API Documentation</span>
-          <span class="lang-block lang-zh">API 接口文档</span>
-        </a>
-      </p>
-      
-      <p class="footer-note">
-        <span class="lang-block lang-en">Mission Go is the last-mile brand of Mission Express Logistics Inc., based in Moose Jaw, Saskatchewan, Canada.</span>
-        <span class="lang-block lang-zh">Mission Go 是 Mission Express Logistics Inc. 旗下的最后一公里品牌，公司位于加拿大萨斯喀彻温省 Moose Jaw。</span>
-      </p>
+      <p><a href="liability.html"><span class="lang-block lang-en">Liability &amp; Coverage Policy</span><span class="lang-block lang-zh">责任与保险条款</span></a></p>
+      <p><a href="api-docs-index.html"><span class="lang-block lang-en">V2 API Documentation</span><span class="lang-block lang-zh">V2 API 接口文档</span></a></p>
+      <p class="footer-note"><span class="lang-block lang-en">Mission Go is the last-mile brand of Mission Express Logistics Inc., based in Moose Jaw, Saskatchewan, Canada.</span><span class="lang-block lang-zh">Mission Go 是 Mission Express Logistics Inc. 旗下的最后一公里品牌，公司位于加拿大萨斯喀彻温省 Moose Jaw。</span></p>
     </div>
   </footer>
+
 
   <script>
     document.documentElement.lang = 'en';
     document.getElementById('year').textContent = new Date().getFullYear();
-
     const navToggle = document.getElementById('navToggle');
     const mobileNav = document.getElementById('mobileNav');
     const navBackdrop = document.getElementById('navBackdrop');
     if (navToggle && mobileNav && navBackdrop) {
-      navToggle.addEventListener('click', function() {
-        mobileNav.classList.toggle('open');
-        navBackdrop.classList.toggle('show');
-      });
-      navBackdrop.addEventListener('click', function() {
-        mobileNav.classList.remove('open');
-        navBackdrop.classList.remove('show');
-      });
+      navToggle.addEventListener('click', function() { mobileNav.classList.toggle('open'); navBackdrop.classList.toggle('show'); });
+      navBackdrop.addEventListener('click', function() { mobileNav.classList.remove('open'); navBackdrop.classList.remove('show'); });
     }
-
     const langBtn = document.getElementById('lang-toggle');
     if (langBtn) {
       langBtn.textContent = '中文';
-      langBtn.addEventListener('click', function() {
-        window.location.href = 'api-docs-cn.html';
-      });
+      langBtn.addEventListener('click', function() { window.location.href = 'api-docs-cn.html'; });
     }
   </script>
+
 </body>
 </html>

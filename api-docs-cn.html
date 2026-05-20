@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mission Express API 文档</title>
+  <title>Mission Express V2 API 接口文档</title>
   <link rel="stylesheet" href="css/styles.css" />
   <style>
     .page-hero.docs-hero {
@@ -13,145 +13,41 @@
         radial-gradient(circle at 100% 0, rgba(255, 179, 71, 0.35), transparent 55%),
         #050814;
     }
-    .docs-kicker {
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      color: #ffb347;
-      margin-bottom: 0.75rem;
-    }
-    .docs-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      margin-bottom: 0.7rem;
-    }
-    .docs-sub {
-      max-width: 760px;
-      color: #d2d5ff;
-      margin-bottom: 1rem;
-    }
-    .docs-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-    .docs-toc {
-      position: sticky;
-      top: 78px;
-      background: #121527;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 1rem;
-      padding: 1.2rem;
-    }
+    .docs-kicker { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.78rem; color: #ffb347; margin-bottom: 0.75rem; }
+    .docs-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 0.7rem; }
+    .docs-sub { max-width: 860px; color: #d2d5ff; margin-bottom: 1rem; }
+    .docs-toolbar { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+    .docs-toc { position: sticky; top: 78px; background: #121527; border: 1px solid rgba(255,255,255,0.08); border-radius: 1rem; padding: 1.2rem; }
     .docs-toc h3 { margin-bottom: 0.8rem; }
-    .docs-toc a {
-      display: block;
-      color: #d1d4ff;
-      text-decoration: none;
-      padding: 0.45rem 0.55rem;
-      border-radius: 0.65rem;
-    }
+    .docs-toc a { display: block; color: #d1d4ff; text-decoration: none; padding: 0.45rem 0.55rem; border-radius: 0.65rem; }
     .docs-toc a:hover { background: rgba(255,255,255,0.06); }
-    .docs-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
-      gap: 1.5rem;
-      align-items: start;
-    }
+    .docs-layout { display: grid; grid-template-columns: minmax(0, 270px) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
     .docs-narrow { max-width: 1180px; }
     .docs-section { padding-top: 1.25rem; padding-bottom: 1.25rem; }
-    .docs-card {
-      background: #121527;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
+    .docs-card { background: #121527; border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.05rem; }
     .docs-card h2 { margin-bottom: 0.8rem; }
-    .docs-card h3 { margin: 1.4rem 0 0.75rem; }
+    .docs-card h3 { margin: 1.35rem 0 0.75rem; }
     .docs-card p, .docs-card li { color: #d1d4ff; }
-    .docs-kv-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .docs-kv {
-      border-radius: 0.9rem;
-      background: rgba(9, 12, 27, 0.96);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 1rem;
-    }
+    .docs-kv-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; margin-top: 1rem; }
+    .docs-kv { border-radius: 0.9rem; background: rgba(9, 12, 27, 0.96); border: 1px solid rgba(255,255,255,0.06); padding: 1rem; }
     .docs-k { font-size: 0.8rem; color: #9ea2cf; text-transform: uppercase; letter-spacing: .08em; }
     .docs-v { margin-top: 0.45rem; font-weight: 700; word-break: break-all; }
-    .docs-callout {
-      margin-top: 1rem;
-      border-left: 4px solid #ffb347;
-      padding: 0.9rem 1rem;
-      border-radius: 0.8rem;
-      background: rgba(255, 179, 71, 0.08);
-      color: #f7f7ff;
-    }
-    .docs-table-wrap {
-      overflow: auto;
-      border-radius: 0.9rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-top: 0.8rem;
-    }
-    .docs-table-wrap table { width: 100%; border-collapse: collapse; min-width: 640px; }
-    .docs-table-wrap th, .docs-table-wrap td {
-      padding: 0.8rem 0.9rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      vertical-align: top;
-    }
-    .docs-table-wrap th { background: rgba(255,255,255,0.04); }
+    .docs-callout { margin-top: 1rem; border-left: 4px solid #ffb347; padding: 0.9rem 1rem; border-radius: 0.8rem; background: rgba(255, 179, 71, 0.08); color: #f7f7ff; }
+    .docs-danger { border-left-color: #ff4fa3; background: rgba(255, 79, 163, 0.09); }
+    .docs-table-wrap { overflow: auto; border-radius: 0.9rem; border: 1px solid rgba(255,255,255,0.08); margin-top: 0.8rem; }
+    .docs-table-wrap table { width: 100%; border-collapse: collapse; min-width: 700px; }
+    .docs-table-wrap th, .docs-table-wrap td { padding: 0.8rem 0.9rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; color:#d1d4ff; }
+    .docs-table-wrap th { background: rgba(255,255,255,0.04); color:#fff; }
     .docs-table-wrap tr:last-child td { border-bottom: none; }
-    .docs-card pre {
-      overflow: auto;
-      background: #050814;
-      color: #f7f7ff;
-      border-radius: 0.9rem;
-      padding: 1rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-top: 0.8rem;
-    }
+    .docs-card pre { overflow: auto; background: #050814; color: #f7f7ff; border-radius: 0.9rem; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); margin-top: 0.8rem; }
     .docs-card code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
     .endpoint-head { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.7rem; }
-    .method-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.38rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(100, 214, 116, 0.12);
-      color: #7ff08f;
-      border: 1px solid rgba(100, 214, 116, 0.25);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-    .path-chip {
-      display: inline-block;
-      padding: 0.35rem 0.65rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-    }
+    .method-chip { display: inline-flex; align-items: center; justify-content: center; padding: 0.38rem 0.7rem; border-radius: 999px; background: rgba(100, 214, 116, 0.12); color: #7ff08f; border: 1px solid rgba(100, 214, 116, 0.25); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; }
+    .path-chip { display: inline-block; padding: 0.35rem 0.65rem; border-radius: 999px; background: rgba(255,255,255,0.08); color: #fff; word-break: break-all; }
+    .status-chip { display:inline-block; padding:.2rem .5rem; border-radius:999px; background:rgba(255,255,255,.08); color:#fff; font-size:.86rem; }
     .docs-note { margin-top: 0.8rem; font-size: 0.9rem; color: #9ea2cf; }
-    .docs-lang-links { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.8rem; }
-    .docs-summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1.4rem;
-    }
-    .docs-summary-card {
-      padding: 1.2rem;
-      border-radius: 1rem;
-      background: #121527;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
+    .docs-summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.4rem; }
+    .docs-summary-card { padding: 1.2rem; border-radius: 1rem; background: #121527; border: 1px solid rgba(255,255,255,0.08); }
     .docs-summary-card p { color: #d1d4ff; margin-top: 0.5rem; }
     .docs-links { display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem; }
     .footer .footer-inner a { color: inherit; }
@@ -160,17 +56,12 @@
       .docs-toc { position: static; top: auto; }
       .docs-kv-grid { grid-template-columns: 1fr; }
     }
-  </style>
+</style>
 </head>
 <body>
 
   <header class="top-nav">
-    <div class="logo-wrap">
-      <a href="index.html">
-        <img src="img/logo.png" alt="Mission Go logo" class="logo" />
-      </a>
-    </div>
-
+    <div class="logo-wrap"><a href="index.html"><img src="img/logo.png" alt="Mission Go logo" class="logo" /></a></div>
     <nav class="nav-links desktop-nav">
       <a href="index.html"><span class="lang-block lang-en">Home</span><span class="lang-block lang-zh">首页</span></a>
       <a href="about.html"><span class="lang-block lang-en">About</span><span class="lang-block lang-zh">关于我们</span></a>
@@ -181,13 +72,8 @@
       <a href="https://mission-express.square.site/" target="_blank" rel="noopener"><span class="lang-block lang-en">Online Store</span><span class="lang-block lang-zh">在线商店</span></a>
       <a href="contact.html"><span class="lang-block lang-en">Contact</span><span class="lang-block lang-zh">联系</span></a>
     </nav>
-
-    <div class="header-actions">
-      <button id="lang-toggle" class="lang-toggle">中文</button>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
-    </div>
+    <div class="header-actions"><button id="lang-toggle" class="lang-toggle">中文</button><button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button></div>
   </header>
-
   <nav class="mobile-nav" id="mobileNav">
     <a href="index.html"><span class="lang-block lang-en">Home</span><span class="lang-block lang-zh">首页</span></a>
     <a href="about.html"><span class="lang-block lang-en">About</span><span class="lang-block lang-zh">关于我们</span></a>
@@ -198,379 +84,144 @@
     <a href="https://mission-express.square.site/" target="_blank" rel="noopener"><span class="lang-block lang-en">Online Store</span><span class="lang-block lang-zh">在线商店</span></a>
     <a href="contact.html"><span class="lang-block lang-en">Contact</span><span class="lang-block lang-zh">联系</span></a>
   </nav>
-
   <div class="nav-backdrop" id="navBackdrop"></div>
+
 
   <main>
     <section class="page-hero docs-hero">
       <div class="container">
-        <p class="docs-kicker">Mission Express API 文档</p>
-        <h1 class="docs-title">Mission Express API 文档</h1>
-        <p class="docs-sub">根据你上传的 API 原始文档整理出的网页版本，已改成和主站一致的页头页脚风格。</p>
-        <div class="docs-toolbar">
-          <a href="api-docs-en.html" class="btn primary">English Version</a>
-          <a href="api-docs-index.html" class="btn ghost"><span class="lang-block lang-en">Back to API Index</span><span class="lang-block lang-zh">返回 API 首页</span></a>
-        </div>
+        <p class="docs-kicker">Mission Express V2 API</p>
+        <h1 class="docs-title">Mission Express V2 API 接口文档</h1>
+        <p class="docs-sub">V2-only 正式接口说明。本文档以 <code>https://v2-api.missionexpress.ca</code> 为唯一生产 API 基础地址，不再保留 V1 / Legacy API 说明。</p>
+        <div class="docs-toolbar"><a href="api-docs-en.html" class="btn primary">English Version</a><a href="api-docs-index.html" class="btn ghost">返回 API 首页</a></div>
       </div>
     </section>
-
-    <section class="section dark docs-section">
-      <div class="section-inner docs-layout">
-        <aside class="docs-toc">
-          <h3><span class="lang-block lang-en">Contents</span><span class="lang-block lang-zh">目录</span></h3>
-          <a href="#overview">概览</a><a href="#auth">鉴权与签名</a><a href="#response">统一响应</a><a href="#pdf-viewer">PDF 展示</a><a href="#create-order">创建订单</a><a href="#cancel-order">取消订单</a><a href="#get-pdf-token">获取打印 Token</a><a href="#order-detail">订单详情</a><a href="#missionrush-status">Mission Rush 状态参考</a>
-        </aside>
-        <div>
-          
-<section id="overview" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card">
-      <h2>概览</h2>
-      <p>这份页面把原始 API 文档整理成更适合直接挂网展示的网页版本。除 PDF 展示接口外，所有接口统一使用 HTTP <strong>POST</strong>；请求与响应统一使用 UTF-8 编码的 JSON 格式。</p>
-      <div class="docs-kv-grid">
-        <div class="docs-kv"><div class="docs-k">正式请求地址</div><div class="docs-v"><code>https://me.missionexpress.ca/api/post/out</code></div></div>
-        <div class="docs-kv"><div class="docs-k">请求头</div><div class="docs-v"><code>Content-Type: application/x-www-form-urlencoded</code></div></div>
-      </div>
-      <div class="docs-callout">端点名称和参数名称按原始文档保留不变，页面只对版式和英文说明做了整理。</div>
-    </div>
-  </div>
-</section>
-
-<section id="auth" class="section docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card">
-      <h2>鉴权与签名</h2>
-      <p><code>app_key</code> 和 <code>app_secret</code> 由平台提供。业务参数需要先转成 JSON 字符串，再通过 <code>data</code> 字段提交。</p>
-      <p>签名规则：</p>
-      <pre><code>sign = SHA256(request_json + "app_secret=" + app_secret)</code></pre>
-      <p>PHP 示例：</p>
-      <pre><code>private function createSign(string $request_str, string $key) {
-    return hash("sha256", $request_str . "app_secret=" . $key);
-}</code></pre>
-      <h3>通用请求参数</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>是</td><td>string</td><td>平台提供的 app_key</td></tr>
-        <tr><td>sign</td><td>是</td><td>string</td><td>验签参数</td></tr>
-        <tr><td>data</td><td>是</td><td>string</td><td>业务参数的 JSON 字符串</td></tr>
-      </tbody></table></div>
-    </div>
-  </div>
-</section>
-
-<section id="response" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card">
-      <h2>统一响应格式</h2>
-      <p>当 <code>code = 1</code> 时表示成功，其余值为错误。</p>
-      <pre><code>{
+    <section class="section dark docs-section"><div class="section-inner docs-layout"><aside class="docs-toc"><h3>目录 / Contents</h3><a href="#overview">概览</a><a href="#base-url">基础地址</a><a href="#auth">鉴权</a><a href="#response">统一响应</a><a href="#module-status">模块状态</a><a href="#pricing">价格配置</a><a href="#orders">订单</a><a href="#send-cargo">Send / Cargo</a><a href="#food-grocery">Food / Grocery</a><a href="#ship-parcel">Ship Parcel</a><a href="#hitch">Intercity Hitch</a><a href="#consolidation">Consolidation</a><a href="#wallet-payment">钱包与支付</a><a href="#refund">退款</a><a href="#mission-go">Mission Go</a><a href="#status">状态参考</a><a href="#errors">错误码</a><a href="#deployment">发布检查</a></aside><div>
+      <section id="overview" class="docs-card">
+        <h2>概览</h2>
+        <p>本文档用于 Mission Express / Mission Rush / Mission Go 的 V2 API 集成说明，覆盖模块开关、下单、报价、支付、退款、Ship Parcel、Consolidation、Intercity Hitch 和司机端状态流转。</p>
+        <div class="docs-callout docs-danger">本版本为 V2-only 文档，只展示当前 V2 生产接口。旧版接口说明不再放入本页面。</div>
+        <div class="docs-kv-grid"><div class="docs-kv"><div class="docs-k">文档版本</div><div class="docs-v">V2-only / 2026-05-20</div></div><div class="docs-kv"><div class="docs-k">适用系统</div><div class="docs-v">Mission Rush / Mission Go / V2 Admin</div></div></div>
+      </section>
+      <section id="base-url" class="docs-card">
+        <h2>基础地址</h2>
+        <div class="docs-kv-grid"><div class="docs-kv"><div class="docs-k">Production Base URL</div><div class="docs-v"><code>https://v2-api.missionexpress.ca</code></div></div><div class="docs-kv"><div class="docs-k">Mission Rush API Pattern</div><div class="docs-v"><code>/index.php?s=/api/post/missionrush/{action}</code></div></div><div class="docs-kv"><div class="docs-k">Hitch API Pattern</div><div class="docs-v"><code>/index.php?s=/api/post/hitch/{action}</code></div></div><div class="docs-kv"><div class="docs-k">Request Content-Type</div><div class="docs-v"><code>application/x-www-form-urlencoded</code></div></div></div>
+        <p class="docs-note">除文件下载、图片和外部跳转外，V2 App API 默认使用 HTTP POST。</p>
+      </section>
+      <section id="auth" class="docs-card">
+        <h2>鉴权</h2>
+        <p>V2 App 接口以登录后的 <code>user_id + token</code> 或 <code>rider_id + token</code> 识别身份。后台管理接口不建议放入公开 API 文档。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>场景</th><th>必传字段</th><th>说明</th></tr></thead><tbody><tr><td>Mission Rush 用户端</td><td><code>user_id</code>, <code>token</code></td><td>客户下单、订单、钱包、退款、地址相关接口。</td></tr><tr><td>Mission Go 司机端</td><td><code>rider_id</code>, <code>token</code></td><td>司机上线、接单、确认取件、确认送达。</td></tr><tr><td>公开配置接口</td><td>按接口要求</td><td>如模块状态、部分价格配置可不强制登录，但上线前建议逐项确认。</td></tr></tbody></table></div>
+        <pre><code>curl -X POST "https://v2-api.missionexpress.ca/index.php?s=/api/post/missionrush/myOrders" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "user_id=14&token=USER_TOKEN&page=1&list_rows=20"</code></pre>
+      </section>
+      <section id="response" class="docs-card">
+        <h2>统一响应格式</h2>
+        <p><code>code = 1</code> 表示成功；<code>code = 0</code> 或其他值表示失败。错误信息以 <code>msg</code> 为准。</p>
+        <pre><code>{
   "code": 1,
   "msg": "ok",
-  "time": "1690796144",
-  "data": {
-    "orderNo": "491d930ef328d4ec142233c82cc28816",
-    "time": 1690796144
-  }
+  "time": 1779227065,
+  "data": {}
 }</code></pre>
-      <h3>错误码</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>code</th><th>说明</th></tr></thead><tbody>
-        <tr><td>1001</td><td>请求缺少参数 sign</td></tr>
-        <tr><td>1003</td><td>请求数据解析失败</td></tr>
-        <tr><td>1004</td><td>请求数据缺少 app_key</td></tr>
-        <tr><td>1005</td><td>app_key 不存在</td></tr>
-        <tr><td>1006</td><td>签名验证失败</td></tr>
-        <tr><td>0</td><td>普通错误</td></tr>
-      </tbody></table></div>
-    </div>
-  </div>
-</section>
-
-<section id="pdf-viewer" class="section docs-section">
-  <div class="section-inner docs-narrow">
+      </section>
+      
     <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">GET</span><code class="path-chip">/pdf</code></div>
-      <h2>PDF 展示</h2>
-      <p>用于展示 PDF。根据原始文档，这是唯一一个使用 GET 的接口。</p>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>token</td><td>是</td><td>string</td><td>从“获取 pdf 连接 / token”接口中获取</td></tr>
-        <tr><td>order_no</td><td>是</td><td>string</td><td>物流单号，多个用逗号连接</td></tr>
-      </tbody></table></div>
-      <p class="docs-note">更多错误代码请参考前面的统一错误码说明。</p>
-    </div>
-  </div>
-</section>
-
-<section id="create-order" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/create</code></div>
-      <h2>创建订单</h2>
-      <p>创建新的订单。</p>
-      <h3>通用请求字段</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>是</td><td>string</td><td>平台提供的 app_key</td></tr>
-        <tr><td>sign</td><td>是</td><td>string</td><td>验签 sign</td></tr>
-        <tr><td>data</td><td>是</td><td>string</td><td>业务参数的 JSON 字符串</td></tr>
-      </tbody></table></div>
-      <h3>业务参数</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>shop_order_no</td><td>是</td><td>string</td><td>商户订单号</td></tr>
-        <tr><td>goods_desc</td><td>否</td><td>string</td><td>包裹物品信息</td></tr>
-        <tr><td>from_username</td><td>是</td><td>string</td><td>发件人姓名</td></tr>
-        <tr><td>from_mobile</td><td>是</td><td>string</td><td>发件人电话</td></tr>
-        <tr><td>from_province</td><td>否</td><td>string</td><td>发件人省</td></tr>
-        <tr><td>from_city</td><td>否</td><td>string</td><td>发件人城市</td></tr>
-        <tr><td>from_address</td><td>否</td><td>string</td><td>发件人地址</td></tr>
-        <tr><td>from_address1</td><td>否</td><td>string</td><td>发件人门牌号</td></tr>
-        <tr><td>from_zip_code</td><td>是</td><td>string</td><td>发件人邮编</td></tr>
-        <tr><td>to_username</td><td>是</td><td>string</td><td>收件人姓名</td></tr>
-        <tr><td>to_mobile</td><td>是</td><td>string</td><td>收件人电话</td></tr>
-        <tr><td>to_province</td><td>是</td><td>string</td><td>收件人省</td></tr>
-        <tr><td>to_city</td><td>是</td><td>string</td><td>收件人城市</td></tr>
-        <tr><td>to_address</td><td>是</td><td>string</td><td>收件人地址</td></tr>
-        <tr><td>to_address1</td><td>是</td><td>string</td><td>收件人门牌号</td></tr>
-        <tr><td>to_zip_code</td><td>是</td><td>string</td><td>收件人邮编</td></tr>
-        <tr><td>remark</td><td>否</td><td>string</td><td>备注</td></tr>
-        <tr><td>is_direct</td><td>是</td><td>string</td><td>是否直送：0=否，1=是</td></tr>
-      </tbody></table></div>
-      <h3>返回示例</h3>
-      <pre><code>{
+      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/index.php?s=/api/post/missionrush/getModuleStatus</code></div>
+      <h2>模块状态 / getModuleStatus</h2>
+      <p>用于 App 首页或功能入口判断模块是否可用。</p>
+      <div class="docs-table-wrap"><table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td>module_key</td><td>string</td><td>可选；为空时返回全部模块。</td></tr><tr><td>status</td><td>string</td><td><code>enabled</code>、<code>maintenance</code>、<code>disabled</code>。</td></tr><tr><td>message</td><td>string</td><td>维护或停用时给用户显示的提示。</td></tr></tbody></table></div><pre><code>{
   "code": 1,
-  "msg": "ok",
-  "time": "1773801661",
   "data": {
-    "shop_id": 1,
-    "shop_order_no": "69ba0e778bf94",
-    "order_no": "1075638798736",
-    "from_username": "aa",
-    "from_mobile": "1234567891",
-    "from_province": "aa",
-    "from_city": "bb",
-    "from_address": "sdfsd",
-    "from_address1": "sdfsd",
-    "from_zip_code": "12345",
-    "to_username": "aaab",
-    "to_mobile": "1236547896",
-    "to_province": "sdf",
-    "to_city": "sdf",
-    "to_address": "ggg",
-    "to_address1": "ss",
-    "to_zip_code": "1263",
-    "goods_desc": "包裹物品",
-    "remark": "订单备注",
-    "is_direct": 1,
-    "createtime": 1773801661,
-    "updatetime": 1773801661,
-    "id": "8"
+    "modules": {
+      "send": {"status": "enabled"},
+      "food_pickup": {"status": "maintenance"},
+      "ship_parcel": {"status": "enabled"}
+    }
   }
 }</code></pre>
     </div>
-  </div>
-</section>
 
-<section id="cancel-order" class="section docs-section">
-  <div class="section-inner docs-narrow">
+      
     <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/cancel</code></div>
-      <h2>取消订单</h2>
-      <p>取消已创建的订单。</p>
-      <h3>通用请求字段</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>是</td><td>string</td><td>平台提供的 app_key</td></tr>
-        <tr><td>sign</td><td>是</td><td>string</td><td>验签 sign</td></tr>
-        <tr><td>data</td><td>是</td><td>string</td><td>业务参数的 JSON 字符串</td></tr>
-      </tbody></table></div>
-      <h3>业务参数</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>order_no</td><td>是</td><td>string</td><td>物流单号</td></tr>
-      </tbody></table></div>
-      <h3>响应示例</h3>
-      <pre><code>{
-  "code": 0,
-  "message": "取消成功",
-  "data": ""
-}</code></pre>
+      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/index.php?s=/api/post/missionrush/getPricingConfig</code></div>
+      <h2>价格配置 / getPricingConfig</h2>
+      <p>返回 Mission Rush 当前价格策略，App 端用于展示政策说明、Ship Parcel 上门取件费等。</p>
+      <div class="docs-table-wrap"><table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td>group</td><td>string</td><td>可选；建议传 <code>missionrush</code>。</td></tr><tr><td>missionrush_pickup_fixed_fee_amount</td><td>number</td><td>上门取件费配置。</td></tr><tr><td>ship_parcel_pickup_fee_amount</td><td>number</td><td>Ship Parcel 使用的上门取件费。</td></tr></tbody></table></div><pre><code>group=missionrush</code></pre>
     </div>
-  </div>
-</section>
 
-<section id="get-pdf-token" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/getPdf</code></div>
-      <h2>获取订单打印 Token / URL</h2>
-      <p>返回用于打开 PDF 展示接口的 URL token。</p>
-      <h3>通用请求字段</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>是</td><td>string</td><td>平台提供的 app_key</td></tr>
-        <tr><td>sign</td><td>是</td><td>string</td><td>验签 sign</td></tr>
-        <tr><td>data</td><td>是</td><td>string</td><td>业务参数的 JSON 字符串</td></tr>
-      </tbody></table></div>
-      <h3>业务参数</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>non_str</td><td>是</td><td>string</td><td>随机字符串，长度 6–12 位</td></tr>
-      </tbody></table></div>
-      <h3>返回示例</h3>
-      <pre><code>{
-  "code": 1,
-  "msg": "ok",
-  "time": "1773804544",
-  "data": {
-    "url": "http://test.jianadame.com/index.php/api/post/out/pdf?token=..."
-  }
-}</code></pre>
-    </div>
-  </div>
-</section>
-
-<section id="order-detail" class="section docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card endpoint-card">
-      <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/detail</code></div>
-      <h2>订单详情</h2>
-      <p>返回订单的详细信息。</p>
-      <h3>通用请求字段</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>app_key</td><td>是</td><td>string</td><td>平台提供的 app_key</td></tr>
-        <tr><td>sign</td><td>是</td><td>string</td><td>验签 sign</td></tr>
-        <tr><td>data</td><td>是</td><td>string</td><td>业务参数的 JSON 字符串</td></tr>
-      </tbody></table></div>
-      <h3>业务参数</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>参数名</th><th>必选</th><th>类型</th><th>说明</th></tr></thead><tbody>
-        <tr><td>order_no</td><td>是</td><td>string</td><td>快递 / 物流单号</td></tr>
-      </tbody></table></div>
-      <h3>返回示例</h3>
-      <pre><code>{
-  "code": 1,
-  "msg": "ok",
-  "time": "1773803058",
-  "data": {
-    "id": 8,
-    "type": 1,
-    "order_no": "1075638798736",
-    "shop_id": 1,
-    "shop_order_no": "69ba0e778bf94",
-    "weight": "0.00",
-    "charge_weight": "0.00",
-    "length": 0,
-    "width": 0,
-    "height": 0,
-    "goods_desc": "包裹物品",
-    "status": 0,
-    "dis_status": 0,
-    "images": null,
-    "remark": "订单备注",
-    "post_price": "0.00",
-    "order_price": "0.00",
-    "insure_amount": "0.00",
-    "insure_price": "0.00",
-    "pickup_time": 0,
-    "pay_type": "",
-    "pay_status": 0,
-    "pay_time": 0,
-    "from_username": "aa",
-    "from_mobile": "1234567891",
-    "from_province": "aa",
-    "from_city": "bb",
-    "from_address": "sdfsd",
-    "from_address1": "sdfsd",
-    "from_zip_code": "12345",
-    "to_username": "aaab",
-    "to_mobile": "1236547896",
-    "to_province": "sdf",
-    "to_city": "sdf",
-    "to_address": "ggg",
-    "to_address1": "ss",
-    "to_zip_code": "1263",
-    "delivery_num": 0,
-    "delivery_status": 0,
-    "createtime": 1773801661,
-    "updatetime": 1773801661,
-    "rider_amount": "0.00",
-    "rider_id": 0,
-    "delete_time": null,
-    "is_direct": 1
-  }
-}</code></pre>
-    </div>
-  </div>
-</section>
-
-
-<section id="missionrush-status" class="section light docs-section">
-  <div class="section-inner docs-narrow">
-    <div class="docs-card">
-      <h2>Mission Rush 状态参考</h2>
-      <p>以下内容用于 Mission Rush App 的 Orders 页面或其他客户端状态展示。该说明基于当前 Mission Rush 直送单创建逻辑及后端状态流转整理而成。</p>
-      <div class="docs-table-wrap"><table><thead><tr><th>post_order.status</th><th>建议客户端显示</th><th>说明</th></tr></thead><tbody>
-        <tr><td>1</td><td>Waiting for pick up</td><td>Mission Rush 已支付直送单创建成功后的初始状态。</td></tr>
-        <tr><td>2</td><td>Waiting for pick up</td><td>待揽收；客户端可与状态 1 统一归类为待取件。</td></tr>
-        <tr><td>3</td><td>Delivering</td><td>已揽收 / 配送中。</td></tr>
-        <tr><td>10</td><td>Completed</td><td>订单已完成。</td></tr>
-      </tbody></table></div>
-      <h3>客户端分组建议</h3>
-      <div class="docs-table-wrap"><table><thead><tr><th>分组</th><th>建议条件</th></tr></thead><tbody>
-        <tr><td>All</td><td>所有订单</td></tr>
-        <tr><td>In progress</td><td><code>status in [1, 2, 3]</code></td></tr>
-        <tr><td>Completed</td><td><code>status = 10</code></td></tr>
-      </tbody></table></div>
-      <div class="docs-callout">补充说明：Mission Rush 已支付直送单创建成功后，服务端返回的支付成功状态为 <code>pay_status = 2</code>，同时订单初始状态为 <code>status = 1</code>。如需“已评价 / 未评价”，建议由客户端或业务侧单独维护，不直接复用 <code>post_order.status</code>。</div>
-    </div>
-  </div>
-</section>
-
-        </div>
-      </div>
-    </section>
+      <section id="orders" class="docs-card"><h2>订单接口</h2><p>订单列表用于 Mission Rush Orders 页面，返回 Direct / Cargo / Hitch / Consolidation / Ship Parcel 等统一订单行。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>路径</th><th>说明</th></tr></thead><tbody><tr><td>myOrders</td><td><code>/api/post/missionrush/myOrders</code></td><td>我的订单列表，支持分页和状态分组。</td></tr><tr><td>orderSnapshots</td><td><code>/api/post/missionrush/orderSnapshots</code></td><td>订单快照 / 状态快速刷新。</td></tr><tr><td>submitOrderReview</td><td><code>/api/post/missionrush/submitOrderReview</code></td><td>提交订单评价。</td></tr></tbody></table></div>
+        <pre><code>POST https://v2-api.missionexpress.ca/index.php?s=/api/post/missionrush/myOrders
+user_id=14&token=USER_TOKEN&page=1&list_rows=20&tab=in_progress</code></pre>
+      </section>
+      <section id="send-cargo" class="docs-card"><h2>Send / Cargo</h2><p>Send 为城市快递；Cargo 为大件 / 货运取送。距离费用应以后台路线计算为准，不以前端直线距离为准。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>模块</th><th>接口</th><th>说明</th></tr></thead><tbody><tr><td>Send Quote</td><td><code>getDirectOrderQuote</code></td><td>创建前获取 Send 报价。</td></tr><tr><td>Send Pay</td><td><code>createPaidDirectOrder</code></td><td>Square / Apple Pay / Google Pay / saved card 支付后创建订单。</td></tr><tr><td>Send Wallet Pay</td><td><code>createBalancePaidDirectOrder</code></td><td>余额支付 Send 订单。</td></tr><tr><td>Cargo Pay</td><td><code>createPaidCargoOrder</code></td><td>Square / saved card 支付后创建 Cargo 订单。</td></tr><tr><td>Cargo Wallet Pay</td><td><code>createBalancePaidCargoOrder</code></td><td>余额支付 Cargo 订单。</td></tr></tbody></table></div>
+      </section>
+      <section id="food-grocery" class="docs-card"><h2>Food Pickup / Grocery Pickup</h2><p>Food Pickup 和 Grocery Pickup 共享直送履约体系，但入口、商家列表和订单类型不同。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>说明</th></tr></thead><tbody><tr><td><code>foodPickupShops</code></td><td>返回餐厅 / Food Pickup 商家列表。</td></tr><tr><td><code>groceryPickupShops</code></td><td>返回 Grocery Pickup 商家列表。</td></tr><tr><td><code>createPaidDirectOrder</code></td><td>提交时通过 order_type / payload 区分 Food、Grocery、Send。</td></tr></tbody></table></div>
+      </section>
+      <section id="ship-parcel" class="docs-card"><h2>Ship Parcel / 寄包裹</h2><p>Ship Parcel 是 V2 的正式模块，当前支持 Canada Post 报价、后台报价保存、支付、Label / Tracking 状态返回。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>路径</th><th>说明</th></tr></thead><tbody><tr><td>getShipParcelRates</td><td><code>/api/post/missionrush/getShipParcelRates</code></td><td>实时获取 Canada Post 报价；Purolator 可作为后续扩展。</td></tr><tr><td>createShipParcelQuoteRequest</td><td><code>/api/post/missionrush/createShipParcelQuoteRequest</code></td><td>创建 Ship Parcel 报价请求 / 订单草稿。</td></tr><tr><td>getShipParcelQuoteStatus</td><td><code>/api/post/missionrush/getShipParcelQuoteStatus</code></td><td>查询报价、支付、tracking、label 状态。</td></tr><tr><td>getShipParcelPaymentQuote</td><td><code>/api/post/missionrush/getShipParcelPaymentQuote</code></td><td>进入支付页前获取应付金额和 line_items。</td></tr><tr><td>createPaidShipParcelOrder</td><td><code>/api/post/missionrush/createPaidShipParcelOrder</code></td><td>支付 Ship Parcel 订单。</td></tr></tbody></table></div>
+        <h3>请求字段重点</h3>
+        <div class="docs-table-wrap"><table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td>from / to</td><td>object/json string</td><td>发件地与收件地。</td></tr><tr><td>packages</td><td>array/json string</td><td>包裹数组：weight_kg、length_cm、width_cm、height_cm。</td></tr><tr><td>carrier_options</td><td>object/json string</td><td>签名、保价等承运商选项。</td></tr><tr><td>handoff_method</td><td>string</td><td><code>dropoff</code> 或 <code>pickup_from_address</code>。</td></tr><tr><td>pickup_fee_payer</td><td>string</td><td><code>customer</code> 或 <code>platform</code>。</td></tr></tbody></table></div>
+        <h3>Label / Tracking 字段</h3>
+        <div class="docs-table-wrap"><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody><tr><td>tracking_no</td><td>承运商 tracking number。</td></tr><tr><td>label_url</td><td>Label PDF 或图片地址。</td></tr><tr><td>carrier_label_status</td><td><code>ready</code>、<code>checking_config</code>、<code>generated</code>、<code>failed</code>、<code>pending_api_integration</code> 等。</td></tr><tr><td>carrier_label_error</td><td>Label 失败原因。</td></tr></tbody></table></div>
+      </section>
+      <section id="hitch" class="docs-card"><h2>Intercity Hitch / 顺路带</h2><p>Hitch 使用独立控制器路径 <code>/api/post/hitch</code>，适合城市间固定路线、司机发布行程和客户匹配下单。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>路径</th><th>说明</th></tr></thead><tbody><tr><td>cities</td><td><code>/api/post/hitch/cities</code></td><td>城市列表。</td></tr><tr><td>routes</td><td><code>/api/post/hitch/routes</code></td><td>开通路线与价格。</td></tr><tr><td>trips</td><td><code>/api/post/hitch/trips</code></td><td>司机发布的顺路行程。</td></tr><tr><td>quoteOrder</td><td><code>/api/post/hitch/quoteOrder</code></td><td>客户下单前报价。</td></tr><tr><td>createPaidHitchOrder</td><td><code>/api/post/hitch/createPaidHitchOrder</code></td><td>支付后创建 Hitch 订单。</td></tr></tbody></table></div>
+      </section>
+      <section id="consolidation" class="docs-card"><h2>Consolidation / 中国集运</h2><p>Consolidation 包含客户注册、仓库地址、包裹登记、包裹列表、合箱订单、报价、支付等流程。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>说明</th></tr></thead><tbody><tr><td>createChinaConsolidationRegistration</td><td>创建 / 更新集运客户资料。</td></tr><tr><td>chinaConsolidationWarehouses</td><td>返回可用仓库与入库地址。</td></tr><tr><td>getChinaConsolidationDashboard</td><td>返回 Dashboard 汇总。</td></tr><tr><td>createChinaPackage</td><td>登记包裹。</td></tr><tr><td>listChinaPackages</td><td>包裹列表。</td></tr><tr><td>createChinaConsolidationOrder</td><td>创建合箱 / 出库订单。</td></tr><tr><td>listChinaOrders</td><td>集运订单列表。</td></tr><tr><td>getChinaOrderPaymentQuote</td><td>获取集运订单支付报价。</td></tr><tr><td>payChinaOrderByBalance</td><td>余额支付集运订单。</td></tr></tbody></table></div>
+      </section>
+      <section id="wallet-payment" class="docs-card"><h2>钱包与支付</h2><p>V2 支付支持 Square card、saved card、Apple Pay、Google Pay、account balance 和 mixed payment。iOS 只显示 Apple Pay，Android 只显示 Google Pay。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>说明</th></tr></thead><tbody><tr><td>listWalletPaymentMethods</td><td>列出用户 saved cards。</td></tr><tr><td>createWalletTopUp</td><td>Square source id 充值。</td></tr><tr><td>createWalletTopUpWithSavedCard</td><td>saved card 充值。</td></tr><tr><td>createPaidDirectOrder / createPaidCargoOrder / createPaidShipParcelOrder</td><td>外部支付创建订单。</td></tr><tr><td>createBalancePaidDirectOrder / createBalancePaidCargoOrder / payChinaOrderByBalance</td><td>余额支付。</td></tr></tbody></table></div>
+      </section>
+      <section id="refund" class="docs-card"><h2>退款</h2><p>退款应先调用预览接口，确认是否允许退款、可退金额、扣费规则，再提交退款申请。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>路径</th><th>说明</th></tr></thead><tbody><tr><td>refundPreview</td><td><code>/api/post/missionrush/refundPreview</code></td><td>返回 can_refund、refund_amount、rule、message。</td></tr><tr><td>requestRefund</td><td><code>/api/post/missionrush/requestRefund</code></td><td>提交退款请求；符合即时退款规则时可直接处理 Square / balance refund。</td></tr></tbody></table></div>
+        <div class="docs-table-wrap"><table><thead><tr><th>规则</th><th>说明</th></tr></thead><tbody><tr><td>already_refunded</td><td>订单已退款。</td></tr><tr><td>completed_no_refund</td><td>已完成订单不可退款。</td></tr><tr><td>no_refund_after_arrival</td><td>司机已到达后不可退款。</td></tr><tr><td>full_refund</td><td>符合全额退款。</td></tr><tr><td>base_fee_deducted</td><td>司机已接单后取消，按规则扣除基础费用。</td></tr></tbody></table></div>
+      </section>
+      <section id="mission-go" class="docs-card"><h2>Mission Go 司机端</h2><p>司机端接口用于在线状态、抢单/接单、确认到达、拍照取件、确认送达。Direct Pickup 和 Cargo 应限制完成一单后再接新单；Ship Parcel Online 为独立模块，可连续接单。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>规则</th><th>说明</th></tr></thead><tbody><tr><td>Direct Pickup</td><td>需要完成当前 Direct 订单后才能接下一单。</td></tr><tr><td>Cargo</td><td>需要完成当前 Cargo 订单后才能接下一单。</td></tr><tr><td>Ship Parcel</td><td>独立在线模块，可连续接单，不受 Direct / Cargo 当前单影响。</td></tr><tr><td>Confirm Pickup GPS</td><td>建议执行 50m 经纬度校验；校验失败时允许司机拍照继续，并记录 override。</td></tr></tbody></table></div>
+      </section>
+      <section id="status" class="docs-card"><h2>状态参考</h2>
+        <div class="docs-table-wrap"><table><thead><tr><th>字段</th><th>值</th><th>说明</th></tr></thead><tbody><tr><td>pay_status</td><td>0 / 1 / 2</td><td>未支付 / 支付中或待确认 / 已支付。</td></tr><tr><td>payment_status</td><td>unpaid / paid / completed</td><td>Ship Parcel / Consolidation 等字符串支付状态。</td></tr><tr><td>refund_status</td><td>0 / 1 / 2 或 none/pending/refunded/failed</td><td>不同表可能使用数字或字符串；前端应兼容。</td></tr><tr><td>post_order.status</td><td>1 / 2 / 3 / 10</td><td>待取件 / 待揽收 / 配送中 / 已完成。</td></tr><tr><td>ship_parcel.status</td><td>pending_quote / quoted / paid / shipped / delivered / cancelled</td><td>Ship Parcel 业务状态。</td></tr><tr><td>quote_status</td><td>manual_pending / quoted / expired</td><td>报价状态。</td></tr></tbody></table></div>
+      </section>
+      <section id="errors" class="docs-card"><h2>错误码与错误信息</h2><p>V2 目前主要以 <code>code=0</code> + <code>msg</code> 返回业务错误。客户端应直接展示可读 <code>msg</code>，并记录原始响应用于排查。</p>
+        <div class="docs-table-wrap"><table><thead><tr><th>msg 示例</th><th>说明</th></tr></thead><tbody><tr><td>Invalid token</td><td>登录已失效或 token 不匹配。</td></tr><tr><td>Order number is required</td><td>缺少订单号。</td></tr><tr><td>Order not found</td><td>订单不存在或不属于当前用户。</td></tr><tr><td>Missing square_source_id</td><td>外部支付缺少 Square source id。</td></tr><tr><td>Square payment not completed</td><td>Square 未返回完成状态。</td></tr><tr><td>Package ... is over Canada Post single-parcel limit: 30 kg</td><td>Ship Parcel 单件超过 Canada Post 限制。</td></tr></tbody></table></div>
+      </section>
+      <section id="deployment" class="docs-card"><h2>发布检查</h2><ul><li>确认所有页面只写 <code>https://v2-api.missionexpress.ca</code>，不再出现 V1 域名。</li><li>确认 <code>api-docs-cn.html</code>、<code>api-docs-en.html</code>、<code>api-docs-index.html</code> 三个文件同步上传。</li><li>确认主站导航 API Docs 指向 <code>api-docs-index.html</code>。</li><li>正式公开前，再用当前服务器代码 grep 一次 public function，确保接口名与线上一致。</li></ul></section>
+    </div></div></section>
   </main>
+
 
   <footer class="footer">
     <div class="footer-inner">
       <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
-      <p>
-        <a href="liability.html">
-          <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
-          <span class="lang-block lang-zh">责任与保险条款</span>
-        </a>
-      </p>
-      <p>
-        <a href="api-docs-index.html">
-          <span class="lang-block lang-en">API Documentation</span>
-          <span class="lang-block lang-zh">API 接口文档</span>
-        </a>
-      </p>
-      
-      <p class="footer-note">
-        <span class="lang-block lang-en">Mission Go is the last-mile brand of Mission Express Logistics Inc., based in Moose Jaw, Saskatchewan, Canada.</span>
-        <span class="lang-block lang-zh">Mission Go 是 Mission Express Logistics Inc. 旗下的最后一公里品牌，公司位于加拿大萨斯喀彻温省 Moose Jaw。</span>
-      </p>
+      <p><a href="liability.html"><span class="lang-block lang-en">Liability &amp; Coverage Policy</span><span class="lang-block lang-zh">责任与保险条款</span></a></p>
+      <p><a href="api-docs-index.html"><span class="lang-block lang-en">V2 API Documentation</span><span class="lang-block lang-zh">V2 API 接口文档</span></a></p>
+      <p class="footer-note"><span class="lang-block lang-en">Mission Go is the last-mile brand of Mission Express Logistics Inc., based in Moose Jaw, Saskatchewan, Canada.</span><span class="lang-block lang-zh">Mission Go 是 Mission Express Logistics Inc. 旗下的最后一公里品牌，公司位于加拿大萨斯喀彻温省 Moose Jaw。</span></p>
     </div>
   </footer>
+
 
   <script>
     document.documentElement.lang = 'zh';
     document.getElementById('year').textContent = new Date().getFullYear();
-
     const navToggle = document.getElementById('navToggle');
     const mobileNav = document.getElementById('mobileNav');
     const navBackdrop = document.getElementById('navBackdrop');
     if (navToggle && mobileNav && navBackdrop) {
-      navToggle.addEventListener('click', function() {
-        mobileNav.classList.toggle('open');
-        navBackdrop.classList.toggle('show');
-      });
-      navBackdrop.addEventListener('click', function() {
-        mobileNav.classList.remove('open');
-        navBackdrop.classList.remove('show');
-      });
+      navToggle.addEventListener('click', function() { mobileNav.classList.toggle('open'); navBackdrop.classList.toggle('show'); });
+      navBackdrop.addEventListener('click', function() { mobileNav.classList.remove('open'); navBackdrop.classList.remove('show'); });
     }
-
     const langBtn = document.getElementById('lang-toggle');
     if (langBtn) {
       langBtn.textContent = 'English';
-      langBtn.addEventListener('click', function() {
-        window.location.href = 'api-docs-en.html';
-      });
+      langBtn.addEventListener('click', function() { window.location.href = 'api-docs-en.html'; });
     }
   </script>
+
 </body>
 </html>
