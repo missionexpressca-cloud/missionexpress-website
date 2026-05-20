@@ -154,3 +154,66 @@
     display: none;
   }
 }
+
+/* ===========================
+   Two-app download page
+   =========================== */
+
+.download-page .app-download-grid {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: stretch;
+}
+
+.download-page .app-download-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.download-page .customer-badge {
+  background: rgba(255, 79, 163, 0.14);
+  color: #ff9ccc;
+  border: 1px solid rgba(255, 79, 163, 0.32);
+}
+
+.download-page .driver-badge {
+  background: rgba(255, 179, 71, 0.14);
+  color: #ffca7a;
+  border: 1px solid rgba(255, 179, 71, 0.32);
+}
+
+.download-page .app-feature-list {
+  margin: 0 0 22px 0;
+  padding-left: 1.1rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.download-page .app-feature-list li + li {
+  margin-top: 0.45rem;
+}
+
+.download-page .download-platforms {
+  margin-top: auto;
+}
+
+.download-page .store-btn.is-hidden {
+  display: none !important;
+}
+
+.download-page .apk-btn {
+  opacity: 0.9;
+}
+
+@media (max-width: 980px) {
+  html.device-ios .download-page .store-btn[data-platform="android"] {
+    display: none;
+  }
+
+  html.device-android .download-page .store-btn[data-platform="ios"] {
+    display: none;
+  }
+}

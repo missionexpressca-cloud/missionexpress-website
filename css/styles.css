@@ -827,3 +827,94 @@ html[lang="en"] .lang-en {
 html[lang="zh"] .lang-zh {
   display: inline;
 }
+
+/* ===========================
+   Mission Rush / Mission Go app introduction blocks
+   =========================== */
+
+.section-actions {
+  margin-top: 1.6rem;
+}
+
+.app-card-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.featured-app-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-app-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255, 79, 163, 0.16), transparent 38%);
+  pointer-events: none;
+}
+
+.featured-app-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.app-card-topline,
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.7rem;
+  padding: 0.28rem 0.72rem;
+  border-radius: 999px;
+  color: #ffb347;
+  background: rgba(255, 179, 71, 0.1);
+  border: 1px solid rgba(255, 179, 71, 0.22);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.feature-pills span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.34rem 0.7rem;
+  border-radius: 999px;
+  color: #dfe2ff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.78rem;
+}
+
+.section-heading-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.service-mini-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-card .card-icon {
+  font-size: 1.75rem;
+}
+
+@media (max-width: 991px) {
+  .app-card-grid,
+  .service-mini-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading-row {
+    flex-direction: column;
+  }
+}
