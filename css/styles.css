@@ -918,3 +918,41 @@ html[lang="zh"] .lang-zh {
     flex-direction: column;
   }
 }
+
+
+/* ===========================
+   Home page compact layout after removing duplicate CTA buttons
+   =========================== */
+.hero {
+  min-height: 62vh;
+  padding: 4.2rem 1.5rem 2.6rem;
+}
+
+.hero-sub {
+  margin-bottom: 1.25rem;
+}
+
+.app-showcase {
+  padding-top: 3rem;
+  padding-bottom: 2.8rem;
+}
+
+.app-showcase .cards-grid {
+  margin-top: 1.35rem;
+}
+
+.app-showcase + .section.light {
+  padding-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 3.2rem 1rem 2.2rem;
+  }
+
+  .app-showcase {
+    padding-top: 2.4rem;
+    padding-bottom: 2.3rem;
+  }
+}
