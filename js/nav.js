@@ -16,7 +16,6 @@ if (toggle && nav && backdrop) {
     backdrop.classList.remove("show");
   };
 
-  // 点击手机菜单里的链接后自动关闭菜单
   nav.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       nav.classList.remove("open");
@@ -27,11 +26,11 @@ if (toggle && nav && backdrop) {
 
 /* =========================
    Download page platform detect
-   手机端：
-   - iPhone 只显示 iOS
-   - Android 只显示 Android
-   桌面端：
-   - 两个都显示
+   Desktop:
+   - show both iOS and Google Play buttons
+   Mobile:
+   - iPhone/iPad only shows App Store buttons
+   - Android only shows Google Play / APK buttons
    ========================= */
 
 function detectMobilePlatform() {
@@ -56,36 +55,47 @@ function applyDownloadPlatformFilter() {
 
   const platform = detectMobilePlatform();
   const cards = downloadGrid.querySelectorAll(".download-card[data-platform]");
+  const storeButtons = document.querySelectorAll(".store-btn[data-platform]");
   const moreWrap = document.getElementById("downloadMore");
 
-  // 先全部显示
   cards.forEach(card => card.classList.remove("is-hidden"));
+  storeButtons.forEach(button => button.classList.remove("is-hidden"));
 
   if (moreWrap) {
     moreWrap.style.display = "none";
   }
 
-  // 手机端 iPhone：只显示 iOS
   if (platform === "ios") {
     cards.forEach(card => {
       if (card.dataset.platform !== "ios") {
         card.classList.add("is-hidden");
       }
     });
+
+    storeButtons.forEach(button => {
+      if (button.dataset.platform !== "ios") {
+        button.classList.add("is-hidden");
+      }
+    });
+
     if (moreWrap) moreWrap.style.display = "block";
   }
 
-  // 手机端 Android：只显示 Android
   if (platform === "android") {
     cards.forEach(card => {
       if (card.dataset.platform !== "android") {
         card.classList.add("is-hidden");
       }
     });
+
+    storeButtons.forEach(button => {
+      if (button.dataset.platform !== "android") {
+        button.classList.add("is-hidden");
+      }
+    });
+
     if (moreWrap) moreWrap.style.display = "block";
   }
-
-  // 其他情况（桌面 / 未识别）全部显示
 }
 
 function bindShowAllAppsButton() {
@@ -95,6 +105,10 @@ function bindShowAllAppsButton() {
   showAllAppsBtn.addEventListener("click", function () {
     document.querySelectorAll(".download-card[data-platform]").forEach(card => {
       card.classList.remove("is-hidden");
+    });
+
+    document.querySelectorAll(".store-btn[data-platform]").forEach(button => {
+      button.classList.remove("is-hidden");
     });
 
     const moreWrap = document.getElementById("downloadMore");
