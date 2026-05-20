@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Download | Mission Go</title>
-  <meta name="description" content="Download Mission Go for iPhone and Android." />
+  <title>Download Apps | Mission Go Logistics</title>
+  <meta name="description" content="Download Mission Rush for customers and Mission Go for drivers on iOS and Android." />
 
   <script>
     (function () {
@@ -44,17 +44,10 @@
       <a href="network.html" data-i18n="nav_network">Network</a>
       <a href="download.html" data-i18n="nav_download" class="active">Download</a>
       <a href="api-docs-index.html">
-    <span class="lang-block lang-en">API Docs</span>
-    <span class="lang-block lang-zh">API 文档</span>
-    </a>
-      <a
-        href="https://mission-express.square.site/"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-i18n="nav_store"
-      >
-        Online Store
+        <span class="lang-block lang-en">API Docs</span>
+        <span class="lang-block lang-zh">API 文档</span>
       </a>
+      <a href="https://mission-express.square.site/" target="_blank" rel="noopener noreferrer" data-i18n="nav_store">Online Store</a>
       <a href="contact.html" data-i18n="nav_contact">Contact</a>
     </nav>
 
@@ -71,17 +64,10 @@
     <a href="network.html" data-i18n="nav_network">Network</a>
     <a href="download.html" data-i18n="nav_download" class="active">Download</a>
     <a href="api-docs-index.html">
-    <span class="lang-block lang-en">API Docs</span>
-    <span class="lang-block lang-zh">API 文档</span>
+      <span class="lang-block lang-en">API Docs</span>
+      <span class="lang-block lang-zh">API 文档</span>
     </a>
-    <a
-      href="https://mission-express.square.site/"
-      target="_blank"
-      rel="noopener noreferrer"
-      data-i18n="nav_store"
-    >
-      Online Store
-    </a>
+    <a href="https://mission-express.square.site/" target="_blank" rel="noopener noreferrer" data-i18n="nav_store">Online Store</a>
     <a href="contact.html" data-i18n="nav_contact">Contact</a>
   </nav>
 
@@ -90,63 +76,103 @@
   <main class="download-page">
     <section class="page-hero">
       <div class="section-inner">
-        <h1 data-i18n="download_title">Download</h1>
+        <h1 data-i18n="download_title">Download Our Apps</h1>
         <p class="section-intro" data-i18n="download_desc">
-          The driver app supports pickup, delivery, navigation, photo proof, and signature capture for daily courier tasks.
+          Mission Go Logistics provides two mobile apps: Mission Rush for customers and Mission Go for approved drivers and delivery partners.
         </p>
       </div>
     </section>
 
     <section class="download-section">
       <div class="container">
-        <div class="download-grid" id="downloadGrid">
-          <article class="download-card" data-platform="ios">
-            <div class="app-badge ios-badge">iOS</div>
-            <h2 data-i18n="download_ios_title">For iPhone</h2>
-            <p data-i18n="download_ios_desc">
-              Get the iPhone version from the App Store.
+        <div class="download-grid app-download-grid" id="downloadGrid">
+          <article class="download-card app-download-card" data-app="rush">
+            <div class="app-badge customer-badge" data-i18n="download_rush_badge">Customer App</div>
+            <h2 data-i18n="download_rush_title">Mission Rush</h2>
+            <p data-i18n="download_rush_desc">
+              Mission Rush is the customer app for local delivery, food pickup, grocery pickup, cargo delivery, parcel shipping, China consolidation, intercity delivery, wallet, rewards, and order tracking.
             </p>
 
-            <div class="app-actions">
+            <ul class="app-feature-list">
+              <li data-i18n="download_rush_feature_1">Create delivery, pickup, cargo, parcel, consolidation, and intercity orders.</li>
+              <li data-i18n="download_rush_feature_2">Manage addresses, payment, wallet balance, rewards, and order history.</li>
+              <li data-i18n="download_rush_feature_3">Track status updates and request support from one account.</li>
+            </ul>
+
+            <div class="app-actions download-platforms">
+              <!-- Replace the href below with the direct Mission Rush App Store URL after the App Store listing is finalized. -->
               <a
-                href="https://apps.apple.com/ca/app/mission-go/id6755661003"
+                href="https://apps.apple.com/ca/search?term=Mission%20Rush"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn btn-primary"
-                data-i18n="download_ios_store"
+                class="btn btn-primary store-btn"
+                data-platform="ios"
+                data-i18n="download_app_store"
               >
                 App Store
               </a>
-            </div>
-          </article>
-
-          <article class="download-card" data-platform="android">
-            <div class="app-badge android-badge">Android</div>
-            <h2 data-i18n="download_android_title">For Android</h2>
-            <p data-i18n="download_android_desc">
-              Download the Android version or install it from Google Play.
-            </p>
-
-            <div class="app-actions">
               <a
-                href="/downloads/mission_go_1.0.0.apk"
-                class="btn btn-primary"
-                download
-                data-i18n="download_android_apk"
-              >
-                Download APK
-              </a>
-              <a
-                href="https://play.google.com/store/apps/details?id=ca.missionexpress.missiongo"
+                href="https://play.google.com/store/apps/details?id=ca.missionexpress.missionrush"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn btn-outline"
-                data-i18n="download_android_play"
+                class="btn btn-outline store-btn"
+                data-platform="android"
+                data-i18n="download_google_play"
               >
                 Google Play
               </a>
             </div>
           </article>
+
+          <article class="download-card app-download-card" data-app="go">
+            <div class="app-badge driver-badge" data-i18n="download_go_badge">Driver App</div>
+            <h2 data-i18n="download_go_title">Mission Go</h2>
+            <p data-i18n="download_go_desc">
+              Mission Go is the driver app for approved delivery partners. Drivers can receive tasks, manage online status, confirm pickup and delivery, upload photos, use navigation, and complete assigned routes.
+            </p>
+
+            <ul class="app-feature-list">
+              <li data-i18n="download_go_feature_1">Receive Direct Pickup, Cargo Pickup, Ship Parcel, and warehouse delivery tasks.</li>
+              <li data-i18n="download_go_feature_2">Confirm pickup and delivery with photo proof and task status updates.</li>
+              <li data-i18n="download_go_feature_3">Driver accounts may require approval before accepting delivery tasks.</li>
+            </ul>
+
+            <div class="app-actions download-platforms">
+              <a
+                href="https://apps.apple.com/ca/app/mission-go/id6755661003"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary store-btn"
+                data-platform="ios"
+                data-i18n="download_app_store"
+              >
+                App Store
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=ca.missionexpress.missiongo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline store-btn"
+                data-platform="android"
+                data-i18n="download_google_play"
+              >
+                Google Play
+              </a>
+              <a
+                href="/downloads/mission_go_1.0.0.apk"
+                class="btn btn-outline store-btn apk-btn"
+                data-platform="android"
+                download
+                data-i18n="download_android_apk"
+              >
+                Download APK
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="download-more" id="downloadMore" style="display:none;">
+          <button class="btn btn-outline" id="showAllApps" type="button" data-i18n="download_show_all">Show all apps</button>
         </div>
 
         <div class="user-guide-wrap" id="userGuideWrap">
@@ -173,12 +199,12 @@
           <span class="lang-block lang-zh">责任与保险条款</span>
         </a>
       </p>
-          <p>
-      <a href="api-docs-index.html">
-        <span class="lang-block lang-en">API Documentation</span>
-        <span class="lang-block lang-zh">API 接口文档</span>
-      </a>
-    </p>
+      <p>
+        <a href="api-docs-index.html">
+          <span class="lang-block lang-en">API Documentation</span>
+          <span class="lang-block lang-zh">API 接口文档</span>
+        </a>
+      </p>
     </div>
   </footer>
 
