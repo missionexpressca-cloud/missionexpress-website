@@ -417,36 +417,53 @@ textarea:focus {
 
 /* ===========================
    CTA Right block (accent section)
+   Normal layout, no absolute positioning.
+   This prevents the email/download buttons and QR codes from overlapping the text.
    =========================== */
 
 .section.accent {
   position: relative;
   overflow: hidden;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.section.accent .section-inner.flex-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.9fr);
+  align-items: center;
+  gap: 28px 42px;
+}
+
+.section.accent .section-inner.flex-row > div:first-child {
+  min-width: 0;
 }
 
 .section.accent .cta-right {
-  position: absolute;
-  right: clamp(260px, 24vw, 520px);
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;
+  transform: none;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 14px;
   z-index: 5;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .section.accent .cta-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
 .section.accent .cta-qr-pair {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .section.accent .cta-qr-pair .qr-card {
@@ -464,19 +481,42 @@ textarea:focus {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 1400px) {
-  .section.accent .cta-right {
-    right: clamp(160px, 12vw, 320px);
+.cta-phone a {
+  white-space: nowrap;
+}
+
+@media (max-width: 1050px) {
+  .section.accent .section-inner.flex-row {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  .section.accent .cta-right,
+  .section.accent .cta-actions,
+  .section.accent .cta-qr-pair {
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 }
 
-@media (max-width: 900px) {
-  .section.accent .cta-right {
-    position: static;
-    transform: none;
-    margin-top: 14px;
-    align-items: flex-start;
-    white-space: normal;
+@media (max-width: 600px) {
+  .section.accent {
+    padding-top: 2.4rem;
+    padding-bottom: 2.6rem;
+  }
+
+  .section.accent .cta-actions {
+    width: 100%;
+  }
+
+  .section.accent .cta-actions .btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .section.accent .cta-qr-pair .qr-card img {
+    width: 82px !important;
+    height: 82px !important;
   }
 }
 
@@ -916,43 +956,5 @@ html[lang="zh"] .lang-zh {
 
   .section-heading-row {
     flex-direction: column;
-  }
-}
-
-
-/* ===========================
-   Home page compact layout after removing duplicate CTA buttons
-   =========================== */
-.hero {
-  min-height: 62vh;
-  padding: 4.2rem 1.5rem 2.6rem;
-}
-
-.hero-sub {
-  margin-bottom: 1.25rem;
-}
-
-.app-showcase {
-  padding-top: 3rem;
-  padding-bottom: 2.8rem;
-}
-
-.app-showcase .cards-grid {
-  margin-top: 1.35rem;
-}
-
-.app-showcase + .section.light {
-  padding-top: 3rem;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    min-height: auto;
-    padding: 3.2rem 1rem 2.2rem;
-  }
-
-  .app-showcase {
-    padding-top: 2.4rem;
-    padding-bottom: 2.3rem;
   }
 }
