@@ -218,6 +218,8 @@ const dict = {
     download_android_play: "Google Play",
     download_show_all: "Show all apps",
     download_user_guide: "User Guide",
+    download_mission_go_user_guide: "Mission Go User Guide",
+    download_mission_go_user_guide_zh: "Mission Go Chinese User Guide",
 
     contact_title: "Contact us",
     contact_intro:
@@ -484,6 +486,8 @@ const dict = {
     download_android_play: "Google Play",
     download_show_all: "显示全部应用",
     download_user_guide: "使用说明",
+    download_mission_go_user_guide: "Mission Go 英文使用说明",
+    download_mission_go_user_guide_zh: "Mission Go 中文使用说明",
 
     contact_title: "联系合作",
     contact_intro:
