@@ -30,7 +30,7 @@ if (toggle && nav && backdrop) {
    - show both iOS and Google Play buttons
    Mobile:
    - iPhone/iPad only shows App Store buttons
-   - Android only shows Google Play / APK buttons
+   - Android only shows Google Play buttons
    ========================= */
 
 function detectMobilePlatform() {
