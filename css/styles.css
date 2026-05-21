@@ -417,53 +417,36 @@ textarea:focus {
 
 /* ===========================
    CTA Right block (accent section)
-   Normal layout, no absolute positioning.
-   This prevents the email/download buttons and QR codes from overlapping the text.
    =========================== */
 
 .section.accent {
   position: relative;
   overflow: hidden;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.section.accent .section-inner.flex-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.9fr);
-  align-items: center;
-  gap: 28px 42px;
-}
-
-.section.accent .section-inner.flex-row > div:first-child {
-  min-width: 0;
 }
 
 .section.accent .cta-right {
-  position: static;
-  transform: none;
+  position: absolute;
+  right: clamp(260px, 24vw, 520px);
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 14px;
+  gap: 10px;
   z-index: 5;
-  white-space: normal;
+  white-space: nowrap;
 }
 
 .section.accent .cta-actions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
   gap: 12px;
 }
 
 .section.accent .cta-qr-pair {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .section.accent .cta-qr-pair .qr-card {
@@ -481,42 +464,19 @@ textarea:focus {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
-.cta-phone a {
-  white-space: nowrap;
-}
-
-@media (max-width: 1050px) {
-  .section.accent .section-inner.flex-row {
-    grid-template-columns: 1fr;
-    align-items: flex-start;
-  }
-
-  .section.accent .cta-right,
-  .section.accent .cta-actions,
-  .section.accent .cta-qr-pair {
-    align-items: flex-start;
-    justify-content: flex-start;
+@media (max-width: 1400px) {
+  .section.accent .cta-right {
+    right: clamp(160px, 12vw, 320px);
   }
 }
 
-@media (max-width: 600px) {
-  .section.accent {
-    padding-top: 2.4rem;
-    padding-bottom: 2.6rem;
-  }
-
-  .section.accent .cta-actions {
-    width: 100%;
-  }
-
-  .section.accent .cta-actions .btn {
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .section.accent .cta-qr-pair .qr-card img {
-    width: 82px !important;
-    height: 82px !important;
+@media (max-width: 900px) {
+  .section.accent .cta-right {
+    position: static;
+    transform: none;
+    margin-top: 14px;
+    align-items: flex-start;
+    white-space: normal;
   }
 }
 
@@ -758,6 +718,11 @@ nav[aria-label="Breadcrumb"] {
 .download-more,
 .user-guide-wrap {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   text-align: center;
 }
 
@@ -956,5 +921,14 @@ html[lang="zh"] .lang-zh {
 
   .section-heading-row {
     flex-direction: column;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .user-guide-wrap .guide-btn,
+  .download-page .user-guide-wrap .guide-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

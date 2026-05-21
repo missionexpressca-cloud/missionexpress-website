@@ -107,6 +107,11 @@
 
 .download-page .user-guide-wrap {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   text-align: center;
 }
 
@@ -204,9 +209,6 @@
   display: none !important;
 }
 
-.download-page .apk-btn {
-  opacity: 0.9;
-}
 
 @media (max-width: 980px) {
   html.device-ios .download-page .store-btn[data-platform="android"] {
@@ -215,5 +217,14 @@
 
   html.device-android .download-page .store-btn[data-platform="ios"] {
     display: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .user-guide-wrap .guide-btn,
+  .download-page .user-guide-wrap .guide-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
