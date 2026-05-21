@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission Go 中文使用说明 | Mission Go Logistics</title>
+  <meta name="description" content="Mission Go 司机端 App 中文使用说明，包含登录、上线接单、取件、送达、拍照、导航和任务记录说明。" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .guide-page { background:#050814; }
+    .guide-content { max-width: 980px; margin: 0 auto; }
+    .guide-card { margin-top: 18px; padding: 24px; border-radius: 18px; background:#121527; border:1px solid rgba(255,255,255,.08); }
+    .guide-card h2 { margin: 0 0 12px; font-size: 24px; }
+    .guide-card h3 { margin: 18px 0 8px; color:#ffb347; }
+    .guide-card p { color:#d8dcff; margin: 8px 0; }
+    .guide-card ul, .guide-card ol { padding-left: 22px; color:#d8dcff; line-height:1.8; }
+    .guide-note { margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: rgba(255,179,71,.11); border: 1px solid rgba(255,179,71,.25); color:#fff3d4; }
+    .guide-actions { margin-top: 22px; display:flex; gap:12px; flex-wrap:wrap; }
+    @media (max-width:768px){ .guide-card{padding:20px;} .guide-actions .btn{width:100%;} }
+  </style>
+</head>
+<body>
+  <header class="top-nav">
+    <div class="logo-wrap">
+      <a href="index.html" class="brand-mark" aria-label="Mission Go home">
+        <img src="img/logo.png" alt="Mission Go logo" class="logo" />
+      </a>
+    </div>
+
+    <nav class="nav-links desktop-nav">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="services.html" data-i18n="nav_services">Services</a>
+      <a href="network.html" data-i18n="nav_network">Network</a>
+      <a href="download.html" data-i18n="nav_download" class="active">Download</a>
+      <a href="api-docs-index.html"><span class="lang-block lang-en">API Docs</span><span class="lang-block lang-zh">API 文档</span></a>
+      <a href="https://mission-express.square.site/" target="_blank" rel="noopener noreferrer" data-i18n="nav_store">Online Store</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="lang-toggle" class="lang-toggle" type="button">中文</button>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="services.html" data-i18n="nav_services">Services</a>
+    <a href="network.html" data-i18n="nav_network">Network</a>
+    <a href="download.html" data-i18n="nav_download" class="active">Download</a>
+    <a href="api-docs-index.html"><span class="lang-block lang-en">API Docs</span><span class="lang-block lang-zh">API 文档</span></a>
+    <a href="https://mission-express.square.site/" target="_blank" rel="noopener noreferrer" data-i18n="nav_store">Online Store</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
+  </nav>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <main class="guide-page">
+    <section class="page-hero">
+      <div class="section-inner">
+        <h1>Mission Go 司机端使用说明</h1>
+        <p class="section-intro">本说明适用于 Mission Go 司机端 App。司机账号需审核通过后，才能上线接收配送任务。</p>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="guide-content">
+        <article class="guide-card">
+          <h2>一、App 用途</h2>
+          <p>Mission Go 是配送司机和合作伙伴使用的任务 App，用于接收本地配送、同城取件、大件取件、包裹任务、仓库派送和路线配送任务。</p>
+          <ul>
+            <li>查看可接任务和已接任务</li>
+            <li>管理上线 / 下线状态</li>
+            <li>接收派单邀请并确认任务</li>
+            <li>使用导航前往取件地和送达地</li>
+            <li>拍照确认取件、送达和异常情况</li>
+            <li>查看任务状态和历史记录</li>
+          </ul>
+
+          <h2>二、登录与账号审核</h2>
+          <ol>
+            <li>下载并安装 Mission Go App。</li>
+            <li>使用注册手机号或账号登录。</li>
+            <li>首次使用前，请按要求完成司机资料、车辆资料和必要文件提交。</li>
+            <li>账号审核通过后，才可以上线接单。</li>
+          </ol>
+          <div class="guide-note">如果登录后看不到接单功能，通常是账号尚未审核通过，或当前城市/模块暂未为该账号开通。</div>
+
+          <h2>三、上线接单</h2>
+          <ol>
+            <li>进入首页后，根据需要开启对应模块的 Online 状态。</li>
+            <li>上线后，系统会根据订单类型、位置、服务区域和任务规则推送可接任务。</li>
+            <li>收到任务邀请后，请在倒计时内查看订单信息并决定是否接受。</li>
+            <li>接受任务后，请按 App 内显示的流程完成取件和送达。</li>
+          </ol>
+
+          <h2>四、主要任务类型</h2>
+          <h3>1. Direct Pickup / 同城取件</h3>
+          <p>适用于本地小件、餐食、商家订单或普通同城配送任务。司机接受任务后，按地址前往取件，再送达指定目的地。</p>
+
+          <h3>2. Cargo Pickup / 大件取件</h3>
+          <p>适用于较大、较重或需要额外确认的物品。请在取件和送达时仔细核对物品信息，并按要求上传照片。</p>
+
+          <h3>3. Ship Parcel / 包裹任务</h3>
+          <p>适用于包裹取件、转运或相关配送任务。此类任务可能允许连续接单，具体以 App 显示规则为准。</p>
+
+          <h3>4. Warehouse Delivery / 仓库派送</h3>
+          <p>适用于从仓库、站点或分拨点出发的路线派送任务。请按系统路线和包裹顺序完成配送。</p>
+
+          <h2>五、取件与送达确认</h2>
+          <ol>
+            <li>到达取件地后，点击到达或确认取件。</li>
+            <li>按要求拍摄取件照片、包裹照片或交接证明。</li>
+            <li>送达时再次按要求拍摄送达照片或获取签收证明。</li>
+            <li>如果定位距离校验失败，但你确认已经到达现场，请按页面提示继续拍照并保留证明。</li>
+          </ol>
+
+          <h2>六、导航与定位</h2>
+          <ul>
+            <li>App 可打开地图导航前往取件地或送达地。</li>
+            <li>请确认手机定位权限已开启。</li>
+            <li>如果 GPS 漂移或定位不准，请在安全位置重新打开定位，必要时上传清晰照片作为现场证明。</li>
+          </ul>
+
+          <h2>七、异常处理</h2>
+          <ul>
+            <li>联系不上客户、地址不清楚、无法进入建筑物、包裹异常或发生延误时，请及时联系平台支持。</li>
+            <li>不要私自取消、丢弃、转交或改变包裹处理方式。</li>
+            <li>涉及高价值、破损、丢失或客户争议的情况，请保留照片、聊天记录和现场说明。</li>
+          </ul>
+
+          <h2>八、安全提醒</h2>
+          <ul>
+            <li>Mission Go 是配送任务 App，不是载客服务。</li>
+            <li>请遵守当地交通法规，安全驾驶。</li>
+            <li>不要在驾驶过程中操作手机；请停车后再查看订单或拍照。</li>
+            <li>请保护客户隐私，不要泄露客户地址、电话和订单信息。</li>
+          </ul>
+
+          <div class="guide-actions">
+            <a href="download.html" class="btn btn-primary">返回下载页面</a>
+            <a href="mailto:info@missionexpress.ca" class="btn btn-outline">联系支持</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
+      <p class="footer-policy"><a href="liability.html"><span class="lang-block lang-en">Liability &amp; Coverage Policy</span><span class="lang-block lang-zh">责任与保险条款</span></a></p>
+      <p><a href="api-docs-index.html"><span class="lang-block lang-en">API Documentation</span><span class="lang-block lang-zh">API 接口文档</span></a></p>
+    </div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
