@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mission Go Logistics | Last‑Mile Delivery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <div class="logo-wrap">
+      <a href="index.html">
+        <img src="img/logo.png" alt="Mission Go logo" class="logo" />
+      </a>
+    </div>
+
+    <nav class="nav-links desktop-nav">
+      <a href="index.html" data-i18n="nav_home" class="active">Home</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="services.html" data-i18n="nav_services">Services</a>
+      <a href="network.html" data-i18n="nav_network">Network</a>
+      <a href="download.html" data-i18n="nav_download">Download</a>
+      <a href="api-docs-index.html">
+        <span class="lang-block lang-en">API Docs</span>
+        <span class="lang-block lang-zh">API 文档</span>
+      </a>
+      <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="lang-toggle" class="lang-toggle" type="button">中文</button>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="services.html" data-i18n="nav_services">Services</a>
+    <a href="network.html" data-i18n="nav_network">Network</a>
+    <a href="download.html" data-i18n="nav_download">Download</a>
+    <a href="api-docs-index.html">
+      <span class="lang-block lang-en">API Docs</span>
+      <span class="lang-block lang-zh">API 文档</span>
+    </a>
+    <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
+  </nav>
+
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <main>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-kicker" data-i18n="hero_kicker">Last‑mile, pickup, shipping & consolidation in Saskatchewan</p>
+        <h1 class="hero-title" data-i18n="hero_title">Delivery services powered by two mobile apps</h1>
+        <p class="hero-sub" data-i18n="hero_sub">
+          Mission Go Logistics connects customers, local businesses, drivers, and logistics partners. With Mission Rush, customers can order delivery, pickup, parcel shipping, cargo, China consolidation, and intercity services from one app. With Mission Go, approved drivers receive and complete delivery tasks.
+        </p>
+        <div class="hero-metrics">
+          <div class="metric">
+            <span class="metric-number">7</span>
+            <span class="metric-label" data-i18n="metric_days">Days a week</span>
+          </div>
+          <div class="metric">
+            <span class="metric-number">20kg+</span>
+            <span class="metric-label" data-i18n="metric_parcels">Parcel & cargo deliveries</span>
+          </div>
+          <div class="metric">
+            <span class="metric-number">2 Apps</span>
+            <span class="metric-label" data-i18n="metric_apps">Mission Rush for customers, Mission Go for drivers</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light app-showcase">
+      <div class="section-inner">
+        <h2 data-i18n="home_apps_title">Two Apps, One Delivery Network</h2>
+        <p class="section-intro" data-i18n="home_apps_intro">
+          Mission Rush and Mission Go work together to connect customer orders with local delivery operations.
+        </p>
+
+        <div class="cards-grid app-card-grid">
+          <article class="card app-card featured-app-card">
+            <div class="app-card-topline" data-i18n="home_mission_rush_badge">Customer App</div>
+            <h3 data-i18n="home_mission_rush_title">Mission Rush</h3>
+            <p data-i18n="home_mission_rush_body">
+              Customers can create delivery, pickup, cargo, parcel shipping, China consolidation, and intercity orders, pay securely, manage addresses, track order status, and access wallet and rewards features.
+            </p>
+            <div class="feature-pills">
+              <span data-i18n="feature_send">Local Send</span>
+              <span data-i18n="feature_food">Food Pickup</span>
+              <span data-i18n="feature_grocery">Grocery Pickup</span>
+              <span data-i18n="feature_cargo">Cargo</span>
+              <span data-i18n="feature_ship_parcel">Ship Parcel</span>
+              <span data-i18n="feature_consolidation">China Consolidation</span>
+              <span data-i18n="feature_intercity">Intercity Hitch</span>
+              <span data-i18n="feature_wallet">Wallet & Rewards</span>
+            </div>
+          </article>
+
+          <article class="card app-card featured-app-card">
+            <div class="app-card-topline" data-i18n="home_mission_go_badge">Driver App</div>
+            <h3 data-i18n="home_mission_go_title">Mission Go</h3>
+            <p data-i18n="home_mission_go_body">
+              Approved drivers can go online, receive tasks, accept pickup and cargo orders, confirm pickup and delivery, upload photos, use navigation, and complete assigned routes.
+            </p>
+            <div class="feature-pills">
+              <span data-i18n="feature_driver_online">Driver Online</span>
+              <span data-i18n="feature_direct_pickup">Direct Pickup</span>
+              <span data-i18n="feature_cargo_pickup">Cargo Pickup</span>
+              <span data-i18n="feature_parcel_tasks">Parcel Tasks</span>
+              <span data-i18n="feature_warehouse_delivery">Warehouse Delivery</span>
+              <span data-i18n="feature_photo_proof">Photo Proof</span>
+              <span data-i18n="feature_navigation">Navigation</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="section-inner">
+        <h2 data-i18n="home_highlights_title">Why partners choose Mission Go</h2>
+        <p class="section-intro" data-i18n="home_highlights_intro">
+          Built for e‑commerce platforms, carriers, local stores, and communities looking for a reliable Saskatchewan delivery partner.
+        </p>
+
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-icon">🚚</div>
+            <h3 data-i18n="home_card1_title">Professional last‑mile delivery</h3>
+            <p data-i18n="home_card1_body">
+              Same‑day and next‑day solutions for parcels, cargo, local pickup, and regional distribution.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">📱</div>
+            <h3 data-i18n="home_card2_title">App-based ordering and driver workflow</h3>
+            <p data-i18n="home_card2_body">
+              Customers order through Mission Rush while drivers complete tasks through Mission Go with status updates and proof of delivery.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">📦</div>
+            <h3 data-i18n="home_card3_title">Pickup points & micro‑hubs</h3>
+            <p data-i18n="home_card3_body">
+              Neighborhood pickup locations and local hubs designed to support parcel handling, warehouse delivery, and reduced failed deliveries.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="section-inner">
+        <h2 data-i18n="home_flow_title">Simple, transparent delivery flow</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-label" data-i18n="home_flow_1_label">1. Order or connect</span>
+            <p data-i18n="home_flow_1_body">
+              Customers place orders in Mission Rush, or business partners connect through agreed workflows, manifests, or API integration.
+            </p>
+          </li>
+          <li>
+            <span class="step-label" data-i18n="home_flow_2_label">2. Dispatch & route</span>
+            <p data-i18n="home_flow_2_body">
+              Orders are prepared, sorted by service type, and dispatched to approved drivers through the Mission Go driver app.
+            </p>
+          </li>
+          <li>
+            <span class="step-label" data-i18n="home_flow_3_label">3. Deliver & confirm</span>
+            <p data-i18n="home_flow_3_body">
+              Drivers complete pickup and delivery with navigation, photo proof, status updates, and order completion records.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section accent">
+      <div class="section-inner flex-row">
+        <div>
+          <h2 data-i18n="home_cta_title">Need local delivery, pickup, or parcel support?</h2>
+          <p class="cta-copy">
+            <span class="lang-block lang-en">Download our apps or talk to us about last-mile delivery, local distribution,<br class="desktop-break" /> warehouse delivery, or pickup point cooperation across Canada.</span>
+            <span class="lang-block lang-zh">下载我们的应用，或联系我们洽谈加拿大范围内的末端配送、本地分拨、<br class="desktop-break" />仓库派送和代收点合作。</span>
+          </p>
+
+          <p class="cta-phone">
+            Phone:
+            <a href="tel:+18254255001">+1 (825) 425-5001</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="tel:+14032004677">+1 (403) 200-4677</a>
+          </p>
+        </div>
+
+        <div class="cta-right">
+          <div class="cta-actions">
+            <a href="mailto:info@missionexpress.ca" class="btn primary">info@missionexpress.ca</a>
+            <a href="download.html" class="btn ghost" data-i18n="btn_download_apps">Download apps</a>
+          </div>
+
+          <div class="cta-qr-pair">
+            <a class="qr-card" href="img/facebook.png" target="_blank" rel="noopener">
+              <img src="img/facebook.png" alt="Facebook QR" loading="lazy" />
+            </a>
+            <a class="qr-card" href="img/whatsapp.png" target="_blank" rel="noopener">
+              <img src="img/whatsapp.png" alt="WhatsApp QR" loading="lazy" />
+            </a>
+            <a class="qr-card" href="img/wechat_mia.jpg" target="_blank" rel="noopener">
+              <img src="img/wechat.png" alt="WeChat QR" loading="lazy" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
+      <p>
+        <a href="liability.html">
+          <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
+          <span class="lang-block lang-zh">责任与保险条款</span>
+        </a>
+      </p>
+      <p>
+        <a href="api-docs-index.html">
+          <span class="lang-block lang-en">API Documentation</span>
+          <span class="lang-block lang-zh">API 接口文档</span>
+        </a>
+      </p>
+      <p class="footer-note" data-i18n="footer_note">
+        Mission Go is the last‑mile brand of Mission Express Logistics Inc., based in Moose Jaw, Saskatchewan, Canada.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
