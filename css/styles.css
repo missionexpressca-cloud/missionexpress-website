@@ -417,27 +417,27 @@ textarea:focus {
 
 /* ===========================
    CTA Right block (accent section)
-   Home CTA uses a stable two-column grid so EN/ZH layouts match
+   Home CTA: left copy and right email + QR cards on the same row
    =========================== */
 
 .section.accent {
   position: relative;
   overflow: hidden;
-  padding: 3.4rem 1.5rem;
+  padding: 2.45rem 1.5rem 2.55rem;
 }
 
 .section.accent .section-inner.flex-row {
   max-width: 1180px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
   justify-content: space-between;
-  column-gap: 56px;
+  column-gap: 44px;
 }
 
 .section.accent .home-cta-copy {
   min-width: 0;
-  max-width: 700px;
+  max-width: 650px;
 }
 
 .section.accent .home-cta-copy h2 {
@@ -461,50 +461,51 @@ textarea:focus {
   position: static;
   transform: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 360px;
-  min-width: 360px;
-  gap: 12px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-width: 0;
   z-index: 5;
   white-space: normal;
 }
 
-.section.accent .cta-actions {
-  display: grid;
-  grid-template-columns: 1fr;
+.section.accent .cta-contact-row {
+  display: flex;
   align-items: center;
-  justify-items: center;
-  gap: 12px;
-  width: 100%;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-wrap: nowrap;
 }
 
-.section.accent .cta-actions .btn {
-  min-width: 180px;
+.section.accent .cta-actions {
+  display: contents;
+}
+
+.section.accent .cta-actions .btn,
+.section.accent .cta-contact-row .btn {
+  min-width: 190px;
+  white-space: nowrap;
 }
 
 .section.accent .cta-qr-pair {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   flex-wrap: nowrap;
-  gap: 10px;
+  gap: 8px;
   margin-top: 0;
-  width: 100%;
 }
 
 .section.accent .cta-qr-pair .qr-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 88px;
-  height: 88px;
-  padding: 6px;
+  width: 76px;
+  height: 76px;
+  padding: 5px;
   border-radius: 12px;
   background: #fff;
   overflow: hidden;
-  flex: 0 0 88px;
+  flex: 0 0 76px;
   line-height: 0;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
@@ -520,11 +521,7 @@ textarea:focus {
   box-shadow: none;
 }
 
-@media (max-width: 900px) {
-  .section.accent {
-    padding: 3rem 1rem;
-  }
-
+@media (max-width: 1050px) {
   .section.accent .section-inner.flex-row {
     display: flex;
     flex-direction: column;
@@ -537,21 +534,36 @@ textarea:focus {
   }
 
   .section.accent .cta-right {
-    align-items: flex-start;
-    min-width: 0;
+    justify-content: flex-start;
     width: 100%;
     margin-top: 4px;
   }
 
-  .section.accent .cta-actions {
-    justify-items: flex-start;
+  .section.accent .cta-contact-row {
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .section.accent .cta-qr-pair {
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .section.accent {
+    padding: 2.5rem 1rem;
+  }
+
+  .section.accent .cta-contact-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section.accent .cta-qr-pair {
     flex-wrap: wrap;
   }
 }
+
 
 /* ===========================
    Mobile menu (hamburger + drawer)
