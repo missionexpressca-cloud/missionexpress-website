@@ -23,16 +23,16 @@
     }
 
     .payment-qr-floating {
-      position: absolute;
-      left: 170px;
-      top: 318px;
+      position: static;
+      margin-top: 20px;
       z-index: 2;
     }
 
     .payment-qr-row {
-      display: flex;
+      display: inline-flex;
       align-items: flex-start;
-      gap: 8px;
+      gap: 10px;
+      max-width: 100%;
     }
 
     .payment-qr-text {
@@ -97,7 +97,7 @@
     @media (max-width: 900px) {
       .payment-qr-floating {
         position: static;
-        margin-top: 12px;
+        margin-top: 18px;
       }
 
       .payment-qr-row {
@@ -246,8 +246,6 @@
               Enter Platform
             </a>
           </div>
-        </div>
-
         <div class="payment-qr-floating">
           <div class="payment-qr-row">
             <div class="payment-qr-text">
@@ -267,6 +265,9 @@
             </div>
           </div>
         </div>
+        </div>
+
+
 
         <div id="faq-form" class="contact-form">
           <h2 data-i18n="contact_form_title">Send us a message</h2>
