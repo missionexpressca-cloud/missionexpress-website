@@ -417,32 +417,44 @@ textarea:focus {
 
 /* ===========================
    CTA Right block (accent section)
-   Email + QR group stays on the right side on desktop
+   Home CTA uses a stable two-column grid so EN/ZH layouts match
    =========================== */
 
 .section.accent {
   position: relative;
   overflow: hidden;
+  padding: 3.4rem 1.5rem;
 }
 
 .section.accent .section-inner.flex-row {
+  max-width: 1180px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+  grid-template-columns: minmax(0, 1fr) 360px;
   align-items: center;
-  gap: 36px;
+  justify-content: space-between;
+  column-gap: 56px;
 }
 
-.section.accent .section-inner.flex-row > div:first-child {
-  max-width: 720px;
+.section.accent .home-cta-copy {
+  min-width: 0;
+  max-width: 700px;
 }
 
-.section.accent .cta-copy {
-  max-width: 720px;
-  line-height: 1.6;
+.section.accent .home-cta-copy h2 {
+  margin-bottom: 0.35rem;
 }
 
-.section.accent .desktop-break {
-  display: block;
+.section.accent .home-cta-copy p {
+  margin: 0.2rem 0;
+}
+
+.section.accent .home-cta-copy .lang-en,
+.section.accent .home-cta-copy .lang-zh {
+  line-height: 1.55;
+}
+
+.section.accent .cta-phone {
+  margin-top: 0.25rem;
 }
 
 .section.accent .cta-right {
@@ -450,31 +462,36 @@ textarea:focus {
   transform: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  justify-self: end;
-  width: 100%;
-  min-width: 320px;
+  width: 360px;
+  min-width: 360px;
   gap: 12px;
   z-index: 5;
   white-space: normal;
 }
 
 .section.accent .cta-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  justify-items: center;
   gap: 12px;
+  width: 100%;
+}
+
+.section.accent .cta-actions .btn {
+  min-width: 180px;
 }
 
 .section.accent .cta-qr-pair {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   flex-wrap: nowrap;
   gap: 10px;
   margin-top: 0;
+  width: 100%;
 }
 
 .section.accent .cta-qr-pair .qr-card {
@@ -504,26 +521,30 @@ textarea:focus {
 }
 
 @media (max-width: 900px) {
-  .section.accent .section-inner.flex-row {
-    grid-template-columns: 1fr;
-    align-items: flex-start;
-    gap: 20px;
+  .section.accent {
+    padding: 3rem 1rem;
   }
 
-  .section.accent .desktop-break {
-    display: none;
+  .section.accent .section-inner.flex-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .section.accent .home-cta-copy {
+    max-width: none;
   }
 
   .section.accent .cta-right {
     align-items: flex-start;
-    justify-self: start;
     min-width: 0;
     width: 100%;
     margin-top: 4px;
   }
 
   .section.accent .cta-actions {
-    justify-content: flex-start;
+    justify-items: flex-start;
   }
 
   .section.accent .cta-qr-pair {
