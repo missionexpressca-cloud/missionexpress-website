@@ -81,6 +81,19 @@
       padding: 6px;
     }
 
+    .partner-pickup-link {
+      margin-top: 20px;
+    }
+
+    .partner-pickup-link a {
+      background: linear-gradient(135deg, #44d7ff, #8df0b8);
+      color: #07111f !important;
+    }
+
+    .partner-pickup-link a:visited {
+      color: #07111f !important;
+    }
+
     @media (max-width: 900px) {
       .payment-qr-floating {
         position: static;
@@ -201,6 +214,21 @@
               data-i18n="contact_prealert_btn"
             >
               Parcel Pre-Alert
+            </a>
+          </div>
+
+          <div class="prealert-link contact-prealert partner-pickup-link">
+            <span class="prealert-tag">
+              <span class="lang-block lang-en">[Pickup Point Partner]</span>
+              <span class="lang-block lang-zh">【代收点合作】</span>
+            </span><br>
+            <a
+              href="https://v2-api.missionexpress.ca/partner-pickup-point.html"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="lang-block lang-en">Become a Pickup Point</span>
+              <span class="lang-block lang-zh">申请成为代收点</span>
             </a>
           </div>
 
