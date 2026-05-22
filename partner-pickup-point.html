@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>City Partner Pickup Point Application | Mission Express</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --blue:#173b8f;
+      --red:#e53935;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --bg:#f6f8fb;
+      --ok:#065f46;
+      --err:#991b1b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .top {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .top-inner {
+      max-width: 1120px;
+      margin: auto;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .brand span { color: var(--red); }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .top-link,
+    .lang {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: auto;
+      padding: 48px 20px 34px;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.15;
+      margin: 0 0 14px;
+    }
+
+    .lead {
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 28px auto;
+      padding: 0 20px 60px;
+    }
+
+    form {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.06);
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      margin-top: 24px;
+    }
+
+    .section:first-child {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 0 0 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .req { color: var(--red); }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #cfd6df;
+      border-radius: 10px;
+      padding: 12px 13px;
+      font-size: 15px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 18px;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    .check input { width: auto; }
+
+    .hint {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    button.primary {
+      background: var(--blue);
+      color: #fff;
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 22px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button.primary:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .msg {
+      display: none;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-top: 18px;
+    }
+
+    .msg.ok {
+      display: block;
+      background: #ecfdf5;
+      color: var(--ok);
+      border: 1px solid #a7f3d0;
+    }
+
+    .msg.err {
+      display: block;
+      background: #fef2f2;
+      color: var(--err);
+      border: 1px solid #fecaca;
+    }
+
+    .zh { display: none; }
+
+    html[lang="zh"] .en { display: none; }
+    html[lang="zh"] .zh { display: inline; }
+    html[lang="zh"] p.zh,
+    html[lang="zh"] div.zh { display: block; }
+
+    @media (max-width: 850px) {
+      h1 { font-size: 32px; }
+      .grid,
+      .grid.two,
+      .checks { grid-template-columns: 1fr; }
+      form { padding: 18px; }
+      .top-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="https://missionexpress.ca/">Mission <span>Express</span></a>
+      <div class="top-actions">
+        <a class="top-link" href="https://missionexpress.ca/contact.html">
+          <span class="en">Contact</span><span class="zh">联系我们</span>
+        </a>
+        <button class="lang" type="button" id="langBtn">中文 / EN</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>
+        <span class="en">City Partner Pickup Point Application</span>
+        <span class="zh">城市合作代收点申请</span>
+      </h1>
+      <p class="lead en">
+        Mission Express is looking for local businesses across Canada to become city partner pickup points. Approved partners may help receive, store, and hand over parcels for local customers, consolidation orders, and regional delivery services.
+      </p>
+      <p class="lead zh">
+        Mission Express 正在加拿大范围内招募本地城市合作代收点。通过审核的合作商户可作为包裹代收、暂存、自提和城市配送协作站点。
+      </p>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <form id="applicationForm">
+      <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="section">
+        <h2><span class="en">Business Information</span><span class="zh">商户信息</span></h2>
+        <div class="grid">
+          <div>
+            <label><span class="en">Legal Business Name</span><span class="zh">法定商户名称</span> <span class="req">*</span></label>
+            <input name="legal_business_name" required>
+          </div>
+          <div>
+            <label><span class="en">Operating Name</span><span class="zh">门店/经营名称</span></label>
+            <input name="operating_name">
+          </div>
+          <div>
+            <label><span class="en">Business Type</span><span class="zh">商户类型</span></label>
+            <input name="business_type" placeholder="Convenience store, print shop, warehouse">
+          </div>
+          <div>
+            <label><span class="en">Owner's Name</span><span class="zh">负责人姓名</span> <span class="req">*</span></label>
+            <input name="owner_name" required>
+          </div>
+          <div>
+            <label>Email <span class="req">*</span></label>
+            <input name="email" type="email" required>
+          </div>
+          <div>
+            <label><span class="en">Business Telephone Number</span><span class="zh">联系电话</span> <span class="req">*</span></label>
+            <input name="phone" required>
+          </div>
+          <div>
+            <label>Business Number</label>
+            <input name="business_number">
+          </div>
+          <div>
+            <label>GST/HST Number</label>
+            <input name="gst_number">
+          </div>
+          <div>
+            <label><span class="en">Alternate Contact</span><span class="zh">备用联系人</span></label>
+            <input name="alternate_contact">
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2><span class="en">Location Information</span><span class="zh">地址信息</span></h2>
+        <div class="grid">
+          <div class="full">
+            <label><span class="en">Street Address</span><span class="zh">街道地址</span> <span class="req">*</span></label>
+            <input name="street_address" required>
+          </div>
+          <div>
+            <label>Unit / Suite</label>
+            <input name="unit">
+          </div>
+          <div>
+            <label><span class="en">City</span><span class="zh">城市</span> <span class="req">*</span></label>
+            <input name="city" required>
+          </div>
+          <div>
+            <label><span class="en">Province / Territory</span><span class="zh">省份 / 地区</span> <span class="req">*</span></label>
+            <input name="province" placeholder="Province or territory" required>
+          </div>
+          <div>
+            <label><span class="en">Postal Code</span><span class="zh">邮编</span> <span class="req">*</span></label>
+            <input name="postal_code" required>
+          </div>
+          <div>
+            <label><span class="en">Business Hours</span><span class="zh">营业时间</span></label>
+            <input name="business_hours" placeholder="Mon-Sat 9:00-18:00">
+          </div>
+          <div class="full">
+            <label>Google Map Link</label>
+            <input name="google_map_link">
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2><span class="en">Facility & Storage</span><span class="zh">条件与仓储能力</span></h2>
+        <div class="grid">
+          <div>
+            <label><span class="en">Secure storage area?</span><span class="zh">是否有安全存储区？</span></label>
+            <select name="secure_storage"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select>
+          </div>
+          <div>
+            <label><span class="en">CCTV / security camera?</span><span class="zh">是否有监控？</span></label>
+            <select name="has_cctv"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select>
+          </div>
+          <div>
+            <label><span class="en">Security alarm?</span><span class="zh">是否有报警系统？</span></label>
+            <select name="has_alarm"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select>
+          </div>
+          <div>
+            <label><span class="en">Storage space sq ft</span><span class="zh">存储面积 sqft</span></label>
+            <input name="storage_sqft" type="number" min="0" step="0.01">
+          </div>
+          <div>
+            <label><span class="en">Max parcels per day</span><span class="zh">每日可处理包裹量</span></label>
+            <input name="daily_capacity" type="number" min="0">
+          </div>
+          <div>
+            <label><span class="en">Max parcel size</span><span class="zh">可接受最大包裹尺寸</span></label>
+            <input name="max_parcel_size" placeholder="Small / Medium / Large">
+          </div>
+          <div class="full">
+            <label><span class="en">Parking availability</span><span class="zh">停车条件说明</span></label>
+            <textarea name="parking_description"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2><span class="en">Service Capability</span><span class="zh">服务能力</span></h2>
+        <div class="checks">
+          <label class="check"><input type="checkbox" name="service_check" value="Local parcel pickup point"> <span class="en">Local parcel pickup point</span><span class="zh">本地包裹自提点</span></label>
+          <label class="check"><input type="checkbox" name="service_check" value="Consolidation pickup point"> <span class="en">Consolidation pickup point</span><span class="zh">集运包裹自提点</span></label>
+          <label class="check"><input type="checkbox" name="service_check" value="Return drop-off point"> <span class="en">Return drop-off point</span><span class="zh">退货寄存点</span></label>
+          <label class="check"><input type="checkbox" name="service_check" value="Driver handover point"> <span class="en">Driver handover point</span><span class="zh">司机交接点</span></label>
+        </div>
+
+        <div class="grid" style="margin-top:18px">
+          <div>
+            <label><span class="en">Printer?</span><span class="zh">是否有打印机？</span></label>
+            <select name="has_printer"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select>
+          </div>
+          <div>
+            <label><span class="en">Scale?</span><span class="zh">是否有电子秤？</span></label>
+            <select name="has_scale"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select>
+          </div>
+          <div>
+            <label><span class="en">Scanner?</span><span class="zh">是否有扫码设备？</span></label>
+            <select name="has_scanner"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select>
+          </div>
+          <div>
+            <label><span class="en">Computer / tablet?</span><span class="zh">是否有电脑/平板？</span></label>
+            <select name="has_computer"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select>
+          </div>
+          <div>
+            <label><span class="en">Staff count</span><span class="zh">可操作员工数量</span></label>
+            <input name="staff_count" type="number" min="0">
+          </div>
+          <div>
+            <label><span class="en">Preferred compensation</span><span class="zh">期望合作方式</span></label>
+            <input name="preferred_compensation" placeholder="Per parcel / monthly / mixed">
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2><span class="en">Cooperation Details</span><span class="zh">合作意向</span></h2>
+        <div class="grid two">
+          <div>
+            <label><span class="en">Daily customer traffic</span><span class="zh">每日客流量</span></label>
+            <input name="daily_customer_traffic">
+          </div>
+          <div>
+            <label><span class="en">Nearby communities / area</span><span class="zh">附近社区/区域</span></label>
+            <input name="nearby_area">
+          </div>
+          <div>
+            <label><span class="en">Expected parcel capacity</span><span class="zh">预计每日处理量</span></label>
+            <input name="expected_capacity">
+          </div>
+          <div>
+            <label><span class="en">Open on weekends?</span><span class="zh">周末是否营业？</span></label>
+            <select name="open_weekends"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select>
+          </div>
+          <div class="full">
+            <label><span class="en">Why do you want to become a pickup point?</span><span class="zh">申请成为代收点的原因</span></label>
+            <textarea name="reason"></textarea>
+          </div>
+          <div class="full">
+            <label><span class="en">Additional notes</span><span class="zh">其他备注</span></label>
+            <textarea name="notes"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <label class="check">
+          <input id="consentCheck" type="checkbox" required>
+          <span class="en">I confirm that the information provided is true and accurate. I understand that submitting this application does not guarantee approval.</span>
+          <span class="zh">我确认以上信息真实准确。我理解提交申请不代表一定通过审核。</span>
+        </label>
+
+        <div class="actions">
+          <button class="primary" id="submitBtn" type="submit" disabled>
+            <span class="en">Submit Application</span><span class="zh">提交申请</span>
+          </button>
+          <span class="hint en">We will contact you after reviewing your application.</span>
+          <span class="hint zh">我们审核后会联系您。</span>
+        </div>
+
+        <div id="msg" class="msg"></div>
+      </div>
+    </form>
+  </main>
+
+<script>
+(function(){
+  const API_ENDPOINT = "https://v2-api.missionexpress.ca/index.php?s=/api/post/missionrush/submitPartnerPointApplication";
+  const form = document.getElementById("applicationForm");
+  const btn = document.getElementById("submitBtn");
+  const msg = document.getElementById("msg");
+  const langBtn = document.getElementById("langBtn");
+
+  langBtn.addEventListener("click", function(){
+    const next = document.documentElement.lang === "zh" ? "en" : "zh";
+    document.documentElement.lang = next;
+  });
+
+  function showMessage(type, text) {
+    msg.className = "msg " + type;
+    msg.textContent = text;
+  }
+
+  function updateSubmitState() {
+    btn.disabled = !form.checkValidity();
+  }
+
+  form.addEventListener("input", updateSubmitState);
+  form.addEventListener("change", updateSubmitState);
+  updateSubmitState();
+
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    msg.className = "msg";
+    msg.textContent = "";
+    btn.disabled = true;
+
+    const fd = new FormData(form);
+    const services = Array.from(form.querySelectorAll('input[name="service_check"]:checked')).map(x => x.value);
+    fd.delete("service_check");
+    fd.set("interested_services", services.join(", "));
+
+    try {
+      const response = await fetch(API_ENDPOINT, {
+        method: "POST",
+        headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
+        body: new URLSearchParams(fd)
+      });
+
+      const data = await response.json();
+
+      if (data && data.code === 1) {
+        showMessage("ok", "Application submitted successfully. Application No: " + (data.data && data.data.application_no ? data.data.application_no : ""));
+        form.reset();
+      } else {
+        showMessage("err", (data && data.msg) ? data.msg : "Submit failed. Please try again.");
+      }
+    } catch (err) {
+      showMessage("err", "Network error. Please try again or contact Mission Express.");
+    } finally {
+      updateSubmitState();
+    }
+  });
+})();
+</script>
+</body>
+</html>
