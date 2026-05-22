@@ -101,7 +101,7 @@
         <h2>概览</h2>
         <p>本文档用于 Mission Express / Mission Rush / Mission Go 的 V2 API 集成说明，覆盖模块开关、下单、报价、支付、退款、Ship Parcel、Consolidation、Intercity Hitch 和司机端状态流转。</p>
         <div class="docs-callout docs-danger">本版本为 V2-only 文档，只展示当前 V2 生产接口。旧版接口说明不再放入本页面。</div>
-        <div class="docs-kv-grid"><div class="docs-kv"><div class="docs-k">文档版本</div><div class="docs-v">V2-only / 2026-05-20</div></div><div class="docs-kv"><div class="docs-k">适用系统</div><div class="docs-v">Mission Rush / Mission Go / V2 Admin</div></div></div>
+        <div class="docs-kv-grid"><div class="docs-kv"><div class="docs-k">文档版本</div><div class="docs-v">V2-only / 2026-05-22</div></div><div class="docs-kv"><div class="docs-k">适用系统</div><div class="docs-v">Mission Rush / Mission Go / V2 Admin</div></div></div>
       </section>
       <section id="base-url" class="docs-card">
         <h2>基础地址</h2>
@@ -172,8 +172,92 @@ user_id=14&token=USER_TOKEN&page=1&list_rows=20&tab=in_progress</code></pre>
       <section id="hitch" class="docs-card"><h2>Intercity Hitch / 顺路带</h2><p>Hitch 使用独立控制器路径 <code>/api/post/hitch</code>，适合城市间固定路线、司机发布行程和客户匹配下单。</p>
         <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>路径</th><th>说明</th></tr></thead><tbody><tr><td>cities</td><td><code>/api/post/hitch/cities</code></td><td>城市列表。</td></tr><tr><td>routes</td><td><code>/api/post/hitch/routes</code></td><td>开通路线与价格。</td></tr><tr><td>trips</td><td><code>/api/post/hitch/trips</code></td><td>司机发布的顺路行程。</td></tr><tr><td>quoteOrder</td><td><code>/api/post/hitch/quoteOrder</code></td><td>客户下单前报价。</td></tr><tr><td>createPaidHitchOrder</td><td><code>/api/post/hitch/createPaidHitchOrder</code></td><td>支付后创建 Hitch 订单。</td></tr></tbody></table></div>
       </section>
-      <section id="consolidation" class="docs-card"><h2>Consolidation / 中国集运</h2><p>Consolidation 包含客户注册、仓库地址、包裹登记、包裹列表、合箱订单、报价、支付等流程。</p>
-        <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>说明</th></tr></thead><tbody><tr><td>createChinaConsolidationRegistration</td><td>创建 / 更新集运客户资料。</td></tr><tr><td>chinaConsolidationWarehouses</td><td>返回可用仓库与入库地址。</td></tr><tr><td>getChinaConsolidationDashboard</td><td>返回 Dashboard 汇总。</td></tr><tr><td>createChinaPackage</td><td>登记包裹。</td></tr><tr><td>listChinaPackages</td><td>包裹列表。</td></tr><tr><td>createChinaConsolidationOrder</td><td>创建合箱 / 出库订单。</td></tr><tr><td>listChinaOrders</td><td>集运订单列表。</td></tr><tr><td>getChinaOrderPaymentQuote</td><td>获取集运订单支付报价。</td></tr><tr><td>payChinaOrderByBalance</td><td>余额支付集运订单。</td></tr></tbody></table></div>
+      <section id="consolidation" class="docs-card">
+        <h2>Consolidation / 中国集运</h2>
+        <p>Consolidation 包含客户注册、仓库地址、包裹预报、包裹列表、集运订单、最终报价、支付，以及客户端价目表展示。</p>
+        <div class="docs-callout">包裹预报阶段不计算预估费用；客户端价目表仅用于展示线路规则。最终费用以集运公司入库称重、量方和报价为准。</div>
+        <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>路径</th><th>说明</th></tr></thead><tbody>
+          <tr><td>createConsolidationRegistration</td><td><code>/api/post/missionrush/createConsolidationRegistration</code></td><td>创建 / 更新集运客户资料。</td></tr>
+          <tr><td>consolidationWarehouses</td><td><code>/api/post/missionrush/consolidationWarehouses</code></td><td>返回可用仓库、收货地址和入库信息。</td></tr>
+          <tr><td>getConsolidationDashboard</td><td><code>/api/post/missionrush/getConsolidationDashboard</code></td><td>返回集运 Dashboard 汇总、客户编号、包裹状态等。</td></tr>
+          <tr><td>getConsolidationPriceList</td><td><code>/api/post/missionrush/getConsolidationPriceList</code></td><td>返回公开线路价目表。只用于展示，不用于 App 预估扣费。</td></tr>
+          <tr><td>createConsolidationPackage</td><td><code>/api/post/missionrush/createConsolidationPackage</code></td><td>提交包裹预报 / 国内快递单号。</td></tr>
+          <tr><td>listConsolidationPackages</td><td><code>/api/post/missionrush/listConsolidationPackages</code></td><td>返回包裹列表和状态。</td></tr>
+          <tr><td>createConsolidationOrder</td><td><code>/api/post/missionrush/createConsolidationOrder</code></td><td>创建集运订单 / 打包申请。</td></tr>
+          <tr><td>listConsolidationOrders</td><td><code>/api/post/missionrush/listConsolidationOrders</code></td><td>返回集运订单列表。</td></tr>
+          <tr><td>getConsolidationOrderPaymentQuote</td><td><code>/api/post/missionrush/getConsolidationOrderPaymentQuote</code></td><td>获取集运订单最终待支付报价。</td></tr>
+          <tr><td>payConsolidationOrderByBalance</td><td><code>/api/post/missionrush/payConsolidationOrderByBalance</code></td><td>使用余额支付集运订单。</td></tr>
+        </tbody></table></div>
+
+        <h3>getConsolidationPriceList / 价目表接口</h3>
+        <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/index.php?s=/api/post/missionrush/getConsolidationPriceList</code></div>
+        <p>该接口给 Mission Rush App 展示集运线路价格说明。它不会根据包裹预报生成预估费用，也不会生成待支付金额。</p>
+
+        <h3>请求字段</h3>
+        <div class="docs-table-wrap"><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody>
+          <tr><td>city_code / destination_city_code</td><td>string</td><td>否</td><td>目的城市代码，例如 <code>MOOSE_JAW</code>。为空时返回全部可见线路。</td></tr>
+          <tr><td>transport_type / shipping_method</td><td>string</td><td>否</td><td><code>air</code> 或 <code>sea</code>。</td></tr>
+          <tr><td>company_id</td><td>int</td><td>否</td><td>集运公司 ID。为空时返回全部可见集运公司。</td></tr>
+        </tbody></table></div>
+
+        <h3>返回字段重点</h3>
+        <div class="docs-table-wrap"><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody>
+          <tr><td>company_name / company_code</td><td>集运公司名称与编码。</td></tr>
+          <tr><td>transport_type / transport_type_name</td><td>运输方式：空运 / 海运。</td></tr>
+          <tr><td>destination_city_code / destination_city_name</td><td>目的城市。</td></tr>
+          <tr><td>station_id / station_name</td><td>代收点 / 自提点。</td></tr>
+          <tr><td>route_code</td><td>线路编码，来自后台覆盖规则。</td></tr>
+          <tr><td>price_rules.general</td><td>普货价目表：首重、续重、报关费/票、体积重除数。</td></tr>
+          <tr><td>price_rules.sensitive</td><td>敏感货价目表：首重、续重、报关费/票、体积重除数。</td></tr>
+          <tr><td>volume_divisor</td><td>体积重除数。不同集运公司、不同线路可以不同，例如 5000 或 6000。</td></tr>
+          <tr><td>billing_notice</td><td>最终费用说明。</td></tr>
+        </tbody></table></div>
+
+        <pre><code>curl -X POST "https://v2-api.missionexpress.ca/index.php?s=/api/post/missionrush/getConsolidationPriceList" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "city_code=MOOSE_JAW"</code></pre>
+
+        <pre><code>{
+  "code": 1,
+  "msg": "ok",
+  "data": {
+    "list": [
+      {
+        "company_id": 2,
+        "company_name": "广州奕宁达国际供应链有限公司",
+        "transport_type": "air",
+        "transport_type_name": "空运",
+        "destination_city_code": "MOOSE_JAW",
+        "destination_city_name": "Moose Jaw",
+        "station_name": "Lillooet",
+        "route_code": "AIR_YININGDA_TO_MOOSE_JAW",
+        "price_rules": {
+          "general": {
+            "goods_type_name": "普货",
+            "currency": "CNY",
+            "first_weight_kg": 0.5,
+            "first_fee": 34,
+            "additional_unit_kg": 1,
+            "additional_fee": 68,
+            "customs_fee_per_ticket": 35,
+            "volume_divisor": 6000
+          },
+          "sensitive": {
+            "goods_type_name": "敏感货",
+            "currency": "CNY",
+            "first_weight_kg": 0.5,
+            "first_fee": 37,
+            "additional_unit_kg": 1,
+            "additional_fee": 74,
+            "customs_fee_per_ticket": 45,
+            "volume_divisor": 6000
+          }
+        }
+      }
+    ],
+    "billing_notice": "以下价格仅作为价目表展示，包裹预报阶段不计算预估费用；最终费用以集运公司入库称重、量方和报价为准。"
+  }
+}</code></pre>
       </section>
       <section id="wallet-payment" class="docs-card"><h2>钱包与支付</h2><p>V2 支付支持 Square card、saved card、Apple Pay、Google Pay、account balance 和 mixed payment。iOS 只显示 Apple Pay，Android 只显示 Google Pay。</p>
         <div class="docs-table-wrap"><table><thead><tr><th>接口</th><th>说明</th></tr></thead><tbody><tr><td>listWalletPaymentMethods</td><td>列出用户 saved cards。</td></tr><tr><td>createWalletTopUp</td><td>Square source id 充值。</td></tr><tr><td>createWalletTopUpWithSavedCard</td><td>saved card 充值。</td></tr><tr><td>createPaidDirectOrder / createPaidCargoOrder / createPaidShipParcelOrder</td><td>外部支付创建订单。</td></tr><tr><td>createBalancePaidDirectOrder / createBalancePaidCargoOrder / payChinaOrderByBalance</td><td>余额支付。</td></tr></tbody></table></div>

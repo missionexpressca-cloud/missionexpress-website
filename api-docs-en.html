@@ -100,7 +100,7 @@
       <section id="overview" class="docs-card">
         <h2>Overview</h2><p>This document describes the Mission Express / Mission Rush / Mission Go V2 API surface: module switches, quoting, order creation, payments, refunds, Ship Parcel, Consolidation, Intercity Hitch, and driver workflow states.</p>
         <div class="docs-callout docs-danger">This is a V2-only document and only shows current V2 production APIs. Legacy API documentation is not included on this page.</div>
-        <div class="docs-kv-grid"><div class="docs-kv"><div class="docs-k">Document Version</div><div class="docs-v">V2-only / 2026-05-20</div></div><div class="docs-kv"><div class="docs-k">Systems</div><div class="docs-v">Mission Rush / Mission Go / V2 Admin</div></div></div>
+        <div class="docs-kv-grid"><div class="docs-kv"><div class="docs-k">Document Version</div><div class="docs-v">V2-only / 2026-05-22</div></div><div class="docs-kv"><div class="docs-k">Systems</div><div class="docs-v">Mission Rush / Mission Go / V2 Admin</div></div></div>
       </section>
       <section id="base-url" class="docs-card"><h2>Base URL</h2>
         <div class="docs-kv-grid"><div class="docs-kv"><div class="docs-k">Production Base URL</div><div class="docs-v"><code>https://v2-api.missionexpress.ca</code></div></div><div class="docs-kv"><div class="docs-k">Mission Rush API Pattern</div><div class="docs-v"><code>/index.php?s=/api/post/missionrush/{action}</code></div></div><div class="docs-kv"><div class="docs-k">Hitch API Pattern</div><div class="docs-v"><code>/index.php?s=/api/post/hitch/{action}</code></div></div><div class="docs-kv"><div class="docs-k">Request Content-Type</div><div class="docs-v"><code>application/x-www-form-urlencoded</code></div></div></div>
@@ -157,8 +157,93 @@ user_id=14&token=USER_TOKEN&page=1&list_rows=20&tab=in_progress</code></pre>
         <h3>Label / Tracking fields</h3><div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td>tracking_no</td><td>Carrier tracking number.</td></tr><tr><td>label_url</td><td>Label PDF or image URL.</td></tr><tr><td>carrier_label_status</td><td>Examples: <code>ready</code>, <code>checking_config</code>, <code>generated</code>, <code>failed</code>, <code>pending_api_integration</code>.</td></tr><tr><td>carrier_label_error</td><td>Label generation failure message.</td></tr></tbody></table></div></section>
       <section id="hitch" class="docs-card"><h2>Intercity Hitch</h2><p>Hitch uses the separate <code>/api/post/hitch</code> controller path for city-pair routes, driver trips, matching, quoting, and paid order creation.</p>
         <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td>cities</td><td><code>/api/post/hitch/cities</code></td><td>City list.</td></tr><tr><td>routes</td><td><code>/api/post/hitch/routes</code></td><td>Enabled routes and prices.</td></tr><tr><td>trips</td><td><code>/api/post/hitch/trips</code></td><td>Driver-posted trips.</td></tr><tr><td>quoteOrder</td><td><code>/api/post/hitch/quoteOrder</code></td><td>Pre-payment quote.</td></tr><tr><td>createPaidHitchOrder</td><td><code>/api/post/hitch/createPaidHitchOrder</code></td><td>Create paid Hitch order.</td></tr></tbody></table></div></section>
-      <section id="consolidation" class="docs-card"><h2>Consolidation</h2><p>Consolidation covers customer registration, warehouse addresses, package registration, package lists, consolidation orders, quotes, and payment.</p>
-        <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Description</th></tr></thead><tbody><tr><td>createChinaConsolidationRegistration</td><td>Create / update consolidation customer profile.</td></tr><tr><td>chinaConsolidationWarehouses</td><td>Return available warehouses and receiving addresses.</td></tr><tr><td>getChinaConsolidationDashboard</td><td>Return customer dashboard summary.</td></tr><tr><td>createChinaPackage</td><td>Register package.</td></tr><tr><td>listChinaPackages</td><td>List packages.</td></tr><tr><td>createChinaConsolidationOrder</td><td>Create consolidation outbound order.</td></tr><tr><td>listChinaOrders</td><td>List consolidation orders.</td></tr><tr><td>getChinaOrderPaymentQuote</td><td>Get payment quote.</td></tr><tr><td>payChinaOrderByBalance</td><td>Pay by wallet balance.</td></tr></tbody></table></div></section>
+      <section id="consolidation" class="docs-card">
+        <h2>Consolidation</h2>
+        <p>Consolidation covers customer registration, warehouse addresses, package pre-alerts, package lists, consolidation orders, final quotes, payments, and public price-list display for customers.</p>
+        <div class="docs-callout">The app should not calculate an estimated fee during package pre-alert. The public price list is for display only. The final payable amount must be based on the consolidation provider's warehouse weighing, dimensional-weight check, and final quote.</div>
+        <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Path</th><th>Description</th></tr></thead><tbody>
+          <tr><td>createConsolidationRegistration</td><td><code>/api/post/missionrush/createConsolidationRegistration</code></td><td>Create or update a consolidation customer profile.</td></tr>
+          <tr><td>consolidationWarehouses</td><td><code>/api/post/missionrush/consolidationWarehouses</code></td><td>Return available warehouses, receiving addresses, and inbound instructions.</td></tr>
+          <tr><td>getConsolidationDashboard</td><td><code>/api/post/missionrush/getConsolidationDashboard</code></td><td>Return dashboard summary, customer number, and package states.</td></tr>
+          <tr><td>getConsolidationPriceList</td><td><code>/api/post/missionrush/getConsolidationPriceList</code></td><td>Return public route price-list rules for display only. The app must not use this endpoint to calculate a payable amount.</td></tr>
+          <tr><td>createConsolidationPackage</td><td><code>/api/post/missionrush/createConsolidationPackage</code></td><td>Submit a package pre-alert / domestic tracking number.</td></tr>
+          <tr><td>listConsolidationPackages</td><td><code>/api/post/missionrush/listConsolidationPackages</code></td><td>Return package list and statuses.</td></tr>
+          <tr><td>createConsolidationOrder</td><td><code>/api/post/missionrush/createConsolidationOrder</code></td><td>Create a consolidation outbound order / packing request.</td></tr>
+          <tr><td>listConsolidationOrders</td><td><code>/api/post/missionrush/listConsolidationOrders</code></td><td>Return consolidation order list.</td></tr>
+          <tr><td>getConsolidationOrderPaymentQuote</td><td><code>/api/post/missionrush/getConsolidationOrderPaymentQuote</code></td><td>Return the final payable quote for a consolidation order.</td></tr>
+          <tr><td>payConsolidationOrderByBalance</td><td><code>/api/post/missionrush/payConsolidationOrderByBalance</code></td><td>Pay a consolidation order with wallet balance.</td></tr>
+        </tbody></table></div>
+
+        <h3>getConsolidationPriceList</h3>
+        <div class="endpoint-head"><span class="method-chip">POST</span><code class="path-chip">/index.php?s=/api/post/missionrush/getConsolidationPriceList</code></div>
+        <p>This endpoint lets Mission Rush display consolidation route price-list information. It does not estimate package fees and does not create a payable amount.</p>
+
+        <h3>Request fields</h3>
+        <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+          <tr><td>city_code / destination_city_code</td><td>string</td><td>No</td><td>Destination city code, for example <code>MOOSE_JAW</code>. If omitted, visible routes for all cities may be returned.</td></tr>
+          <tr><td>transport_type / shipping_method</td><td>string</td><td>No</td><td><code>air</code> or <code>sea</code>.</td></tr>
+          <tr><td>company_id</td><td>int</td><td>No</td><td>Consolidation provider ID. If omitted, visible providers may be returned.</td></tr>
+        </tbody></table></div>
+
+        <h3>Important response fields</h3>
+        <div class="docs-table-wrap"><table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody>
+          <tr><td>company_name / company_code</td><td>Consolidation provider name and code.</td></tr>
+          <tr><td>transport_type / transport_type_name</td><td>Transport method: air or sea.</td></tr>
+          <tr><td>destination_city_code / destination_city_name</td><td>Destination city.</td></tr>
+          <tr><td>station_id / station_name</td><td>Pickup point / service point.</td></tr>
+          <tr><td>route_code</td><td>Route code from the admin coverage rule.</td></tr>
+          <tr><td>price_rules.general</td><td>General goods price rule: first weight, additional weight, customs fee per ticket, and volume divisor.</td></tr>
+          <tr><td>price_rules.sensitive</td><td>Sensitive goods price rule: first weight, additional weight, customs fee per ticket, and volume divisor.</td></tr>
+          <tr><td>volume_divisor</td><td>Dimensional-weight divisor. It may differ by provider and route, for example 5000 or 6000.</td></tr>
+          <tr><td>billing_notice</td><td>Final billing notice.</td></tr>
+        </tbody></table></div>
+
+        <pre><code>curl -X POST "https://v2-api.missionexpress.ca/index.php?s=/api/post/missionrush/getConsolidationPriceList" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "city_code=MOOSE_JAW"</code></pre>
+
+        <pre><code>{
+  "code": 1,
+  "msg": "ok",
+  "data": {
+    "list": [
+      {
+        "company_id": 2,
+        "company_name": "广州奕宁达国际供应链有限公司",
+        "transport_type": "air",
+        "transport_type_name": "空运",
+        "destination_city_code": "MOOSE_JAW",
+        "destination_city_name": "Moose Jaw",
+        "station_name": "Lillooet",
+        "route_code": "AIR_YININGDA_TO_MOOSE_JAW",
+        "price_rules": {
+          "general": {
+            "goods_type_name": "普货",
+            "currency": "CNY",
+            "first_weight_kg": 0.5,
+            "first_fee": 34,
+            "additional_unit_kg": 1,
+            "additional_fee": 68,
+            "customs_fee_per_ticket": 35,
+            "volume_divisor": 6000
+          },
+          "sensitive": {
+            "goods_type_name": "敏感货",
+            "currency": "CNY",
+            "first_weight_kg": 0.5,
+            "first_fee": 37,
+            "additional_unit_kg": 1,
+            "additional_fee": 74,
+            "customs_fee_per_ticket": 45,
+            "volume_divisor": 6000
+          }
+        }
+      }
+    ],
+    "billing_notice": "Prices are displayed as a price list only. No estimated fee is calculated during package pre-alert. Final fees are based on the provider's warehouse weighing, dimensional check, and final quote."
+  }
+}</code></pre>
+      </section>
       <section id="wallet-payment" class="docs-card"><h2>Wallet & Payments</h2><p>V2 supports Square card, saved card, Apple Pay, Google Pay, account balance, and mixed payment. iOS should show Apple Pay only; Android should show Google Pay only.</p>
         <div class="docs-table-wrap"><table><thead><tr><th>Action</th><th>Description</th></tr></thead><tbody><tr><td>listWalletPaymentMethods</td><td>List saved cards.</td></tr><tr><td>createWalletTopUp</td><td>Top up by Square source id.</td></tr><tr><td>createWalletTopUpWithSavedCard</td><td>Top up by saved card.</td></tr><tr><td>createPaidDirectOrder / createPaidCargoOrder / createPaidShipParcelOrder</td><td>Create externally paid orders.</td></tr><tr><td>createBalancePaidDirectOrder / createBalancePaidCargoOrder / payChinaOrderByBalance</td><td>Create balance-paid orders.</td></tr></tbody></table></div></section>
       <section id="refund" class="docs-card"><h2>Refunds</h2><p>Call refund preview first to check eligibility, amount, and rule. Then submit the refund request.</p>
