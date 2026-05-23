@@ -480,6 +480,7 @@
 <script>
 (function(){
   const API_ENDPOINT = "https://v2-api.missionexpress.ca/index.php?s=/api/post/missionrush/submitPartnerPointApplication";
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xgoqyjky";
   const form = document.getElementById("applicationForm");
   const btn = document.getElementById("submitBtn");
   const msg = document.getElementById("msg");
@@ -503,6 +504,44 @@
   form.addEventListener("change", updateSubmitState);
   updateSubmitState();
 
+  async function sendFormspreeNotice(fd, applicationNo) {
+    if (!FORMSPREE_ENDPOINT) {
+      return false;
+    }
+
+    const notice = new FormData();
+    notice.set("_subject", "New Partner Pickup Point Application - " + (applicationNo || "Mission Express"));
+    notice.set("application_no", applicationNo || "");
+    notice.set("legal_business_name", fd.get("legal_business_name") || "");
+    notice.set("operating_name", fd.get("operating_name") || "");
+    notice.set("owner_name", fd.get("owner_name") || "");
+    notice.set("email", fd.get("email") || "");
+    notice.set("phone", fd.get("phone") || "");
+    notice.set("street_address", fd.get("street_address") || "");
+    notice.set("unit", fd.get("unit") || "");
+    notice.set("city", fd.get("city") || "");
+    notice.set("province", fd.get("province") || "");
+    notice.set("postal_code", fd.get("postal_code") || "");
+    notice.set("business_type", fd.get("business_type") || "");
+    notice.set("business_hours", fd.get("business_hours") || "");
+    notice.set("secure_storage", fd.get("secure_storage") || "");
+    notice.set("has_cctv", fd.get("has_cctv") || "");
+    notice.set("daily_capacity", fd.get("daily_capacity") || "");
+    notice.set("interested_services", fd.get("interested_services") || "");
+    notice.set("reason", fd.get("reason") || "");
+    notice.set("notes", fd.get("notes") || "");
+    notice.set("v2_admin", "https://v2-me.missionexpress.ca/ssadmin.php/post/partner_application/index");
+    notice.set("source_page", window.location.href);
+
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: {"Accept": "application/json"},
+      body: notice
+    });
+
+    return response.ok;
+  }
+
   form.addEventListener("submit", async function(e){
     e.preventDefault();
     msg.className = "msg";
@@ -524,7 +563,21 @@
       const data = await response.json();
 
       if (data && data.code === 1) {
-        showMessage("ok", "Application submitted successfully. Application No: " + (data.data && data.data.application_no ? data.data.application_no : ""));
+        const applicationNo = data.data && data.data.application_no ? data.data.application_no : "";
+        let noticeSent = false;
+
+        try {
+          noticeSent = await sendFormspreeNotice(fd, applicationNo);
+        } catch (noticeErr) {
+          noticeSent = false;
+        }
+
+        if (noticeSent) {
+          showMessage("ok", "Application submitted successfully. Application No: " + applicationNo);
+        } else {
+          showMessage("ok", "Application submitted successfully. Application No: " + applicationNo + " We received your application in our system.");
+        }
+
         form.reset();
       } else {
         showMessage("err", (data && data.msg) ? data.msg : "Submit failed. Please try again.");
