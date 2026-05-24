@@ -14,62 +14,83 @@
       scroll-margin-top: 120px;
     }
 
-    .platform-title-hide {
-      display: none;
-    }
-
     .partner-action-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 12px;
       margin-top: 22px;
-      max-width: 520px;
+      max-width: 560px;
     }
 
     .partner-action-card {
-      min-height: 112px;
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.045);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      min-height: 0;
     }
 
-    .partner-action-card .prealert-tag {
-      margin-bottom: 10px;
+    .partner-action-card.button-card {
+      padding: 0;
+      border: 0;
+      background: transparent;
     }
 
-    .partner-action-card .prealert-link {
-      margin-top: 0;
-    }
-
-    .partner-action-card .partner-main-btn,
-    .partner-action-card .prealert-link a {
-      display: inline-flex;
+    .partner-main-btn {
+      display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-      padding: 10px 17px;
-      border-radius: 999px;
+      width: 100%;
+      min-height: 58px;
+      padding: 14px 18px;
+      border-radius: 18px;
       text-align: center;
-      line-height: 1.2;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      color: #07111d !important;
+      background: linear-gradient(135deg, #ff78a8, #ffb84a);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+
+    .partner-main-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3);
     }
 
     .pickup-point-btn {
       background: linear-gradient(135deg, #37d5f2, #8ff0a4) !important;
-      color: #07111d !important;
+    }
+
+    .platform-login-btn {
+      background: linear-gradient(135deg, #89a7ff, #d89cff) !important;
+    }
+
+    .station-login-btn {
+      background: linear-gradient(135deg, #70e1f5, #ffd194) !important;
     }
 
     .payment-qr-card {
+      grid-column: span 2;
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      min-height: 112px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .payment-qr-title {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 6px;
     }
 
     .payment-qr-caption {
       display: block;
-      margin-top: 4px;
-      font-size: 12px;
+      font-size: 13px;
       opacity: 0.78;
       white-space: nowrap;
     }
@@ -90,6 +111,13 @@
         max-width: none;
       }
 
+      .payment-qr-card {
+        grid-column: auto;
+        grid-template-columns: 1fr auto;
+      }
+    }
+
+    @media (max-width: 520px) {
       .payment-qr-card {
         grid-template-columns: 1fr;
       }
@@ -189,60 +217,59 @@
           </p>
 
           <div class="partner-action-grid">
-            <div class="partner-action-card">
-              <span class="prealert-tag" data-i18n="contact_prealert_tag">[🇨🇳🇨🇦China→Canada Consolidation]</span>
-              <div class="prealert-link contact-prealert">
-                <a
-                  href="https://forms.gle/Vng6jKULNLXxtZuL6"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="contact_prealert_btn"
-                >
-                  Parcel Pre-Alert
-                </a>
-              </div>
+            <div class="partner-action-card button-card">
+              <a
+                href="https://forms.gle/Vng6jKULNLXxtZuL6"
+                target="_blank"
+                rel="noopener"
+                class="partner-main-btn"
+              >
+                <span class="lang-block lang-en">Consolidation Parcel Pre-Alert</span>
+                <span class="lang-block lang-zh">集运包裹预报</span>
+              </a>
             </div>
 
-            <div class="partner-action-card">
-              <span class="prealert-tag">
-                <span class="lang-block lang-en">[Pickup Point Partner]</span>
-                <span class="lang-block lang-zh">【代收点合作】</span>
-              </span>
-              <div class="prealert-link contact-prealert">
-                <a
-                  href="https://missionexpress.ca/partner-pickup-point.html"
-                  target="_blank"
-                  rel="noopener"
-                  class="pickup-point-btn partner-main-btn"
-                >
-                  <span class="lang-block lang-en">Become a Pickup Point</span>
-                  <span class="lang-block lang-zh">申请成为代收点</span>
-                </a>
-              </div>
+            <div class="partner-action-card button-card">
+              <a
+                href="https://missionexpress.ca/partner-pickup-point.html"
+                target="_blank"
+                rel="noopener"
+                class="partner-main-btn pickup-point-btn"
+              >
+                <span class="lang-block lang-en">Become a Pickup Point</span>
+                <span class="lang-block lang-zh">申请成为代收点</span>
+              </a>
             </div>
 
-            <div class="partner-action-card">
-              <span class="prealert-tag" data-i18n="contact_store_tag">[Courier Platform]</span>
-              <div class="prealert-link contact-prealert">
-                <span class="en-sub platform-title-hide">
-                  <span data-i18n="contact_store_title">Platform Portal</span>
-                </span>
-                <a
-                  href="https://v2-me.missionexpress.ca/ssadmin.php"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="contact_store_btn"
-                >
-                  Enter Platform
-                </a>
-              </div>
+            <div class="partner-action-card button-card">
+              <a
+                href="https://v2-me.missionexpress.ca/ssadmin.php"
+                target="_blank"
+                rel="noopener"
+                class="partner-main-btn platform-login-btn"
+              >
+                <span class="lang-block lang-en">Log in to Logistics Platform</span>
+                <span class="lang-block lang-zh">物流平台登录</span>
+              </a>
+            </div>
+
+            <div class="partner-action-card button-card">
+              <a
+                href="https://station.missionexpress.ca/"
+                target="_blank"
+                rel="noopener"
+                class="partner-main-btn station-login-btn"
+              >
+                <span class="lang-block lang-en">Station Login</span>
+                <span class="lang-block lang-zh">驿站登录</span>
+              </a>
             </div>
 
             <div class="partner-action-card payment-qr-card">
               <div>
-                <span class="prealert-tag">
-                  <span class="lang-block lang-en">[Pay by QR code]</span>
-                  <span class="lang-block lang-zh">【扫码付款】</span>
+                <span class="payment-qr-title">
+                  <span class="lang-block lang-en">Pay by QR code</span>
+                  <span class="lang-block lang-zh">扫码付款</span>
                 </span>
                 <span class="payment-qr-caption">
                   <span class="lang-block lang-en">WeChat Pay / Alipay</span>
