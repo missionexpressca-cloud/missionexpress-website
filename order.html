@@ -56,112 +56,183 @@
         <p class="eyebrow" data-i18n="order_label">Web order</p>
         <h1 data-i18n="order_title">Create a Mission Rush order</h1>
         <p class="section-intro" data-i18n="order_intro">
-          Submit the order details here. The website sends the request to the Mission Rush API and creates a real backend order.
+          Sign in with your Mission Rush account first. Your website order will be connected to your account and can sync with Mission Rush order history.
         </p>
       </div>
     </section>
 
     <section class="section light order-section">
       <div class="section-inner order-layout">
-        <form id="webOrderForm" class="card order-form" novalidate>
-          <div class="form-status" id="orderStatus" role="status" aria-live="polite"></div>
+        <div class="order-main-column">
+          <section id="authCard" class="card auth-card">
+            <div class="form-status" id="authStatus" role="status" aria-live="polite"></div>
+            <div class="auth-card-header">
+              <div>
+                <p class="eyebrow" data-i18n="auth_required_label">Account required</p>
+                <h2 data-i18n="auth_title">Sign in before ordering</h2>
+                <p data-i18n="auth_intro">
+                  Use your Mission Rush account so the order can be linked to your profile, wallet, payment, address book, and order history.
+                </p>
+              </div>
+              <div id="signedInBox" class="auth-user-box" hidden>
+                <strong data-i18n="auth_signed_in_label">Signed in</strong>
+                <span id="signedInName">Mission Rush user</span>
+                <button id="signOutBtn" type="button" class="link-button" data-i18n="auth_sign_out">Sign out</button>
+              </div>
+            </div>
 
-          <div class="order-form-grid">
-            <label class="form-field form-field-full">
-              <span data-i18n="order_service_label">Service type</span>
-              <select id="serviceType" name="service" required>
-                <option value="local_send" data-i18n="service_send_title">Local Send</option>
-                <option value="food_grocery" data-i18n="service_food_grocery_title">Food & Grocery Pickup</option>
-                <option value="cargo_delivery" data-i18n="service_cargo_title">Cargo Delivery</option>
-                <option value="ship_parcel" data-i18n="service_ship_parcel_title">Ship Parcel</option>
-                <option value="china_consolidation" data-i18n="service_consolidation_title">China Consolidation</option>
-                <option value="intercity_hitch" data-i18n="service_intercity_title">Intercity Hitch</option>
-              </select>
-            </label>
+            <div id="authPanels" class="auth-panels">
+              <div class="auth-tabs" role="tablist" aria-label="Mission Rush account">
+                <button id="loginTab" class="auth-tab is-active" type="button" data-auth-tab="login" data-i18n="auth_login_tab">Log in</button>
+                <button id="registerTab" class="auth-tab" type="button" data-auth-tab="register" data-i18n="auth_register_tab">Register</button>
+              </div>
 
-            <label class="form-field">
-              <span data-i18n="order_name_label">Customer name</span>
-              <input id="customerName" name="customer_name" type="text" autocomplete="name" required data-i18n-placeholder="order_name_placeholder" placeholder="Your name" />
-            </label>
+              <form id="loginForm" class="auth-panel is-active" novalidate>
+                <label class="form-field form-field-full">
+                  <span data-i18n="auth_account_label">Email or phone</span>
+                  <input id="loginAccount" type="text" autocomplete="username" required data-i18n-placeholder="auth_account_placeholder" placeholder="Email or phone number" />
+                </label>
+                <label class="form-field form-field-full">
+                  <span data-i18n="auth_password_label">Password</span>
+                  <input id="loginPassword" type="password" autocomplete="current-password" required data-i18n-placeholder="auth_password_placeholder" placeholder="Password" />
+                </label>
+                <div class="auth-actions">
+                  <button id="loginBtn" class="btn primary" type="submit" data-i18n="auth_login_btn">Log in</button>
+                </div>
+              </form>
 
-            <label class="form-field">
-              <span data-i18n="order_phone_label">Phone</span>
-              <input id="customerPhone" name="phone" type="tel" autocomplete="tel" required data-i18n-placeholder="order_phone_placeholder" placeholder="Phone number" />
-            </label>
+              <form id="registerForm" class="auth-panel" novalidate>
+                <div class="order-form-grid">
+                  <label class="form-field">
+                    <span data-i18n="auth_name_label">Name</span>
+                    <input id="registerName" type="text" autocomplete="name" required data-i18n-placeholder="auth_name_placeholder" placeholder="Your name" />
+                  </label>
+                  <label class="form-field">
+                    <span data-i18n="auth_phone_label">Phone</span>
+                    <input id="registerPhone" type="tel" autocomplete="tel" required data-i18n-placeholder="auth_phone_placeholder" placeholder="Phone number" />
+                  </label>
+                  <label class="form-field form-field-full">
+                    <span data-i18n="auth_email_label">Email</span>
+                    <input id="registerEmail" type="email" autocomplete="email" data-i18n-placeholder="auth_email_placeholder" placeholder="Email address" />
+                  </label>
+                  <label class="form-field">
+                    <span data-i18n="auth_password_label">Password</span>
+                    <input id="registerPassword" type="password" autocomplete="new-password" required data-i18n-placeholder="auth_password_placeholder" placeholder="Password" />
+                  </label>
+                  <label class="form-field">
+                    <span data-i18n="auth_confirm_password_label">Confirm password</span>
+                    <input id="registerPasswordConfirm" type="password" autocomplete="new-password" required data-i18n-placeholder="auth_confirm_password_placeholder" placeholder="Confirm password" />
+                  </label>
+                </div>
+                <div class="auth-actions">
+                  <button id="registerBtn" class="btn primary" type="submit" data-i18n="auth_register_btn">Create account</button>
+                </div>
+              </form>
+            </div>
+          </section>
 
-            <label class="form-field form-field-full">
-              <span data-i18n="order_email_label">Email</span>
-              <input id="customerEmail" name="email" type="email" autocomplete="email" data-i18n-placeholder="order_email_placeholder" placeholder="Email address" />
-            </label>
+          <form id="webOrderForm" class="card order-form is-locked" novalidate>
+            <div class="form-status" id="orderStatus" role="status" aria-live="polite"></div>
 
-            <label class="form-field">
-              <span data-i18n="order_pickup_city_label">Pickup city</span>
-              <input id="pickupCity" name="pickup_city" type="text" required data-i18n-placeholder="order_pickup_city_placeholder" placeholder="Moose Jaw / Regina" />
-            </label>
+            <div class="order-form-head">
+              <div>
+                <p class="eyebrow" data-i18n="order_details_label">Order details</p>
+                <h2 data-i18n="order_details_title">Delivery request</h2>
+              </div>
+              <span class="order-sync-pill" data-i18n="order_sync_badge">Synced to Mission Rush account</span>
+            </div>
 
-            <label class="form-field">
-              <span data-i18n="order_dropoff_city_label">Drop-off city</span>
-              <input id="dropoffCity" name="dropoff_city" type="text" required data-i18n-placeholder="order_dropoff_city_placeholder" placeholder="Moose Jaw / Regina" />
-            </label>
+            <div class="order-form-grid">
+              <label class="form-field form-field-full">
+                <span data-i18n="order_service_label">Service type</span>
+                <select id="serviceType" name="service" required>
+                  <option value="local_send" data-i18n="service_send_title">Local Send</option>
+                  <option value="food_grocery" data-i18n="service_food_grocery_title">Food & Grocery Pickup</option>
+                  <option value="cargo_delivery" data-i18n="service_cargo_title">Cargo Delivery</option>
+                  <option value="ship_parcel" data-i18n="service_ship_parcel_title">Ship Parcel</option>
+                  <option value="china_consolidation" data-i18n="service_consolidation_title">China Consolidation</option>
+                  <option value="intercity_hitch" data-i18n="service_intercity_title">Intercity Hitch</option>
+                </select>
+              </label>
 
-            <label class="form-field form-field-full">
-              <span data-i18n="order_pickup_address_label">Pickup address</span>
-              <input id="pickupAddress" name="pickup_address" type="text" autocomplete="street-address" required data-i18n-placeholder="order_pickup_address_placeholder" placeholder="Street address, unit, business name" />
-            </label>
+              <label class="form-field">
+                <span data-i18n="order_name_label">Customer name</span>
+                <input id="customerName" name="customer_name" type="text" autocomplete="name" required data-i18n-placeholder="order_name_placeholder" placeholder="Your name" />
+              </label>
 
-            <label class="form-field form-field-full">
-              <span data-i18n="order_dropoff_address_label">Drop-off address</span>
-              <input id="dropoffAddress" name="dropoff_address" type="text" autocomplete="street-address" required data-i18n-placeholder="order_dropoff_address_placeholder" placeholder="Street address, unit, recipient name" />
-            </label>
+              <label class="form-field">
+                <span data-i18n="order_phone_label">Phone</span>
+                <input id="customerPhone" name="phone" type="tel" autocomplete="tel" required data-i18n-placeholder="order_phone_placeholder" placeholder="Phone number" />
+              </label>
 
-            <label class="form-field">
-              <span data-i18n="order_item_label">Item / package</span>
-              <input id="itemName" name="item_name" type="text" required data-i18n-placeholder="order_item_placeholder" placeholder="Package, food pickup, box, cargo..." />
-            </label>
+              <label class="form-field form-field-full">
+                <span data-i18n="order_email_label">Email</span>
+                <input id="customerEmail" name="email" type="email" autocomplete="email" data-i18n-placeholder="order_email_placeholder" placeholder="Email address" />
+              </label>
 
-            <label class="form-field">
-              <span data-i18n="order_weight_label">Estimated weight</span>
-              <input id="weightKg" name="weight_kg" type="number" min="0" step="0.1" inputmode="decimal" data-i18n-placeholder="order_weight_placeholder" placeholder="kg" />
-            </label>
+              <label class="form-field">
+                <span data-i18n="order_pickup_city_label">Pickup city</span>
+                <input id="pickupCity" name="pickup_city" type="text" required data-i18n-placeholder="order_pickup_city_placeholder" placeholder="Moose Jaw / Regina" />
+              </label>
 
-            <label class="form-field">
-              <span data-i18n="order_pickup_time_label">Pickup time</span>
-              <input id="pickupTime" name="pickup_time" type="datetime-local" />
-            </label>
+              <label class="form-field">
+                <span data-i18n="order_dropoff_city_label">Drop-off city</span>
+                <input id="dropoffCity" name="dropoff_city" type="text" required data-i18n-placeholder="order_dropoff_city_placeholder" placeholder="Moose Jaw / Regina" />
+              </label>
 
-            <label class="form-field">
-              <span data-i18n="order_reference_label">Reference / tracking no.</span>
-              <input id="referenceNo" name="reference_no" type="text" data-i18n-placeholder="order_reference_placeholder" placeholder="Optional" />
-            </label>
+              <label class="form-field form-field-full">
+                <span data-i18n="order_pickup_address_label">Pickup address</span>
+                <input id="pickupAddress" name="pickup_address" type="text" autocomplete="street-address" required data-i18n-placeholder="order_pickup_address_placeholder" placeholder="Street address, unit, business name" />
+              </label>
 
-            <label class="form-field form-field-full">
-              <span data-i18n="order_notes_label">Notes</span>
-              <textarea id="notes" name="notes" rows="5" data-i18n-placeholder="order_notes_placeholder" placeholder="Door code, pickup instructions, package size, special handling..."></textarea>
-            </label>
-          </div>
+              <label class="form-field form-field-full">
+                <span data-i18n="order_dropoff_address_label">Drop-off address</span>
+                <input id="dropoffAddress" name="dropoff_address" type="text" autocomplete="street-address" required data-i18n-placeholder="order_dropoff_address_placeholder" placeholder="Street address, unit, recipient name" />
+              </label>
 
-          <div class="order-actions">
-            <button id="submitOrderBtn" class="btn primary" type="submit" data-i18n="order_submit_btn">Create order</button>
-            <a class="btn ghost" href="services.html" data-i18n="order_back_btn">Back to services</a>
-          </div>
-        </form>
+              <label class="form-field">
+                <span data-i18n="order_item_label">Item / package</span>
+                <input id="itemName" name="item_name" type="text" required data-i18n-placeholder="order_item_placeholder" placeholder="Package, food pickup, box, cargo..." />
+              </label>
+
+              <label class="form-field">
+                <span data-i18n="order_weight_label">Estimated weight</span>
+                <input id="weightKg" name="weight_kg" type="number" min="0" step="0.1" inputmode="decimal" data-i18n-placeholder="order_weight_placeholder" placeholder="kg" />
+              </label>
+
+              <label class="form-field">
+                <span data-i18n="order_pickup_time_label">Pickup time</span>
+                <input id="pickupTime" name="pickup_time" type="datetime-local" />
+              </label>
+
+              <label class="form-field">
+                <span data-i18n="order_reference_label">Reference / tracking no.</span>
+                <input id="referenceNo" name="reference_no" type="text" data-i18n-placeholder="order_reference_placeholder" placeholder="Optional" />
+              </label>
+
+              <label class="form-field form-field-full">
+                <span data-i18n="order_notes_label">Notes</span>
+                <textarea id="notes" name="notes" rows="5" data-i18n-placeholder="order_notes_placeholder" placeholder="Door code, pickup instructions, package size, special handling..."></textarea>
+              </label>
+            </div>
+
+            <div class="order-actions">
+              <button id="submitOrderBtn" class="btn primary" type="submit" data-i18n="order_submit_btn">Create order</button>
+              <a class="btn ghost" href="services.html" data-i18n="order_back_btn">Back to services</a>
+            </div>
+          </form>
+        </div>
 
         <aside class="card order-side-card">
-          <h2 data-i18n="order_api_title">API order architecture</h2>
-          <p data-i18n="order_api_body">
-            This page posts to a same-domain API path. The public website does not expose the V2 backend URL. Your server should proxy this request to the Mission Rush V2 order endpoint and return the created order number and payment link.
+          <h2 data-i18n="auth_side_title">Sign in to sync your order</h2>
+          <p data-i18n="auth_side_body">
+            Web orders require a Mission Rush account. After login, the order will be created under your account and can appear in Mission Rush order history after backend integration.
           </p>
-          <div class="api-path-box">
-            <span data-i18n="order_api_public_path_label">Public website path</span>
-            <code>/api/missionrush/web-order</code>
-          </div>
-          <div class="api-path-box">
-            <span data-i18n="order_api_backend_label">Backend target</span>
-            <code>/index.php?s=/api/post/missionrush/webCreateOrder</code>
-          </div>
-          <p class="order-note" data-i18n="order_api_note">
-            When the backend is connected, successful submissions will create real Mission Rush orders that can appear in the admin system and continue into payment / dispatch workflows.
-          </p>
+          <ul class="bullet-list auth-side-list">
+            <li data-i18n="auth_side_b1">Orders are linked to your user ID.</li>
+            <li data-i18n="auth_side_b2">Wallet, payment, refunds, and support can match the same account.</li>
+            <li data-i18n="auth_side_b3">Address and order records can stay consistent between web and app.</li>
+          </ul>
         </aside>
       </div>
     </section>
@@ -189,8 +260,11 @@
   <script src="js/nav.js"></script>
   <script>
     (function () {
-      const API_ENDPOINT = "/api/missionrush/web-order";
-      const BACKEND_TARGET = "/index.php?s=/api/post/missionrush/webCreateOrder";
+      const ORDER_ENDPOINT = "/api/missionrush/web-order";
+      const LOGIN_ENDPOINT = "/api/user/login";
+      const REGISTER_ENDPOINT = "/api/user/register";
+      const AUTH_TOKEN_KEY = "missionrush_web_token";
+      const AUTH_USER_KEY = "missionrush_web_user";
       const allowedServices = [
         "local_send",
         "food_grocery",
@@ -200,6 +274,9 @@
         "intercity_hitch"
       ];
 
+      let authToken = localStorage.getItem(AUTH_TOKEN_KEY) || "";
+      let authUser = readStoredUser();
+
       function getLang() {
         return localStorage.getItem("missiongo_lang") || document.documentElement.lang || "en";
       }
@@ -208,8 +285,8 @@
         return getLang() === "zh" ? zh : en;
       }
 
-      function setStatus(type, message) {
-        const el = document.getElementById("orderStatus");
+      function setStatus(id, type, message) {
+        const el = document.getElementById(id);
         if (!el) return;
         el.className = "form-status" + (type ? " " + type : "");
         el.textContent = message || "";
@@ -218,6 +295,88 @@
       function value(id) {
         const el = document.getElementById(id);
         return el ? el.value.trim() : "";
+      }
+
+      function setValue(id, val) {
+        const el = document.getElementById(id);
+        if (el && val && !el.value) el.value = val;
+      }
+
+      function readStoredUser() {
+        try {
+          return JSON.parse(localStorage.getItem(AUTH_USER_KEY) || "null") || null;
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function normalizeUser(result) {
+        const data = result && result.data ? result.data : result || {};
+        const userinfo = data.userinfo || data.user || data.profile || data.customer || data;
+        return {
+          id: userinfo.id || userinfo.user_id || userinfo.uid || data.user_id || "",
+          name: userinfo.nickname || userinfo.display_name || userinfo.name || userinfo.username || data.nickname || data.name || "",
+          phone: userinfo.mobile || userinfo.phone || data.mobile || data.phone || "",
+          email: userinfo.email || data.email || ""
+        };
+      }
+
+      function extractToken(result) {
+        const data = result && result.data ? result.data : result || {};
+        return data.token || data.user_token || data.userToken || data.access_token ||
+          (data.userinfo && data.userinfo.token) ||
+          (data.user && data.user.token) ||
+          result.token || result.user_token || "";
+      }
+
+      function saveAuth(token, user) {
+        authToken = token || "";
+        authUser = user || null;
+        if (authToken) localStorage.setItem(AUTH_TOKEN_KEY, authToken);
+        if (authUser) localStorage.setItem(AUTH_USER_KEY, JSON.stringify(authUser));
+        renderAuthState();
+      }
+
+      function clearAuth() {
+        authToken = "";
+        authUser = null;
+        localStorage.removeItem(AUTH_TOKEN_KEY);
+        localStorage.removeItem(AUTH_USER_KEY);
+        renderAuthState();
+        setStatus("authStatus", "", "");
+        setStatus("orderStatus", "", "");
+      }
+
+      function renderAuthState() {
+        const signedIn = Boolean(authToken);
+        const signedInBox = document.getElementById("signedInBox");
+        const signedInName = document.getElementById("signedInName");
+        const panels = document.getElementById("authPanels");
+        const form = document.getElementById("webOrderForm");
+
+        if (signedInBox) signedInBox.hidden = !signedIn;
+        if (panels) panels.hidden = signedIn;
+        if (form) form.classList.toggle("is-locked", !signedIn);
+
+        if (signedIn && signedInName) {
+          signedInName.textContent = (authUser && (authUser.name || authUser.phone || authUser.email)) || "Mission Rush user";
+        }
+
+        if (signedIn && authUser) {
+          setValue("customerName", authUser.name);
+          setValue("customerPhone", authUser.phone);
+          setValue("customerEmail", authUser.email);
+          setStatus("authStatus", "success", text("Signed in. You can now create a web order.", "已登录。现在可以创建网页订单。"));
+        }
+      }
+
+      function switchAuthTab(tab) {
+        document.querySelectorAll(".auth-tab").forEach((btn) => {
+          btn.classList.toggle("is-active", btn.dataset.authTab === tab);
+        });
+        document.getElementById("loginForm")?.classList.toggle("is-active", tab === "login");
+        document.getElementById("registerForm")?.classList.toggle("is-active", tab === "register");
+        setStatus("authStatus", "", "");
       }
 
       function initServiceFromUrl() {
@@ -229,12 +388,126 @@
         }
       }
 
+      async function postJson(url, payload, token) {
+        const headers = {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        };
+        if (token) {
+          headers.Authorization = "Bearer " + token;
+          headers["X-User-Token"] = token;
+        }
+        const response = await fetch(url, {
+          method: "POST",
+          headers,
+          credentials: "same-origin",
+          body: JSON.stringify(payload)
+        });
+        let result = null;
+        try {
+          result = await response.json();
+        } catch (jsonError) {
+          throw new Error(text("API did not return JSON.", "API 没有返回 JSON。"));
+        }
+        if (!response.ok || result.code === 0 || result.success === false) {
+          throw new Error(result.msg || result.message || text("Request failed.", "请求失败。"));
+        }
+        return result;
+      }
+
+      async function handleLogin(event) {
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        const button = document.getElementById("loginBtn");
+        const originalText = button ? button.textContent : "";
+        if (button) {
+          button.disabled = true;
+          button.textContent = text("Logging in...", "正在登录...");
+        }
+        setStatus("authStatus", "loading", text("Signing in to Mission Rush...", "正在登录 Mission Rush..."));
+        try {
+          const account = value("loginAccount");
+          const result = await postJson(LOGIN_ENDPOINT, {
+            account,
+            username: account,
+            email: account.includes("@") ? account : "",
+            mobile: account.includes("@") ? "" : account,
+            password: value("loginPassword"),
+            source: "website"
+          });
+          const token = extractToken(result);
+          if (!token) throw new Error(text("Login succeeded but no token was returned.", "登录成功，但接口没有返回 token。"));
+          saveAuth(token, normalizeUser(result));
+        } catch (error) {
+          setStatus("authStatus", "error", error.message || text("Login failed.", "登录失败。"));
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.textContent = originalText;
+          }
+        }
+      }
+
+      async function handleRegister(event) {
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        const password = value("registerPassword");
+        if (password !== value("registerPasswordConfirm")) {
+          setStatus("authStatus", "error", text("Passwords do not match.", "两次输入的密码不一致。"));
+          return;
+        }
+        const button = document.getElementById("registerBtn");
+        const originalText = button ? button.textContent : "";
+        if (button) {
+          button.disabled = true;
+          button.textContent = text("Creating...", "正在创建...");
+        }
+        setStatus("authStatus", "loading", text("Creating your Mission Rush account...", "正在创建 Mission Rush 账号..."));
+        try {
+          const phone = value("registerPhone");
+          const email = value("registerEmail");
+          const name = value("registerName");
+          const result = await postJson(REGISTER_ENDPOINT, {
+            name,
+            nickname: name,
+            display_name: name,
+            mobile: phone,
+            phone,
+            email,
+            username: email || phone,
+            password,
+            source: "website"
+          });
+          const token = extractToken(result);
+          if (token) {
+            saveAuth(token, normalizeUser(result));
+          } else {
+            switchAuthTab("login");
+            document.getElementById("loginAccount").value = email || phone;
+            setStatus("authStatus", "success", text("Account created. Please log in to continue.", "账号已创建，请登录后继续下单。"));
+          }
+        } catch (error) {
+          setStatus("authStatus", "error", error.message || text("Registration failed.", "注册失败。"));
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.textContent = originalText;
+          }
+        }
+      }
+
       function buildPayload() {
         return {
           source: "website",
           frontend_page: "order.html",
-          public_api_path: API_ENDPOINT,
-          backend_target_hint: BACKEND_TARGET,
           service: value("serviceType"),
           customer: {
             name: value("customerName"),
@@ -265,10 +538,15 @@
 
       async function submitOrder(event) {
         event.preventDefault();
+        if (!authToken) {
+          setStatus("authStatus", "error", text("Please log in before creating an order.", "请先登录，再创建订单。"));
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
         const form = event.currentTarget;
         if (!form.checkValidity()) {
           form.reportValidity();
-          setStatus("error", text("Please complete the required fields.", "请先填写必填信息。"));
+          setStatus("orderStatus", "error", text("Please complete the required fields.", "请先填写必填信息。"));
           return;
         }
 
@@ -278,30 +556,10 @@
           button.disabled = true;
           button.textContent = text("Creating...", "正在创建...");
         }
-        setStatus("loading", text("Sending order to Mission Rush API...", "正在提交到 Mission Rush API..."));
+        setStatus("orderStatus", "loading", text("Creating your Mission Rush order...", "正在创建 Mission Rush 订单..."));
 
         try {
-          const response = await fetch(API_ENDPOINT, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-            },
-            credentials: "same-origin",
-            body: JSON.stringify(buildPayload())
-          });
-
-          let result = null;
-          try {
-            result = await response.json();
-          } catch (jsonError) {
-            throw new Error(text("API did not return JSON.", "API 没有返回 JSON。"));
-          }
-
-          if (!response.ok || result.code === 0 || result.success === false) {
-            throw new Error(result.msg || result.message || text("Order creation failed.", "订单创建失败。"));
-          }
-
+          const result = await postJson(ORDER_ENDPOINT, buildPayload(), authToken);
           const data = result.data || {};
           const orderNo = data.order_no || data.orderNo || data.out_trade_no || data.id || "";
           const paymentUrl = data.payment_url || data.paymentUrl || data.pay_url || "";
@@ -311,16 +569,10 @@
           if (paymentUrl) {
             successMessage += text(" Redirecting to payment...", " 正在跳转到支付...");
           }
-          setStatus("success", successMessage);
-
-          if (paymentUrl) {
-            window.location.href = paymentUrl;
-          }
+          setStatus("orderStatus", "success", successMessage);
+          if (paymentUrl) window.location.href = paymentUrl;
         } catch (error) {
-          setStatus(
-            "error",
-            error.message || text("Unable to create the order. Please try again.", "暂时无法创建订单，请稍后再试。")
-          );
+          setStatus("orderStatus", "error", error.message || text("Unable to create the order. Please try again.", "暂时无法创建订单，请稍后再试。"));
         } finally {
           if (button) {
             button.disabled = false;
@@ -331,10 +583,17 @@
 
       document.addEventListener("DOMContentLoaded", () => {
         initServiceFromUrl();
-        const form = document.getElementById("webOrderForm");
-        if (form) form.addEventListener("submit", submitOrder);
+        renderAuthState();
+        document.querySelectorAll(".auth-tab").forEach((btn) => {
+          btn.addEventListener("click", () => switchAuthTab(btn.dataset.authTab));
+        });
+        document.getElementById("loginForm")?.addEventListener("submit", handleLogin);
+        document.getElementById("registerForm")?.addEventListener("submit", handleRegister);
+        document.getElementById("signOutBtn")?.addEventListener("click", clearAuth);
+        document.getElementById("webOrderForm")?.addEventListener("submit", submitOrder);
       });
     })();
   </script>
+
 </body>
 </html>
