@@ -130,6 +130,45 @@ const dict = {
     service_intercity_title: "Intercity Hitch",
     service_intercity_body:
       "Send items between supported cities such as Moose Jaw and Regina through scheduled intercity routes.",
+    service_order_now: "Order now",
+
+    order_label: "Web order",
+    order_title: "Create a Mission Rush order",
+    order_intro:
+      "Submit the order details here. The website sends the request to the Mission Rush API and creates a real backend order.",
+    order_service_label: "Service type",
+    order_name_label: "Customer name",
+    order_name_placeholder: "Your name",
+    order_phone_label: "Phone",
+    order_phone_placeholder: "Phone number",
+    order_email_label: "Email",
+    order_email_placeholder: "Email address",
+    order_pickup_city_label: "Pickup city",
+    order_pickup_city_placeholder: "Moose Jaw / Regina",
+    order_dropoff_city_label: "Drop-off city",
+    order_dropoff_city_placeholder: "Moose Jaw / Regina",
+    order_pickup_address_label: "Pickup address",
+    order_pickup_address_placeholder: "Street address, unit, business name",
+    order_dropoff_address_label: "Drop-off address",
+    order_dropoff_address_placeholder: "Street address, unit, recipient name",
+    order_item_label: "Item / package",
+    order_item_placeholder: "Package, food pickup, box, cargo...",
+    order_weight_label: "Estimated weight",
+    order_weight_placeholder: "kg",
+    order_pickup_time_label: "Pickup time",
+    order_reference_label: "Reference / tracking no.",
+    order_reference_placeholder: "Optional",
+    order_notes_label: "Notes",
+    order_notes_placeholder: "Door code, pickup instructions, package size, special handling...",
+    order_submit_btn: "Create order",
+    order_back_btn: "Back to services",
+    order_api_title: "API order architecture",
+    order_api_body:
+      "This page posts to a same-domain API path. The public website does not expose the V2 backend URL. Your server should proxy this request to the Mission Rush V2 order endpoint and return the created order number and payment link.",
+    order_api_public_path_label: "Public website path",
+    order_api_backend_label: "Backend target",
+    order_api_note:
+      "When the backend is connected, successful submissions will create real Mission Rush orders that can appear in the admin system and continue into payment / dispatch workflows.",
     services_business_label: "For businesses and partners",
     services_business_title: "Last-mile logistics and platform support",
     services_business_intro:
@@ -399,6 +438,45 @@ const dict = {
     service_intercity_title: "跨城顺路带",
     service_intercity_body:
       "在支持的城市之间寄送物品，例如穆斯乔与里贾纳之间的定期跨城路线。",
+    service_order_now: "立即下单",
+
+    order_label: "网页下单",
+    order_title: "创建 Mission Rush 订单",
+    order_intro:
+      "在这里提交订单信息。网站会把请求发送到 Mission Rush API，并创建真实后台订单。",
+    order_service_label: "服务类型",
+    order_name_label: "客户姓名",
+    order_name_placeholder: "请输入姓名",
+    order_phone_label: "电话",
+    order_phone_placeholder: "请输入联系电话",
+    order_email_label: "邮箱",
+    order_email_placeholder: "请输入邮箱，可选",
+    order_pickup_city_label: "取货城市",
+    order_pickup_city_placeholder: "Moose Jaw / Regina",
+    order_dropoff_city_label: "送达城市",
+    order_dropoff_city_placeholder: "Moose Jaw / Regina",
+    order_pickup_address_label: "取货地址",
+    order_pickup_address_placeholder: "街道地址、门牌、商家名称",
+    order_dropoff_address_label: "送达地址",
+    order_dropoff_address_placeholder: "街道地址、门牌、收件人名称",
+    order_item_label: "物品 / 包裹",
+    order_item_placeholder: "包裹、餐食取件、箱子、大件等",
+    order_weight_label: "预估重量",
+    order_weight_placeholder: "kg",
+    order_pickup_time_label: "取货时间",
+    order_reference_label: "参考号 / 运单号",
+    order_reference_placeholder: "可选",
+    order_notes_label: "备注",
+    order_notes_placeholder: "门禁码、取货说明、包裹尺寸、特殊处理要求等",
+    order_submit_btn: "创建订单",
+    order_back_btn: "返回服务页",
+    order_api_title: "API 订单架构",
+    order_api_body:
+      "本页面提交到同域名 API 路径，公开网站不暴露 V2 后端地址。服务器需要把该请求代理到 Mission Rush V2 下单接口，并返回创建后的订单号和支付链接。",
+    order_api_public_path_label: "公开网站路径",
+    order_api_backend_label: "后端目标接口",
+    order_api_note:
+      "后端接通后，提交成功会创建真实 Mission Rush 订单，订单可进入后台、支付和派单流程。",
     services_business_label: "面向企业与合作伙伴",
     services_business_title: "末端物流与平台支持",
     services_business_intro:
@@ -549,6 +627,13 @@ function applyLang(lang) {
     const key = el.getAttribute("data-i18n");
     if (strings[key] !== undefined) {
       el.textContent = strings[key];
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (strings[key] !== undefined) {
+      el.setAttribute("placeholder", strings[key]);
     }
   });
 
