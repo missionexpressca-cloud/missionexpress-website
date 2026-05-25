@@ -160,7 +160,7 @@ const dict = {
     auth_register_btn: "Create account",
     auth_side_title: "Sign in to sync your order",
     auth_side_body:
-      "Web orders require a Mission Rush account. After login, the order will be created under your account and can appear in Mission Rush order history after backend integration.",
+      "Web orders require a Mission Rush account. After login, the order will be created under your account and can appear in your Mission Rush order history.",
     auth_side_b1: "Orders are linked to your user ID.",
     auth_side_b2: "Wallet, payment, refunds, and support can match the same account.",
     auth_side_b3: "Address and order records can stay consistent between web and app.",
@@ -492,7 +492,7 @@ const dict = {
     auth_register_btn: "创建账号",
     auth_side_title: "登录后同步订单",
     auth_side_body:
-      "网页下单需要 Mission Rush 账号。登录后，订单会创建在您的账户下，后端接通后可同步显示在 Mission Rush App 的订单记录中。",
+      "网页下单需要 Mission Rush 账号。登录后，订单会创建在您的账户下，并同步显示在 Mission Rush App 的订单记录中。",
     auth_side_b1: "订单会绑定用户 ID。",
     auth_side_b2: "钱包、支付、退款和售后可以对应同一个账户。",
     auth_side_b3: "网页端与 App 的地址和订单记录可以保持一致。",
