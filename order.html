@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- order.html version: login-required-no-active-v3 2026-05-25 -->
+<!-- order.html version: login-required-no-nav-highlight-v4 2026-05-25 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,12 +8,24 @@
   <link rel="stylesheet" href="css/styles.css" />
 
   <style>
-    /* Order page is a standalone web-order entry, so no top navigation item is highlighted. */
+    /*
+      Order page is a standalone web-order entry.
+      It must not highlight Services or any other top navigation item.
+      This page-level rule overrides both active and hover underline states.
+    */
+    body.order-online-page .nav-links a::after,
+    body.order-online-page .mobile-nav a::after,
     body.order-online-page .nav-links a.active::after,
     body.order-online-page .mobile-nav a.active::after,
-    body.order-online-page .nav-links a[href="services.html"]::after,
-    body.order-online-page .mobile-nav a[href="services.html"]::after {
+    body.order-online-page .nav-links a:hover::after,
+    body.order-online-page .mobile-nav a:hover::after {
       width: 0 !important;
+      display: none !important;
+    }
+
+    body.order-online-page .nav-links a.active,
+    body.order-online-page .mobile-nav a.active {
+      color: #e7e8ff !important;
     }
   </style>
 </head>
@@ -273,12 +285,27 @@
   <script>
     (function clearOrderPageNavActive() {
       function clearActive() {
-        document.querySelectorAll('.desktop-nav a.active, .mobile-nav a.active').forEach(function (link) {
+        document.querySelectorAll('.desktop-nav a.active, .mobile-nav a.active, .nav-links a.active').forEach(function (link) {
           link.classList.remove('active');
+          link.removeAttribute('aria-current');
         });
       }
+
       clearActive();
-      document.addEventListener('DOMContentLoaded', clearActive);
+      document.addEventListener('DOMContentLoaded', function () {
+        clearActive();
+
+        // Some shared nav scripts may add .active after page load. Keep order.html neutral.
+        var navRoots = document.querySelectorAll('.desktop-nav, .mobile-nav, .nav-links');
+        navRoots.forEach(function (root) {
+          var observer = new MutationObserver(clearActive);
+          observer.observe(root, { attributes: true, subtree: true, attributeFilter: ['class', 'aria-current'] });
+        });
+
+        setTimeout(clearActive, 50);
+        setTimeout(clearActive, 250);
+        setTimeout(clearActive, 1000);
+      });
       window.addEventListener('load', clearActive);
     })();
   </script>
