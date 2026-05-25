@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Order Online | Mission Go Logistics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <div class="logo-wrap">
+      <a href="index.html">
+        <img src="img/logo.png" alt="Mission Go logo" class="logo" />
+      </a>
+    </div>
+
+    <nav class="nav-links desktop-nav">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="services.html" data-i18n="nav_services" class="active">Services</a>
+      <a href="network.html" data-i18n="nav_network">Network</a>
+      <a href="download.html" data-i18n="nav_download">Download</a>
+      <a href="api-docs-index.html">
+        <span class="lang-block lang-en">API Docs</span>
+        <span class="lang-block lang-zh">API 文档</span>
+      </a>
+      <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="lang-toggle" class="lang-toggle" type="button">中文</button>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="services.html" data-i18n="nav_services">Services</a>
+    <a href="network.html" data-i18n="nav_network">Network</a>
+    <a href="download.html" data-i18n="nav_download">Download</a>
+    <a href="api-docs-index.html">
+      <span class="lang-block lang-en">API Docs</span>
+      <span class="lang-block lang-zh">API 文档</span>
+    </a>
+    <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
+  </nav>
+
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <main class="order-page">
+    <section class="page-hero order-hero">
+      <div class="section-inner">
+        <p class="eyebrow" data-i18n="order_label">Web order</p>
+        <h1 data-i18n="order_title">Create a Mission Rush order</h1>
+        <p class="section-intro" data-i18n="order_intro">
+          Submit the order details here. The website sends the request to the Mission Rush API and creates a real backend order.
+        </p>
+      </div>
+    </section>
+
+    <section class="section light order-section">
+      <div class="section-inner order-layout">
+        <form id="webOrderForm" class="card order-form" novalidate>
+          <div class="form-status" id="orderStatus" role="status" aria-live="polite"></div>
+
+          <div class="order-form-grid">
+            <label class="form-field form-field-full">
+              <span data-i18n="order_service_label">Service type</span>
+              <select id="serviceType" name="service" required>
+                <option value="local_send" data-i18n="service_send_title">Local Send</option>
+                <option value="food_grocery" data-i18n="service_food_grocery_title">Food & Grocery Pickup</option>
+                <option value="cargo_delivery" data-i18n="service_cargo_title">Cargo Delivery</option>
+                <option value="ship_parcel" data-i18n="service_ship_parcel_title">Ship Parcel</option>
+                <option value="china_consolidation" data-i18n="service_consolidation_title">China Consolidation</option>
+                <option value="intercity_hitch" data-i18n="service_intercity_title">Intercity Hitch</option>
+              </select>
+            </label>
+
+            <label class="form-field">
+              <span data-i18n="order_name_label">Customer name</span>
+              <input id="customerName" name="customer_name" type="text" autocomplete="name" required data-i18n-placeholder="order_name_placeholder" placeholder="Your name" />
+            </label>
+
+            <label class="form-field">
+              <span data-i18n="order_phone_label">Phone</span>
+              <input id="customerPhone" name="phone" type="tel" autocomplete="tel" required data-i18n-placeholder="order_phone_placeholder" placeholder="Phone number" />
+            </label>
+
+            <label class="form-field form-field-full">
+              <span data-i18n="order_email_label">Email</span>
+              <input id="customerEmail" name="email" type="email" autocomplete="email" data-i18n-placeholder="order_email_placeholder" placeholder="Email address" />
+            </label>
+
+            <label class="form-field">
+              <span data-i18n="order_pickup_city_label">Pickup city</span>
+              <input id="pickupCity" name="pickup_city" type="text" required data-i18n-placeholder="order_pickup_city_placeholder" placeholder="Moose Jaw / Regina" />
+            </label>
+
+            <label class="form-field">
+              <span data-i18n="order_dropoff_city_label">Drop-off city</span>
+              <input id="dropoffCity" name="dropoff_city" type="text" required data-i18n-placeholder="order_dropoff_city_placeholder" placeholder="Moose Jaw / Regina" />
+            </label>
+
+            <label class="form-field form-field-full">
+              <span data-i18n="order_pickup_address_label">Pickup address</span>
+              <input id="pickupAddress" name="pickup_address" type="text" autocomplete="street-address" required data-i18n-placeholder="order_pickup_address_placeholder" placeholder="Street address, unit, business name" />
+            </label>
+
+            <label class="form-field form-field-full">
+              <span data-i18n="order_dropoff_address_label">Drop-off address</span>
+              <input id="dropoffAddress" name="dropoff_address" type="text" autocomplete="street-address" required data-i18n-placeholder="order_dropoff_address_placeholder" placeholder="Street address, unit, recipient name" />
+            </label>
+
+            <label class="form-field">
+              <span data-i18n="order_item_label">Item / package</span>
+              <input id="itemName" name="item_name" type="text" required data-i18n-placeholder="order_item_placeholder" placeholder="Package, food pickup, box, cargo..." />
+            </label>
+
+            <label class="form-field">
+              <span data-i18n="order_weight_label">Estimated weight</span>
+              <input id="weightKg" name="weight_kg" type="number" min="0" step="0.1" inputmode="decimal" data-i18n-placeholder="order_weight_placeholder" placeholder="kg" />
+            </label>
+
+            <label class="form-field">
+              <span data-i18n="order_pickup_time_label">Pickup time</span>
+              <input id="pickupTime" name="pickup_time" type="datetime-local" />
+            </label>
+
+            <label class="form-field">
+              <span data-i18n="order_reference_label">Reference / tracking no.</span>
+              <input id="referenceNo" name="reference_no" type="text" data-i18n-placeholder="order_reference_placeholder" placeholder="Optional" />
+            </label>
+
+            <label class="form-field form-field-full">
+              <span data-i18n="order_notes_label">Notes</span>
+              <textarea id="notes" name="notes" rows="5" data-i18n-placeholder="order_notes_placeholder" placeholder="Door code, pickup instructions, package size, special handling..."></textarea>
+            </label>
+          </div>
+
+          <div class="order-actions">
+            <button id="submitOrderBtn" class="btn primary" type="submit" data-i18n="order_submit_btn">Create order</button>
+            <a class="btn ghost" href="services.html" data-i18n="order_back_btn">Back to services</a>
+          </div>
+        </form>
+
+        <aside class="card order-side-card">
+          <h2 data-i18n="order_api_title">API order architecture</h2>
+          <p data-i18n="order_api_body">
+            This page posts to a same-domain API path. The public website does not expose the V2 backend URL. Your server should proxy this request to the Mission Rush V2 order endpoint and return the created order number and payment link.
+          </p>
+          <div class="api-path-box">
+            <span data-i18n="order_api_public_path_label">Public website path</span>
+            <code>/api/missionrush/web-order</code>
+          </div>
+          <div class="api-path-box">
+            <span data-i18n="order_api_backend_label">Backend target</span>
+            <code>/index.php?s=/api/post/missionrush/webCreateOrder</code>
+          </div>
+          <p class="order-note" data-i18n="order_api_note">
+            When the backend is connected, successful submissions will create real Mission Rush orders that can appear in the admin system and continue into payment / dispatch workflows.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
+      <p>
+        <a href="liability.html">
+          <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
+          <span class="lang-block lang-zh">责任与保险条款</span>
+        </a>
+      </p>
+      <p>
+        <a href="api-docs-index.html">
+          <span class="lang-block lang-en">API Documentation</span>
+          <span class="lang-block lang-zh">API 接口文档</span>
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    (function () {
+      const API_ENDPOINT = "/api/missionrush/web-order";
+      const BACKEND_TARGET = "/index.php?s=/api/post/missionrush/webCreateOrder";
+      const allowedServices = [
+        "local_send",
+        "food_grocery",
+        "cargo_delivery",
+        "ship_parcel",
+        "china_consolidation",
+        "intercity_hitch"
+      ];
+
+      function getLang() {
+        return localStorage.getItem("missiongo_lang") || document.documentElement.lang || "en";
+      }
+
+      function text(en, zh) {
+        return getLang() === "zh" ? zh : en;
+      }
+
+      function setStatus(type, message) {
+        const el = document.getElementById("orderStatus");
+        if (!el) return;
+        el.className = "form-status" + (type ? " " + type : "");
+        el.textContent = message || "";
+      }
+
+      function value(id) {
+        const el = document.getElementById(id);
+        return el ? el.value.trim() : "";
+      }
+
+      function initServiceFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const service = params.get("service");
+        const select = document.getElementById("serviceType");
+        if (select && allowedServices.includes(service)) {
+          select.value = service;
+        }
+      }
+
+      function buildPayload() {
+        return {
+          source: "website",
+          frontend_page: "order.html",
+          public_api_path: API_ENDPOINT,
+          backend_target_hint: BACKEND_TARGET,
+          service: value("serviceType"),
+          customer: {
+            name: value("customerName"),
+            phone: value("customerPhone"),
+            email: value("customerEmail")
+          },
+          pickup: {
+            city: value("pickupCity"),
+            address: value("pickupAddress")
+          },
+          dropoff: {
+            city: value("dropoffCity"),
+            address: value("dropoffAddress")
+          },
+          package: {
+            item_name: value("itemName"),
+            weight_kg: value("weightKg"),
+            reference_no: value("referenceNo")
+          },
+          schedule: {
+            pickup_time: value("pickupTime")
+          },
+          notes: value("notes"),
+          locale: getLang(),
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "America/Regina"
+        };
+      }
+
+      async function submitOrder(event) {
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          setStatus("error", text("Please complete the required fields.", "请先填写必填信息。"));
+          return;
+        }
+
+        const button = document.getElementById("submitOrderBtn");
+        const originalText = button ? button.textContent : "";
+        if (button) {
+          button.disabled = true;
+          button.textContent = text("Creating...", "正在创建...");
+        }
+        setStatus("loading", text("Sending order to Mission Rush API...", "正在提交到 Mission Rush API..."));
+
+        try {
+          const response = await fetch(API_ENDPOINT, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            credentials: "same-origin",
+            body: JSON.stringify(buildPayload())
+          });
+
+          let result = null;
+          try {
+            result = await response.json();
+          } catch (jsonError) {
+            throw new Error(text("API did not return JSON.", "API 没有返回 JSON。"));
+          }
+
+          if (!response.ok || result.code === 0 || result.success === false) {
+            throw new Error(result.msg || result.message || text("Order creation failed.", "订单创建失败。"));
+          }
+
+          const data = result.data || {};
+          const orderNo = data.order_no || data.orderNo || data.out_trade_no || data.id || "";
+          const paymentUrl = data.payment_url || data.paymentUrl || data.pay_url || "";
+          let successMessage = orderNo
+            ? text(`Order created: ${orderNo}`, `订单已创建：${orderNo}`)
+            : text("Order created successfully.", "订单已成功创建。");
+          if (paymentUrl) {
+            successMessage += text(" Redirecting to payment...", " 正在跳转到支付...");
+          }
+          setStatus("success", successMessage);
+
+          if (paymentUrl) {
+            window.location.href = paymentUrl;
+          }
+        } catch (error) {
+          setStatus(
+            "error",
+            error.message || text("Unable to create the order. Please try again.", "暂时无法创建订单，请稍后再试。")
+          );
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.textContent = originalText;
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initServiceFromUrl();
+        const form = document.getElementById("webOrderForm");
+        if (form) form.addEventListener("submit", submitOrder);
+      });
+    })();
+  </script>
+</body>
+</html>
