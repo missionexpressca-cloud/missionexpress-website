@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Download Mission Rush App</title>
-  <meta name="description" content="Download Mission Rush for fast local point-to-point delivery in Moose Jaw and Regina." />
+  <meta
+    name="description"
+    content="Download Mission Rush for fast local point-to-point delivery in Moose Jaw and Regina."
+  />
 
   <meta property="og:title" content="Download Mission Rush" />
-  <meta property="og:description" content="City Errands, Delivered in a Flash. Fast local point-to-point delivery in Moose Jaw and Regina." />
+  <meta
+    property="og:description"
+    content="City Errands, Delivered in a Flash. Fast local point-to-point delivery in Moose Jaw and Regina."
+  />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://missionexpress.ca/img/rush_logo.png" />
 
   <script>
     (function () {
@@ -34,7 +41,7 @@
       function redirectToStore() {
         const params = new URLSearchParams(window.location.search);
 
-        // 测试页面时使用：
+        // 用于测试页面，不自动跳转：
         // https://missionexpress.ca/rush/?no_redirect=1
         if (params.get("no_redirect") === "1") {
           return;
@@ -56,22 +63,15 @@
       window.addEventListener("DOMContentLoaded", function () {
         setTimeout(redirectToStore, 500);
       });
-
-      window.openAppStore = function () {
-        window.location.href = APP_STORE_URL;
-      };
-
-      window.openGooglePlay = function () {
-        window.location.href = GOOGLE_PLAY_URL;
-      };
     })();
   </script>
 
   <style>
     :root {
-      --navy: #07122f;
       --blue: #0057d9;
+      --blue-dark: #003da6;
       --green: #19a64a;
+      --green-dark: #0d7f34;
       --white: #ffffff;
       --muted: #d8e0f0;
       --card: rgba(255, 255, 255, 0.08);
@@ -90,7 +90,7 @@
       color: var(--white);
       background:
         radial-gradient(circle at top left, rgba(31, 166, 74, 0.35), transparent 35%),
-        radial-gradient(circle at top right, rgba(0, 87, 217, 0.35), transparent 35%),
+        radial-gradient(circle at top right, rgba(0, 87, 217, 0.36), transparent 35%),
         linear-gradient(135deg, #050914 0%, #07122f 55%, #041326 100%);
     }
 
@@ -120,10 +120,10 @@
     }
 
     .logo-wrap {
-      width: 104px;
-      height: 104px;
+      width: 112px;
+      height: 112px;
       margin: 0 auto 20px;
-      border-radius: 26px;
+      border-radius: 28px;
       background: #ffffff;
       display: flex;
       align-items: center;
@@ -132,19 +132,11 @@
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.25);
     }
 
-    .logo-text {
-      font-size: 42px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: -4px;
-    }
-
-    .logo-text .m-green {
-      color: #7ac943;
-    }
-
-    .logo-text .m-blue {
-      color: #12a8df;
+    .logo-img {
+      width: 86px;
+      height: 86px;
+      object-fit: contain;
+      display: block;
     }
 
     h1 {
@@ -152,6 +144,7 @@
       font-size: 34px;
       line-height: 1.15;
       font-weight: 900;
+      letter-spacing: 0.2px;
     }
 
     .tagline {
@@ -195,16 +188,15 @@
     }
 
     .btn.apple {
-      background: linear-gradient(135deg, #0057d9, #003da6);
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
     }
 
     .btn.google {
-      background: linear-gradient(135deg, #19a64a, #0d7f34);
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
     }
 
     .service-area {
       display: inline-flex;
-      gap: 8px;
       align-items: center;
       justify-content: center;
       margin-top: 18px;
@@ -217,7 +209,8 @@
     }
 
     .small {
-      margin-top: 18px;
+      margin: 18px auto 0;
+      max-width: 380px;
       color: rgba(255, 255, 255, 0.68);
       font-size: 13px;
       line-height: 1.45;
@@ -241,8 +234,14 @@
       }
 
       .logo-wrap {
-        width: 96px;
-        height: 96px;
+        width: 104px;
+        height: 104px;
+        border-radius: 26px;
+      }
+
+      .logo-img {
+        width: 80px;
+        height: 80px;
       }
 
       h1 {
@@ -269,9 +268,11 @@
   <main class="page">
     <section class="card">
       <div class="logo-wrap" aria-label="Mission Rush logo">
-        <div class="logo-text">
-          <span class="m-green">m</span><span class="m-blue">R</span>
-        </div>
+        <img
+          class="logo-img"
+          src="/img/rush_logo.png"
+          alt="Mission Rush logo"
+        />
       </div>
 
       <h1>Mission Rush</h1>
