@@ -12,44 +12,59 @@
   <meta property="og:type" content="website" />
 
   <script>
-    const APP_STORE_URL = "https://apps.apple.com/ca/app/mission-rush/id6762942351";
-    const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=ca.missionexpress.missionrush";
+    (function () {
+      const APP_STORE_URL = "https://apps.apple.com/ca/app/mission-rush/id6762942351";
+      const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=ca.missionexpress.missionrush";
 
-    function isIOS() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      const iOSDevice = /iPhone|iPad|iPod/i.test(ua);
-      const iPadOS = navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
-      return iOSDevice || iPadOS;
-    }
+      function getDeviceType() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera || "";
+        const platform = navigator.platform || "";
 
-    function isAndroid() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      return /Android/i.test(ua);
-    }
+        const isIOS =
+          /iPhone|iPad|iPod/i.test(ua) ||
+          (platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
-    function openAppStore() {
-      window.location.href = APP_STORE_URL;
-    }
+        const isAndroid = /Android/i.test(ua);
 
-    function openGooglePlay() {
-      window.location.href = GOOGLE_PLAY_URL;
-    }
-
-    window.addEventListener("load", function () {
-      const params = new URLSearchParams(window.location.search);
-
-      if (params.get("no_redirect") === "1") {
-        return;
+        if (isIOS) return "ios";
+        if (isAndroid) return "android";
+        return "desktop";
       }
 
-      setTimeout(function () {
-        if (isIOS()) {
-          openAppStore();
-        } else if (isAndroid()) {
-          openGooglePlay();
+      function redirectToStore() {
+        const params = new URLSearchParams(window.location.search);
+
+        // 测试页面时使用：
+        // https://missionexpress.ca/rush/?no_redirect=1
+        if (params.get("no_redirect") === "1") {
+          return;
         }
-      }, 600);
-    });
+
+        const device = getDeviceType();
+
+        if (device === "ios") {
+          window.location.replace(APP_STORE_URL);
+          return;
+        }
+
+        if (device === "android") {
+          window.location.replace(GOOGLE_PLAY_URL);
+          return;
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", function () {
+        setTimeout(redirectToStore, 500);
+      });
+
+      window.openAppStore = function () {
+        window.location.href = APP_STORE_URL;
+      };
+
+      window.openGooglePlay = function () {
+        window.location.href = GOOGLE_PLAY_URL;
+      };
+    })();
   </script>
 
   <style>
@@ -67,15 +82,20 @@
       box-sizing: border-box;
     }
 
+    html,
     body {
       margin: 0;
-      min-height: 100vh;
+      min-height: 100%;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--white);
       background:
         radial-gradient(circle at top left, rgba(31, 166, 74, 0.35), transparent 35%),
         radial-gradient(circle at top right, rgba(0, 87, 217, 0.35), transparent 35%),
         linear-gradient(135deg, #050914 0%, #07122f 55%, #041326 100%);
+    }
+
+    body {
+      min-height: 100vh;
     }
 
     .page {
@@ -119,12 +139,12 @@
       letter-spacing: -4px;
     }
 
-    .logo-text .m-blue {
-      color: #12a8df;
-    }
-
     .logo-text .m-green {
       color: #7ac943;
+    }
+
+    .logo-text .m-blue {
+      color: #12a8df;
     }
 
     h1 {
@@ -170,6 +190,8 @@
       font-weight: 800;
       letter-spacing: 0.1px;
       box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+      cursor: pointer;
+      border: none;
     }
 
     .btn.apple {
@@ -178,13 +200,6 @@
 
     .btn.google {
       background: linear-gradient(135deg, #19a64a, #0d7f34);
-    }
-
-    .small {
-      margin-top: 18px;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 13px;
-      line-height: 1.45;
     }
 
     .service-area {
@@ -201,6 +216,13 @@
       background: rgba(255, 255, 255, 0.06);
     }
 
+    .small {
+      margin-top: 18px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
     .footer {
       margin-top: 24px;
       font-size: 12px;
@@ -208,9 +230,19 @@
     }
 
     @media (max-width: 420px) {
+      .page {
+        padding: 22px 14px;
+        align-items: flex-start;
+      }
+
       .card {
         padding: 30px 18px 24px;
         border-radius: 24px;
+      }
+
+      .logo-wrap {
+        width: 96px;
+        height: 96px;
       }
 
       h1 {
@@ -223,6 +255,11 @@
 
       .desc {
         font-size: 15px;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 15px 16px;
       }
     }
   </style>
@@ -250,11 +287,19 @@
       </p>
 
       <div class="buttons">
-        <a class="btn apple" href="https://apps.apple.com/ca/app/mission-rush/id6762942351">
+        <a
+          class="btn apple"
+          href="https://apps.apple.com/ca/app/mission-rush/id6762942351"
+          aria-label="Download Mission Rush on the App Store"
+        >
           Download on the App Store
         </a>
 
-        <a class="btn google" href="https://play.google.com/store/apps/details?id=ca.missionexpress.missionrush">
+        <a
+          class="btn google"
+          href="https://play.google.com/store/apps/details?id=ca.missionexpress.missionrush"
+          aria-label="Get Mission Rush on Google Play"
+        >
           Get it on Google Play
         </a>
       </div>
